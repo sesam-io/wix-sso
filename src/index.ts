@@ -5,8 +5,8 @@ enum LoginMessageType {
   Logout = "auth0:logout",
 }
 
-const callback = () => {
-  console.log("🚀 ~ callback ~ auth0Client:", window?.auth0);
+const runSSOFlow = () => {
+  console.log("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);
 
   if (!window?.auth0) {
     return;
@@ -104,14 +104,15 @@ const callback = () => {
 };
 
 loadScript(
-  "https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975",
-  () => {
-    console.log("🚀 ~ window.zE:", window.zE);
-  },
-  "ze-snippet"
-);
-
-loadScript(
   "https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js",
-  callback
+  () => {
+    loadScript(
+      "https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975",
+      () => {
+        console.log("🚀 ~ window.zE", window.zE);
+        runSSOFlow();
+      },
+      "ze-snippet"
+    );
+  }
 );
