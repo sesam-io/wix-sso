@@ -21,7 +21,7 @@ const callback = () => {
   });
 
   window.onload = async () => {
-    console.log("🚀 ~ window.onload= ~ window.onload:", window.onload);
+    console.log("🚀 ~ window.onload= ~ window.onload");
 
     window.zE("messenger", "hide");
 
