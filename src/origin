@@ -1,0 +1,93 @@
+<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975"></script>
+
+<script>
+
+
+    let auth0Client = null;
+    let auth0Id = null;
+    let zToken = null;
+    let isAuthenticated=false;
+    const configureClient = async () => {
+        auth0Client = await auth0.createAuth0Client({
+            "domain": "accounts.talk.sesam.io",
+            "clientId": "kJpPOS30v8dpD68iRJ7PMdS03Hwvq06X"
+        });
+    };
+    window.onload = async () => {
+        await configureClient()
+        window.zE('messenger', 'hide');
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        if (isAuthenticated) {
+            return;
+        }
+        const query = window.location.search;
+        if (query.includes("code=") && query.includes("state=")) {
+            await auth0Client.handleRedirectCallback();
+            window.history.replaceState({}, document.title, "/");
+	    updateUI();
+        }
+    };
+    const updateUI = async () => {
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        
+        user = await auth0Client.getUser();
+
+        fetch(window.location.origin + '/_functions/auth0/' + auth0Id, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user })
+        })
+        try {
+            const token = await auth0Client.getTokenSilently();
+            fetch(window.location.origin + '/_functions/auth0/' + auth0Id, {
+		 method: 'POST',
+		 headers: {
+		     'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token })
+        })
+        } catch(err) {
+            console.log(err);
+        }
+        
+       
+    };
+    window.addEventListener('message', async (event) => {
+        if (event.data.auth0Id) {
+            auth0Id = event.data.auth0Id;
+            zToken=event.data.zendeskToken;
+            if (zToken){
+               window.zE('messenger', 'loginUser', function (callback) {
+		      callback(zToken);
+              window.zE('messenger', 'show');
+	      });
+
+            }
+            else{
+            	updateUI();
+            }
+            
+        }
+        if (event.data === 'auth0:login') {
+            await auth0Client.loginWithRedirect({
+                authorizationParams: {
+                    redirect_uri: window.location.origin                 
+                }
+            });
+        }
+        if (event.data === 'auth0:logout') {
+            auth0Client.logout({
+                logoutParams: {
+                    returnTo: window.location.origin
+                }
+            });
+        }
+
+    });
+    
+    
+
+</script> 
