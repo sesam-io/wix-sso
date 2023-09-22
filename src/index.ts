@@ -1,5 +1,10 @@
 import { loadScript } from "./loadScript";
 
+enum LoginMessageType {
+  Login = "auth0:login",
+  Logout = "auth0:logout",
+}
+
 const callback = () => {
   console.log("🚀 ~ callback ~ auth0Client:", window?.auth0);
 
@@ -16,18 +21,24 @@ const callback = () => {
   });
 
   window.onload = async () => {
+    console.log("🚀 ~ window.onload= ~ window.onload:", window.onload);
+
     window.zE("messenger", "hide");
+
     const isAuthenticated = await auth0Client.isAuthenticated();
     if (isAuthenticated) {
       return;
     }
+
     const query = window.location.search;
+
     if (query.includes("code=") && query.includes("state=")) {
       await auth0Client.handleRedirectCallback();
       window.history.replaceState({}, document.title, "/");
       updateUI();
     }
   };
+
   const updateUI = async () => {
     const isAuthenticated = await auth0Client.isAuthenticated();
     const user = await auth0Client.getUser();
@@ -51,10 +62,12 @@ const callback = () => {
       console.log(err);
     }
   };
+
   window.addEventListener("message", async (event) => {
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
+
       if (zToken) {
         window.zE(
           "messenger",
@@ -68,14 +81,16 @@ const callback = () => {
         updateUI();
       }
     }
-    if (event.data === "auth0:login") {
+
+    if (event.data === LoginMessageType.Login) {
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
         },
       });
     }
-    if (event.data === "auth0:logout") {
+
+    if (event.data === LoginMessageType.Logout) {
       auth0Client.logout({
         logoutParams: {
           returnTo: window.location.origin,
