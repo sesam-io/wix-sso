@@ -40,15 +40,16 @@ const callback = () => {
   };
 
   const updateUI = async () => {
-    const isAuthenticated = await auth0Client.isAuthenticated();
     const user = await auth0Client.getUser();
-    fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
+
+    await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ user }),
     });
+
     try {
       const token = await auth0Client.getTokenSilently();
       fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
@@ -101,6 +102,14 @@ const callback = () => {
     }
   });
 };
+
+loadScript(
+  "https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975",
+  () => {
+    console.log("🚀 ~ window.zE:", window.zE);
+  },
+  "ze-snippet"
+);
 
 loadScript(
   "https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js",
