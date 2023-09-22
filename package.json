@@ -1,0 +1,26 @@
+{
+  "name": "wix-sso",
+  "version": "1.0.0",
+  "description": "Code to be shared across sesam Wix sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-bundler": "^1.6.1"
+  },
+  "devDependencies": {
+    "typescript": "4.4.4"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "sesam",
+    "wix"
+  ]
+}
