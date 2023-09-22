@@ -64,6 +64,8 @@ const callback = () => {
   };
 
   window.addEventListener("message", async (event) => {
+    console.log("🚀 ~ message ~ event:", event);
+
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
