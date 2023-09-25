@@ -18,13 +18,16 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 - Message events are sent in order to sign-in or sign-out
 
 
-## Develope
+## Development
 
-In order to develop:
-- Clone the repo locally
-- run `yarn add` to install all dependencies
-- run `yarn start` to open the homepage in the browser
-- run `yarn build` to build the project into the `dist` folder 
+In order to develope and release new version, keep the following steps:
+- Clone the repository locally
+- Run `yarn add` to install the project's dependencies
+- Run `yarn start` to open the homepage in the browser
+- Run `yarn build` to build the project and generate the artifact file `sso-flow.min.js` into the `dist` folder 
+- Push changes to Github
+- Create new release
+- Update the CDN URL (see details under [build section](#build))
 
 ## Build
 
@@ -34,36 +37,43 @@ To build the project run:
 yarn build
 ```
 
-The generated code will be located in `dist/index.js` file.
+The generated code will be located in `dist/sso-flow.min.js` file.
 
-## Usage
+## Update CDN URL
 
-After building the code, the content of `index.js` file should be copied from `dist` folder and wrapped with `<script>` tags. Then it should be paste in:
+The builded code can be used with [jsdelivr](https://www.jsdelivr.com/?docs=gh) CDN service.
+
+In order to use that service, there's a need to generate [Release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) and use it as follow:
+
+```
+https://cdn.jsdelivr.net/gh/[user]/[repo-name@release-version]/[file-path]
+```
+
+The current version is `v1.0.1` and therefore the URL is: 
+
+```
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/dist/sso-flow.min.js
+```
+
+## Usage in Wix dashboard
+
+Paste the following code:
+
+```html
+<script id="sso-flow" src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/dist/sso-flow.min.js"></script>
+```
+
+in Wix site's Custom code: 
 
 `Wix site -> Settings -> ADVANCED section -> Custom code -> Auth0 + Zendesk`
 
-```
-<script>
 
-    // the generated code
-
-</script>
-```
-
-![Alt text](<src/assets//custom-code-example.png>)
+![Alt text](<src/assets/wix-custom-code-example.png>)
 
 
-## Logging
+## Enable logger
 
 In order to enable the console logger, please add to `localStorage` the key `_logSSOFlow_` with the value `true` under the site domain and follow the console logs that prefixed with `SSO Flow` title. See screenshot example:
 
 
 ![Alt text](<src/assets/logger-example.png>)
-
-## TODO
-* [ ] Parse the builded `dist/index.js` into `artifact.html` that will contain the production code wrapped with `script` tags, or
-* [ ] Publish the artifact into a CDN service or consume from Github
-
-
-
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso/dist/sso-flow.min.js
