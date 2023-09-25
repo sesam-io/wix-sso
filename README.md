@@ -22,3 +22,9 @@ To build the artifact run
 ```
 yarn build
 ```
+
+## Usage
+
+After building the code, it should be wrapped with `<script>` tags and paste in the Wix site -> Settings -> ADVANCED section -> Custom code -> `For Auth0 SSO with Zendesk `
+
+![Alt text](<Screenshot from 2023-09-25 11-43-48.png>)
