@@ -36,6 +36,7 @@ After building the code, the content of `index.js` file should be copied from `d
 ```
 
 ![Alt text](<src/assets/screenshot1.png>)
+![Alt text](<src/assets//custom-code-example.png>)
 
 
 ## Logging
