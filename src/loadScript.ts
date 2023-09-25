@@ -10,9 +10,9 @@ export const loadScript = (url: string, callback: () => void, id = "") => {
     // There are several events for cross browser compatibility.
     //   script.onreadystatechange = callback;
     script.onload = () => {
-      resolve();
-
       callback();
+
+      resolve();
     };
 
     head.appendChild(script);
