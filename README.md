@@ -40,7 +40,7 @@ After building the code, the content of `index.js` file should be copied from `d
 
 ## Logging
 
-In order to enable the console logger, please add to `localStorage` the key `_logSSOFlow_` with the value `true`
+In order to enable the console logger, please add to `localStorage` the key `_logSSOFlow_` with the value `true` under the site domain and follow the console logs that prefixed with `SSO Flow` title. See screenshot example:
 
 
 ![Alt text](<src/assets/logger-example.png>)
