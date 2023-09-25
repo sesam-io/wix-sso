@@ -61,4 +61,5 @@ In order to enable the console logger, please add to `localStorage` the key `_lo
 ![Alt text](<src/assets/logger-example.png>)
 
 ## TODO
-* [ ] Parse the builded `dist/index.js` into `artifact.html` that will contain the production code wrapped with `script` tags
+* [ ] Parse the builded `dist/index.js` into `artifact.html` that will contain the production code wrapped with `script` tags, or
+* [ ] Publish the artifact into a CDN service or consume from Github
