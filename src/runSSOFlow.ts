@@ -74,6 +74,8 @@ export const runSSOFlow = () => {
       zToken = event.data.zendeskToken;
 
       if (zToken) {
+        log("message - zToken", zToken);
+
         window.zE(
           "messenger",
           "loginUser",
@@ -88,6 +90,8 @@ export const runSSOFlow = () => {
     }
 
     if (event.data === LoginMessageType.Login) {
+      log("message - ", LoginMessageType.Login);
+
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
@@ -96,6 +100,8 @@ export const runSSOFlow = () => {
     }
 
     if (event.data === LoginMessageType.Logout) {
+      log("message - ", LoginMessageType.Logout);
+
       auth0Client.logout({
         logoutParams: {
           returnTo: window.location.origin,
