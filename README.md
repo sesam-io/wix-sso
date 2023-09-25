@@ -2,6 +2,8 @@
 
 Repo for hosting [`Auth0`](https://auth0.com) SSO sign-in/sign-up code to be used across Sesam Wix sites.
 
+The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://forum.wixstudio.com/t/integrate-auth0-with-wix-members-complete-guide/8119) tutorial.
+
 ## Core logic
 
 - Required third-party JS files loaded:
@@ -25,7 +27,9 @@ yarn build
 
 ## Usage
 
-After building the code, the content of `index.js` file should be copied from `dist` folder and wrapped with `<script>` tags. Then it should be paste in the Wix site -> Settings -> ADVANCED section -> Custom code -> `For Auth0 SSO with Zendesk `
+After building the code, the content of `index.js` file should be copied from `dist` folder and wrapped with `<script>` tags. Then it should be paste in:
+
+`Wix site -> Settings -> ADVANCED section -> Custom code -> Auth0 + Zendesk`
 
 ```
 <script>
@@ -35,7 +39,6 @@ After building the code, the content of `index.js` file should be copied from `d
 </script>
 ```
 
-![Alt text](<src/assets/screenshot1.png>)
 ![Alt text](<src/assets//custom-code-example.png>)
 
 
@@ -45,3 +48,6 @@ In order to enable the console logger, please add to `localStorage` the key `_lo
 
 
 ![Alt text](<src/assets/logger-example.png>)
+
+## TODO
+* [ ] Parse the builded `dist/index.js` into `artifact.html` that will contain the production code wrapped with `script` tags
