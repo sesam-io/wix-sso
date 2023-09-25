@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ES5",
+    "module": "commonjs",
     "strict": true,
-    "module": "esnext",
     "jsx": "preserve",
     "esModuleInterop": true,
     "sourceMap": true,
