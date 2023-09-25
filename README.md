@@ -66,4 +66,4 @@ In order to enable the console logger, please add to `localStorage` the key `_lo
 
 
 
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0/src/index.js
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0/dist/wix-site-sso-flow.js

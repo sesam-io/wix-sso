@@ -7,7 +7,7 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build --no-source-maps src/index.ts --out-dir dist"
+    "build": "parcel build --no-source-maps src/index.ts --out-dir dist --out-file wix-site-sso-flow.js"
   },
   "author": "Sesam.io",
   "license": "ISC",
