@@ -1,9 +1,9 @@
+import {
+  Auth0_SPA_JS_CDN,
+  LoginMessageType,
+  ZENDESK_WIDGET_CDN,
+} from "./constants";
 import { loadScript } from "./loadScript";
-
-enum LoginMessageType {
-  Login = "auth0:login",
-  Logout = "auth0:logout",
-}
 
 const runSSOFlow = () => {
   console.log("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);
@@ -103,16 +103,13 @@ const runSSOFlow = () => {
   });
 };
 
-loadScript(
-  "https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js",
-  () => {
-    loadScript(
-      "https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975",
-      () => {
-        console.log("🚀 ~ window.zE", window.zE);
-        runSSOFlow();
-      },
-      "ze-snippet"
-    );
-  }
-);
+loadScript(Auth0_SPA_JS_CDN, () => {
+  loadScript(
+    ZENDESK_WIDGET_CDN,
+    () => {
+      console.log("🚀 ~ window.zE", window.zE);
+      runSSOFlow();
+    },
+    "ze-snippet"
+  );
+});
