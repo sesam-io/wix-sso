@@ -1,7 +1,9 @@
 import { LoginMessageType } from "./types";
 
-export const runSSOFlow = () => {
-  console.log("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);
+export const runSSOFlow = (log = false) => {
+  if (log) {
+    console.info("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);
+  }
 
   if (!window?.auth0) {
     return;
@@ -16,7 +18,9 @@ export const runSSOFlow = () => {
   });
 
   window.onload = async () => {
-    console.log("🚀 ~ window.onload= ~ window.onload");
+    if (log) {
+      console.info("🚀 ~ window.onload= ~ window.onload");
+    }
 
     window.zE("messenger", "hide");
 
@@ -60,7 +64,9 @@ export const runSSOFlow = () => {
   };
 
   window.addEventListener("message", async (event) => {
-    console.log("🚀 ~ message ~ event:", event);
+    if (log) {
+      console.info("🚀 ~ message ~ event:", event);
+    }
 
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;

@@ -12,7 +12,7 @@ export const loadScript = (args: LoadScriptArgs) => {
 
     script.onload = () => {
       if (log) {
-        console.log(
+        console.info(
           `🚀 ~ ${name} script loaded`,
           new Date().toLocaleTimeString()
         );
