@@ -36,3 +36,10 @@ After building the code, the content of `index.js` file should be copied from `d
 ```
 
 ![Alt text](<src/assets/screenshot1.png>)
+
+
+## Logging
+
+In order to enable the console logger, please add `_logSSOFlow_` `localStorage` key with the value `true`: 
+
+![Alt text](<src/assets/logger.png>)
