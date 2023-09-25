@@ -17,13 +17,24 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
     - Post to `Auth0` token to the server
 - Message events are sent in order to sign-in or sign-out
 
+
+## Develope
+
+In order to develop:
+- Clone the repo locally
+- run `yarn add` to install all dependencies
+- run `yarn start` to open the homepage in the browser
+- run `yarn build` to build the project into the `dist` folder 
+
 ## Build
 
-To build the artifact run
+To build the project run:
 
 ```
 yarn build
 ```
+
+The generated code will be located in `dist/index.js` file.
 
 ## Usage
 
