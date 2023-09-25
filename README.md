@@ -71,9 +71,12 @@ in Wix site's Custom code:
 ![Alt text](<src/assets/wix-custom-code-example.png>)
 
 
+![Alt text](<src/assets//script-example.png>)
+
 ## Enable logger
 
 In order to enable the console logger, please add to `localStorage` the key `_logSSOFlow_` with the value `true` under the site domain and follow the console logs that prefixed with `SSO Flow` title. See screenshot example:
 
 
 ![Alt text](<src/assets/logger-example.png>)
+
