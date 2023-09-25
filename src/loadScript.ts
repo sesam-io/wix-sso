@@ -1,16 +1,24 @@
-export const loadScript = (url: string, callback: () => void, id = "") => {
+import { LoadScriptArgs } from "types";
+
+export const loadScript = (args: LoadScriptArgs) => {
+  const { url, idAttribute, callbackFn, name, log } = args;
+
   return new Promise<void>((resolve, _reject) => {
     const head = document.head;
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = url;
-    script.id = id;
+    script.id = idAttribute ?? "";
 
-    // Then bind the event to the callback function.
-    // There are several events for cross browser compatibility.
-    //   script.onreadystatechange = callback;
     script.onload = () => {
-      callback();
+      if (log) {
+        console.log(
+          `🚀 ~ ${name} script loaded`,
+          new Date().toLocaleTimeString()
+        );
+      }
+
+      callbackFn?.();
 
       resolve();
     };

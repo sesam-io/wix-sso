@@ -1,4 +1,4 @@
-import { LoginMessageType } from "./constants";
+import { LoginMessageType } from "./types";
 
 export const runSSOFlow = () => {
   console.log("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);

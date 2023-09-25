@@ -2,15 +2,15 @@ import { runSSOFlow } from "./runSSOFlow";
 import { Auth0_SPA_JS_CDN, ZENDESK_WIDGET_CDN } from "./constants";
 import { loadScript } from "./loadScript";
 
-loadScript(Auth0_SPA_JS_CDN, () => {
-  console.log("🚀 ~ auth0 loaded");
+loadScript({
+  url: Auth0_SPA_JS_CDN,
+  name: "Auth0 SPA js",
+  log: true,
 }).then(() => {
-  loadScript(
-    ZENDESK_WIDGET_CDN,
-    () => {
-      console.log("🚀 ~ window.zE", window.zE);
-      runSSOFlow();
-    },
-    "ze-snippet"
-  );
+  loadScript({
+    url: ZENDESK_WIDGET_CDN,
+    name: "Zendesk widget",
+    callbackFn: runSSOFlow,
+    log: true,
+  });
 });
