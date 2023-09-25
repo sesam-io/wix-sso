@@ -10,7 +10,8 @@ loadScript({
   loadScript({
     url: ZENDESK_WIDGET_CDN,
     name: "Zendesk widget",
-    callbackFn: runSSOFlow,
     log: true,
+  }).then(() => {
+    runSSOFlow();
   });
 });

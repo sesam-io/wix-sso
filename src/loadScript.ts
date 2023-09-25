@@ -1,7 +1,7 @@
 import { LoadScriptArgs } from "types";
 
 export const loadScript = (args: LoadScriptArgs) => {
-  const { url, idAttribute, callbackFn, name, log } = args;
+  const { url, idAttribute, name, log } = args;
 
   return new Promise<void>((resolve, _reject) => {
     const head = document.head;
@@ -17,8 +17,6 @@ export const loadScript = (args: LoadScriptArgs) => {
           new Date().toLocaleTimeString()
         );
       }
-
-      callbackFn?.();
 
       resolve();
     };

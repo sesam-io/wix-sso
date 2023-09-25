@@ -7,6 +7,5 @@ export type LoadScriptArgs = {
   name: string;
   idAttribute?: string;
   url: string;
-  callbackFn?: () => void;
   log: boolean;
 };
