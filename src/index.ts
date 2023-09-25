@@ -14,6 +14,6 @@ promise.then(() => {
     name: "Zendesk widget",
     log: true,
   }).then(() => {
-    runSSOFlow();
+    runSSOFlow(true);
   });
 });

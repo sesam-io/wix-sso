@@ -2,10 +2,11 @@ import { LoginMessageType } from "./types";
 
 export const runSSOFlow = (log = false) => {
   if (log) {
-    console.info("🚀 ~ runSSOFlow ~ auth0Client:", window?.auth0);
+    console.info("🚀 ~ runSSOFlow start", new Date().toLocaleTimeString());
   }
 
   if (!window?.auth0) {
+    console.warn("🚀 ~ auth0 is not exist!", new Date().toLocaleTimeString());
     return;
   }
 
@@ -17,40 +18,31 @@ export const runSSOFlow = (log = false) => {
     clientId: "kJpPOS30v8dpD68iRJ7PMdS03Hwvq06X",
   });
 
-  window.onload = async () => {
+  const updateHttpFunctions = async () => {
     if (log) {
-      console.info("🚀 ~ window.onload= ~ window.onload");
+      console.info(
+        "🚀 ~ updateHttpFunctions called",
+        new Date().toLocaleTimeString()
+      );
     }
 
-    window.zE("messenger", "hide");
-
-    const isAuthenticated = await auth0Client.isAuthenticated();
-    if (isAuthenticated) {
-      return;
-    }
-
-    const query = window.location.search;
-
-    if (query.includes("code=") && query.includes("state=")) {
-      await auth0Client.handleRedirectCallback();
-      window.history.replaceState({}, document.title, "/");
-      updateUI();
-    }
-  };
-
-  const updateUI = async () => {
     const user = await auth0Client.getUser();
 
-    await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user }),
-    });
+    if (log) {
+      console.info("🚀 ~ user", user, new Date().toLocaleTimeString());
+    }
 
     try {
+      await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user }),
+      });
+
       const token = await auth0Client.getTokenSilently();
+
       fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
         method: "POST",
         headers: {
@@ -59,13 +51,42 @@ export const runSSOFlow = (log = false) => {
         body: JSON.stringify({ token }),
       });
     } catch (err) {
-      console.log(err);
+      console.error("🚀 ~ fetch error: ", err);
+    }
+  };
+
+  window.onload = async () => {
+    if (log) {
+      console.info("🚀 ~ window has loaded", new Date().toLocaleTimeString());
+    }
+
+    window.zE("messenger", "hide");
+
+    const isAuthenticated = await auth0Client.isAuthenticated();
+
+    if (isAuthenticated) {
+      if (log) {
+        console.info(
+          "🚀 ~ user is not authenticated",
+          new Date().toLocaleTimeString()
+        );
+      }
+
+      return;
+    }
+
+    const query = window.location.search;
+
+    if (query.includes("code=") && query.includes("state=")) {
+      await auth0Client.handleRedirectCallback();
+      window.history.replaceState({}, document.title, "/");
+      updateHttpFunctions();
     }
   };
 
   window.addEventListener("message", async (event) => {
     if (log) {
-      console.info("🚀 ~ message ~ event:", event);
+      console.info("🚀 ~ message event: ", event);
     }
 
     if (event.data.auth0Id) {
@@ -82,7 +103,7 @@ export const runSSOFlow = (log = false) => {
           }
         );
       } else {
-        updateUI();
+        updateHttpFunctions();
       }
     }
 
