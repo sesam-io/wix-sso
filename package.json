@@ -7,7 +7,7 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build src/index.ts"
+    "build": "parcel build --no-source-maps src/index.ts"
   },
   "author": "Sesam.io",
   "license": "ISC",
