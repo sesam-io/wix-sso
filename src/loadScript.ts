@@ -1,7 +1,8 @@
-import { LoadScriptArgs } from "types";
+import { log } from "./logger";
+import { LoadScriptArgs } from "./types";
 
 export const loadScript = (args: LoadScriptArgs) => {
-  const { url, idAttribute, name, log } = args;
+  const { url, idAttribute, name } = args;
 
   return new Promise<void>((resolve, _reject) => {
     const head = document.head;
@@ -11,12 +12,7 @@ export const loadScript = (args: LoadScriptArgs) => {
     script.id = idAttribute ?? "";
 
     script.onload = () => {
-      if (log) {
-        console.info(
-          `🚀 ~ ${name} script loaded`,
-          new Date().toLocaleTimeString()
-        );
-      }
+      log(`${name} script loaded`);
 
       resolve();
     };

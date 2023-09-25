@@ -7,5 +7,4 @@ export type LoadScriptArgs = {
   name: string;
   idAttribute?: string;
   url: string;
-  log: boolean;
 };

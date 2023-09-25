@@ -1,12 +1,11 @@
+import { log } from "./logger";
 import { LoginMessageType } from "./types";
 
-export const runSSOFlow = (log = false) => {
-  if (log) {
-    console.info("🚀 ~ runSSOFlow start", new Date().toLocaleTimeString());
-  }
+export const runSSOFlow = () => {
+  log("runSSOFlow start");
 
   if (!window?.auth0) {
-    console.warn("🚀 ~ auth0 is not exist!", new Date().toLocaleTimeString());
+    log("auth0 is not exist!");
     return;
   }
 
@@ -19,18 +18,11 @@ export const runSSOFlow = (log = false) => {
   });
 
   const updateHttpFunctions = async () => {
-    if (log) {
-      console.info(
-        "🚀 ~ updateHttpFunctions called",
-        new Date().toLocaleTimeString()
-      );
-    }
+    log("updateHttpFunctions called");
 
     const user = await auth0Client.getUser();
 
-    if (log) {
-      console.info("🚀 ~ user", user, new Date().toLocaleTimeString());
-    }
+    log("user", user);
 
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
@@ -51,27 +43,19 @@ export const runSSOFlow = (log = false) => {
         body: JSON.stringify({ token }),
       });
     } catch (err) {
-      console.error("🚀 ~ fetch error: ", err);
+      console.error("fetch error: ", err);
     }
   };
 
   window.onload = async () => {
-    if (log) {
-      console.info("🚀 ~ window has loaded", new Date().toLocaleTimeString());
-    }
+    log("window has loaded");
 
     window.zE("messenger", "hide");
 
     const isAuthenticated = await auth0Client.isAuthenticated();
 
     if (isAuthenticated) {
-      if (log) {
-        console.info(
-          "🚀 ~ user is authenticated",
-          new Date().toLocaleTimeString()
-        );
-      }
-
+      log("user is authenticated");
       return;
     }
 
@@ -85,10 +69,6 @@ export const runSSOFlow = (log = false) => {
   };
 
   window.addEventListener("message", async (event) => {
-    if (log) {
-      console.info("🚀 ~ message event: ", event);
-    }
-
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
