@@ -67,7 +67,7 @@ export const runSSOFlow = (log = false) => {
     if (isAuthenticated) {
       if (log) {
         console.info(
-          "🚀 ~ user is not authenticated",
+          "🚀 ~ user is authenticated",
           new Date().toLocaleTimeString()
         );
       }
