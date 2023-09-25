@@ -35,4 +35,4 @@ After building the code, the content of `index.js` file should be copied from `d
 </script>
 ```
 
-![Alt text](<./assets/screenshot1.png>)
+![Alt text](<src/assets/screenshot1.png>)
