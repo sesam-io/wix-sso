@@ -17,4 +17,4 @@ jobs:
         with:
           name: create-sso-flow-artifact
           path: |
-            artifact/index.js
+            artifact/sso-flow.min.js
