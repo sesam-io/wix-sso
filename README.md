@@ -60,7 +60,7 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2/artifact/sso-flow.min.js
 Paste the following code:
 
 ```html
-<script id="sso-flow" src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2/artifcat/sso-flow.min.js"></script>
+<script id="sso-flow" src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2/artifact/sso-flow.min.js"></script>
 ```
 
 in Wix site's Custom code: 
