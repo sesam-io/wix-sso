@@ -80,3 +80,37 @@ In order to enable the console logger, please add to `localStorage` the key `_lo
 
 ![Alt text](<src/assets/logger-example.png>)
 
+## Full flow in detail
+
+When the `masterPage.js` is loaded, a generated `auth0Id` is messaged to the the client listener from 
+
+```js
+
+const auth0Id = uuidv4();
+
+wixRealtime.subscribe({
+          ...
+    })).then(() => {
+        console.debug("auth0 - Subscribe .then");
+        zendeskToken = session.getItem("zToken");
+        wixWindow.postMessage({ auth0Id, zendeskToken });
+    })
+```
+
+When user clicks on the `Login button`
+
+1. Login Lightbox is open
+ 	- Set current URL in the localStorage `local.setItem("redirect", wixLocation.url);`
+ 	- Triggers the login flow by calling `wixWindow.postMessage("auth0:login")`, which actually post message to the custom client code's message listener
+2. The client listener invokes `auth0Client.loginWithRedirect`, which start off the redirects flow to auth0 login webpage
+3. Universal login page shows up
+4. After the user fills the credentials `Auth0` redirects back to the site with the following query params: https://site-name/?code={some code}&state={some state}
+5. window.onLoad listener process that query params (code, state) and calls `auth0Client.handleRedirectCallback();` to handle success or error responses from Auth0 (https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#handleRedirectCallback).
+    - It then `replaceState` to reset the state object and the query params (code, state) for security reasons
+ 	- `updateHttpFunctions` POST the current logged-in `user` to the API server's method `post_auth0`, which `publish` (send message) an `auth0Id` and the `user` args to the client message listener of the `masterPage.js`
+
+ 	```js
+ 	 wixRealtime.subscribe({
+        name: "auth0",
+        resourceId: auth0Id,
+    }
