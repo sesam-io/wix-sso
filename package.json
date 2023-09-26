@@ -6,7 +6,7 @@
   "source": "src/index.ts",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel index.html watch port=8001 --open",
     "build": "parcel build --no-source-maps src/index.ts --out-dir dist --out-file sso-flow.min.js"
   },
   "author": "Sesam.io",
