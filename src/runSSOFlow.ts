@@ -35,7 +35,7 @@ export const runSSOFlow = () => {
 
       const token = await auth0Client.getTokenSilently();
 
-      fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
+      await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
