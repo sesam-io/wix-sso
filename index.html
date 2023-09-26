@@ -1,19 +1,18 @@
 <html>
 <head>
-	<title>Auth0 SSO</title>
+	<title>Auth0 SSO Demo app</title>
+	<link rel="stylesheet" href="src/demoApp/styles.css">
 	<meta charset="UTF-8" />
-	<script src="src/index.ts"></script>
 </head>
 <body>
 	<h1>Auth0 SSO</h1>
 	<div id="app">
+		<p>
+			<span id="spnUsername"></span>
+		</p>
 		<button id="btnLogin">Login</button>
 	</div>
-	<script>
-
-		btnLogin.addEventListener('click', () => {
-			window.postMessage("auth0:login");
-		});
+	<script src="src/demoApp/index.ts">
 	</script>
 </body>
 </html>
