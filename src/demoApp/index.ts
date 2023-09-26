@@ -55,7 +55,6 @@ promise.then(() => {
       if (user) {
         spnUsername.innerText = `Hi ${user.name}!` ?? "";
       } else {
-        console.info("🚀 ~ window.onload= ~ user:", user);
         spnUsername.innerText = "Hi! click Login";
       }
 
