@@ -24,7 +24,7 @@ In order to develope and release new version, keep the following steps:
 - Clone the repository locally
 - Run `yarn add` to install the project's dependencies
 - Run `yarn start` to open the homepage in the browser
-- Run `yarn build` to build the project and generate the artifact file `sso-flow.min.js` into the `dist` folder 
+- Run `yarn build` to build the project and generate the artifact file `sso-flow.min.js` into the `artifact` folder 
 - Push changes to Github
 - Create new release
 - Update the CDN URL (see details under [build section](#build))
@@ -37,7 +37,7 @@ To build the project run:
 yarn build
 ```
 
-The generated code will be located in `dist/sso-flow.min.js` file.
+The generated code will be located in `artifact/sso-flow.min.js` file.
 
 ## Update CDN URL
 
@@ -52,7 +52,7 @@ https://cdn.jsdelivr.net/gh/[user]/[repo-name@release-version]/[file-path]
 The current version is `v1.0.1` and therefore the URL is: 
 
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/dist/sso-flow.min.js
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/artifact/sso-flow.min.js
 ```
 
 ## Usage in Wix dashboard
@@ -60,7 +60,7 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/dist/sso-flow.min.js
 Paste the following code:
 
 ```html
-<script id="sso-flow" src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/dist/sso-flow.min.js"></script>
+<script id="sso-flow" src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.1/artifcat/sso-flow.min.js"></script>
 ```
 
 in Wix site's Custom code: 

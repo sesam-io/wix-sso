@@ -17,4 +17,4 @@ jobs:
         with:
           name: create-sso-flow-artifact
           path: |
-            dist/index.js
+            artifact/index.js
