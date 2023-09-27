@@ -1,6 +1,6 @@
 import { log } from "./logger";
 import { LoginMessageType } from "./types";
-import { pushToDataLayer } from "analytics";
+import { pushToDataLayer } from "./analytics";
 
 export const runSSOFlow = () => {
   log("runSSOFlow start");
