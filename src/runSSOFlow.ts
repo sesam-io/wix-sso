@@ -25,10 +25,10 @@ export const runSSOFlow = () => {
 
     log("user", user);
 
-    if (user?.email) {   
-      pushToDataLayer('set', { "userId": user.email });
+    if (user?.email) {
+      pushToDataLayer("set", { userId: user.email });
     }
-    
+
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
         method: "POST",
@@ -100,6 +100,7 @@ export const runSSOFlow = () => {
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
+          siteId: "wave",
         },
       });
     }
