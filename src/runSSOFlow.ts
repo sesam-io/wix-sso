@@ -1,5 +1,6 @@
 import { log } from "./logger";
 import { LoginMessageType } from "./types";
+import { pushToDataLayer } from "./analytics";
 
 export const runSSOFlow = () => {
   log("runSSOFlow start");
@@ -24,6 +25,10 @@ export const runSSOFlow = () => {
 
     log("user", user);
 
+    if (user?.email) {   
+      pushToDataLayer('set', { "userId": user.email });
+    }
+    
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
         method: "POST",
