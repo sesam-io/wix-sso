@@ -100,7 +100,8 @@ export const runSSOFlow = () => {
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
-          siteId: "wave",
+          test: "wave",
+          ga: "wave",
         },
       });
     }
