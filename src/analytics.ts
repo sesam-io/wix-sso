@@ -1,4 +1,7 @@
+import { log } from "logger";
+
 function waitForDataLayer(callback: Function) {
+    log("Waiting for dataLayer", JSON.stringify(window.dataLayer))
     if (window.dataLayer) {
         callback();
     } else {
