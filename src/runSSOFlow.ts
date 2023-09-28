@@ -1,6 +1,6 @@
 import { log } from "./logger";
 import { LoginMessageType } from "./types";
-import { pushToDataLayer } from "./analytics";
+import { pushToDataLayer, sha256 } from "./analytics";
 
 export const runSSOFlow = (siteId = "") => {
   log("runSSOFlow start");
@@ -26,7 +26,8 @@ export const runSSOFlow = (siteId = "") => {
     log("user", user);
 
     if (user?.email) {
-      pushToDataLayer(["set", "user_id", user.email]);
+      const hashedEmail = await sha256(user.email);
+      pushToDataLayer(["set", "user_id", hashedEmail]);
     }
 
     try {
