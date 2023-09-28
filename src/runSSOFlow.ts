@@ -25,10 +25,10 @@ export const runSSOFlow = (siteId = "") => {
 
     log("user", user);
 
-    if (user?.email) {
-      const hashedEmail = await sha256(user.email);
-      pushToDataLayer("set", {user_id: hashedEmail });
-    }
+    // if (user?.email) {
+    //   const hashedEmail = await sha256(user.email);
+    //   pushToDataLayer("set", {user_id: hashedEmail });
+    // }
 
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
@@ -62,6 +62,12 @@ export const runSSOFlow = (siteId = "") => {
 
     if (isAuthenticated) {
       log("user is authenticated");
+      const user = await auth0Client.getUser();
+  
+      if (user?.email) {
+        const hashedEmail = await sha256(user.email);
+        pushToDataLayer("set", {user_id: hashedEmail });
+      }
       return;
     }
 
