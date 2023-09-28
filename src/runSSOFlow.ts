@@ -2,7 +2,7 @@ import { log } from "./logger";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer } from "./analytics";
 
-export const runSSOFlow = () => {
+export const runSSOFlow = (siteId = "") => {
   log("runSSOFlow start");
 
   if (!window?.auth0) {
@@ -100,7 +100,7 @@ export const runSSOFlow = () => {
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
-          site_id: "wave",
+          site_id: siteId,
         },
       });
     }

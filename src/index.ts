@@ -1,6 +1,11 @@
 import { runSSOFlow } from "./runSSOFlow";
 import { Auth0_SPA_JS_CDN, ZENDESK_WIDGET_CDN } from "./constants";
 import { loadScript } from "./loadScript";
+import { log } from "./logger";
+import { readCurrentScriptSiteId } from "./readCurrentScriptSiteId";
+
+const siteId = readCurrentScriptSiteId();
+log("siteId", siteId);
 
 const promise = loadScript({
   url: Auth0_SPA_JS_CDN,
@@ -13,6 +18,6 @@ promise.then(() => {
     name: "Zendesk widget",
     idAttribute: "ze-snippet",
   }).then(() => {
-    runSSOFlow();
+    runSSOFlow(siteId);
   });
 });
