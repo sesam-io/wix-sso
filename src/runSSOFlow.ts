@@ -114,5 +114,15 @@ export const runSSOFlow = (siteId = "") => {
         },
       });
     }
+
+    if (event.data === LoginMessageType.Signup) {
+      log("message - ", LoginMessageType.Signup);
+
+      // auth0Client.({
+      //   logoutParams: {
+      //     returnTo: window.location.origin,
+      //   },
+      // });
+    }
   });
 };
