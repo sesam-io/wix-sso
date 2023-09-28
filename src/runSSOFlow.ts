@@ -25,11 +25,6 @@ export const runSSOFlow = (siteId = "") => {
 
     log("user", user);
 
-    // if (user?.email) {
-    //   const hashedEmail = await sha256(user.email);
-    //   pushToDataLayer("set", {user_id: hashedEmail });
-    // }
-
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
         method: "POST",
@@ -53,6 +48,8 @@ export const runSSOFlow = (siteId = "") => {
     }
   };
 
+  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs 
+  // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
   window.onload = async () => {
     log("window has loaded");
 
@@ -62,12 +59,6 @@ export const runSSOFlow = (siteId = "") => {
 
     if (isAuthenticated) {
       log("user is authenticated");
-      const user = await auth0Client.getUser();
-  
-      if (user?.email) {
-        const hashedEmail = await sha256(user.email);
-        pushToDataLayer("set", {user_id: hashedEmail });
-      }
       return;
     }
 
@@ -84,6 +75,13 @@ export const runSSOFlow = (siteId = "") => {
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
+
+      const user = await auth0Client.getUser();
+  
+      if (user?.email) {
+        const hashedEmail = await sha256(user.email);
+        pushToDataLayer("set", {user_id: hashedEmail });
+      }
 
       if (zToken) {
         log("message - zToken", zToken);
