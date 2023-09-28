@@ -1,14 +1,15 @@
 import { log } from "./logger";
 
-function waitForDataLayer(callback: Function) {
-    log("Waiting for dataLayer", JSON.stringify(window.dataLayer))
-    if (window.dataLayer) {
-        callback();
-    } else {
-        setTimeout(function () {
-            waitForDataLayer(callback);
-        }, 500);
-    }
+const waitForDataLayer = (callback: Function) => {
+  log("Waiting for dataLayer", JSON.stringify(window.dataLayer));
+
+  if (window.dataLayer) {
+    callback();
+  } else {
+    setTimeout(function () {
+      waitForDataLayer(callback);
+    }, 500);
+  }
 };
 
 /**
@@ -21,7 +22,7 @@ function waitForDataLayer(callback: Function) {
  * @param args arbitrary arguments to the Google Analytics object (set, event, etc.
  */
 export const pushToDataLayer = (...args: any[]) => {
-    waitForDataLayer(() => {
-        window.dataLayer.push(args);
-    });
-}
+  waitForDataLayer(() => {
+    window.dataLayer.push(args);
+  });
+};
