@@ -49,11 +49,19 @@ In order to use that service, there's a need to generate [Release](https://docs.
 https://cdn.jsdelivr.net/gh/[user]/[repo-name@release-version]/[file-path]
 ```
 
-The latest version is `v1.0.2` and therefore the URL is: 
+It's possible to use specific release. For example `v1.0.2`, then the URL should be: 
+
+```
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2/artifact/sso-flow.min.js
+```
+
+We can also alway use the latest version: 
 
 ```
 https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@latest/artifact/sso-flow.min.js
 ```
+
+In that case we need to take care to not release a broken version that can cause multiple sites to be broken at once.
 
 ## Usage in Wix dashboard
 
