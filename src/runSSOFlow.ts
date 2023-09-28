@@ -100,7 +100,7 @@ export const runSSOFlow = (siteId = "") => {
       await auth0Client.loginWithRedirect({
         authorizationParams: {
           redirect_uri: window.location.origin,
-          site_id: siteId,
+          "ext-site_id": siteId,
         },
       });
     }
