@@ -1,13 +1,14 @@
 import { log } from "./logger";
 
 const waitForDataLayer = (callback: Function, attempt = 0) => {
-  log("Waiting for dataLayer", JSON.stringify(window.dataLayer), ". Attempt: ", attempt);
+  log("Waiting for GA dataLayer", JSON.stringify(window.dataLayer), ". Attempt: ", attempt);
   const max_attempts = 10;
   if (attempt > max_attempts) {
-    log("Waiting for dataLayer: Max attempts reached.")
+    log("Waiting for GA dataLayer: Max attempts reached.")
     return;
   }
   if (window.dataLayer) {
+    log("GA dataLayer found, setting user_id.")
     callback();
   } else {
     setTimeout(function () {
