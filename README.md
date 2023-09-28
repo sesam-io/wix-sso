@@ -52,7 +52,7 @@ https://cdn.jsdelivr.net/gh/[user]/[repo-name@release-version]/[file-path]
 The latest version is `v1.0.2` and therefore the URL is: 
 
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2/artifact/sso-flow.min.js
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@latest/artifact/sso-flow.min.js
 ```
 
 ## Usage in Wix dashboard
