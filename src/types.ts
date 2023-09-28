@@ -1,6 +1,7 @@
 export enum LoginMessageType {
   Login = "auth0:login",
   Logout = "auth0:logout",
+  Signup = "auth0:signup",
 }
 
 export type LoadScriptArgs = {
