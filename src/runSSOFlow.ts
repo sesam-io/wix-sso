@@ -80,6 +80,7 @@ export const runSSOFlow = (siteId = "") => {
   
       if (user?.email) {
         const hashedEmail = await sha256(user.email);
+        // @ts-ignore
         pushToDataLayer("set", {user_id: hashedEmail });
       }
 
