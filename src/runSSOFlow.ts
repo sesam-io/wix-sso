@@ -66,7 +66,7 @@ export const runSSOFlow = (siteId = "") => {
 
     if (query.includes("code=") && query.includes("state=")) {
       await auth0Client.handleRedirectCallback();
-      window.history.replaceState({}, document.title, "/");
+      window.history.replaceState({}, document.title);
       updateHttpFunctions();
     }
   };
