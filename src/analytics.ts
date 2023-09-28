@@ -26,9 +26,9 @@ const waitForDataLayer = (callback: Function, attempt = 0) => {
  *   gtag('config', '<id>');
  * @param args arbitrary arguments to the Google Analytics object (set, event, etc.
  */
-export const pushToDataLayer = (...args: any[]) => {
+export function pushToDataLayer() {
   log("Attempting to push user_id to GA dataLayer.")
-
+  const args = arguments;
   waitForDataLayer(() => {
     log("Setting the user-id");
     window.dataLayer.push(args);
