@@ -48,7 +48,7 @@ export const runSSOFlow = (siteId = "") => {
     }
   };
 
-  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs 
+  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs
   // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
   window.onload = async () => {
     log("window has loaded");
@@ -77,11 +77,11 @@ export const runSSOFlow = (siteId = "") => {
       zToken = event.data.zendeskToken;
 
       const user = await auth0Client.getUser();
-  
+
       if (user?.email) {
         const hashedEmail = await sha256(user.email);
         // @ts-ignore
-        pushToDataLayer("set", {user_id: hashedEmail });
+        pushToDataLayer("set", { user_id: hashedEmail });
       }
 
       if (zToken) {
@@ -127,6 +127,7 @@ export const runSSOFlow = (siteId = "") => {
       auth0Client.loginWithRedirect({
         authorizationParams: {
           screen_hint: "signup",
+          "ext-site_id": siteId,
         },
       });
     }
