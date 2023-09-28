@@ -6,7 +6,7 @@ export const runSSOFlow = (siteId = "") => {
   log("runSSOFlow start");
 
   if (!window?.auth0) {
-    log("auth0 is not exist!");
+    log("auth0 does not exist!");
     return;
   }
 

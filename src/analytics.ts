@@ -8,11 +8,11 @@ const waitForDataLayer = (callback: Function, attempt = 0) => {
     return;
   }
   if (window.dataLayer) {
-    log("GA dataLayer found, setting user_id.")
+    log("GA dataLayer found");
     callback();
   } else {
     setTimeout(function () {
-      waitForDataLayer(callback, attempt+1);
+      waitForDataLayer(callback, attempt + 1);
     }, 500);
   }
 };
@@ -30,13 +30,15 @@ export const pushToDataLayer = (...args: any[]) => {
   log("Attempting to push user_id to GA dataLayer.")
 
   waitForDataLayer(() => {
+    log("Setting the user-id");
     window.dataLayer.push(args);
+    log("window.dataLayer after pushing", window.dataLayer);
   });
 };
 
 export async function sha256(message: string): Promise<string> {
   // encode as UTF-8
-  const msgBuffer = new TextEncoder().encode(message);                    
+  const msgBuffer = new TextEncoder().encode(message);
 
   // hash the message
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
