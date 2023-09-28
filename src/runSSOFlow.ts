@@ -27,7 +27,7 @@ export const runSSOFlow = (siteId = "") => {
 
     if (user?.email) {
       const hashedEmail = await sha256(user.email);
-      pushToDataLayer(["set", "user_id", hashedEmail]);
+      pushToDataLayer("set", {user_id: hashedEmail });
     }
 
     try {
