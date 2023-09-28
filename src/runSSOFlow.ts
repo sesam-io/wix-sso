@@ -101,7 +101,11 @@ export const runSSOFlow = (siteId = "") => {
     }
 
     if (event.data === LoginMessageType.Login) {
-      log("message - ", LoginMessageType.Login);
+      log(
+        "message - ",
+        LoginMessageType.Login,
+        `redirect_uri: ${window.location.origin}`
+      );
 
       await auth0Client.loginWithRedirect({
         authorizationParams: {
@@ -122,7 +126,11 @@ export const runSSOFlow = (siteId = "") => {
     }
 
     if (event.data === LoginMessageType.Signup) {
-      log("message - ", LoginMessageType.Signup);
+      log(
+        "message - ",
+        LoginMessageType.Signup,
+        `redirect_uri: ${window.location.origin}`
+      );
 
       auth0Client.loginWithRedirect({
         authorizationParams: {
