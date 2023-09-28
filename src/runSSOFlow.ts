@@ -1,12 +1,12 @@
 import { log } from "./logger";
 import { LoginMessageType } from "./types";
-import { pushToDataLayer } from "./analytics";
+import { pushToDataLayer, sha256 } from "./analytics";
 
 export const runSSOFlow = (siteId = "") => {
   log("runSSOFlow start");
 
   if (!window?.auth0) {
-    log("auth0 is not exist!");
+    log("auth0 does not exist!");
     return;
   }
 
@@ -24,10 +24,6 @@ export const runSSOFlow = (siteId = "") => {
     const user = await auth0Client.getUser();
 
     log("user", user);
-
-    if (user?.email) {
-      pushToDataLayer("set", { user_id: user.email });
-    }
 
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
@@ -52,6 +48,8 @@ export const runSSOFlow = (siteId = "") => {
     }
   };
 
+  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs 
+  // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
   window.onload = async () => {
     log("window has loaded");
 
@@ -77,6 +75,14 @@ export const runSSOFlow = (siteId = "") => {
     if (event.data.auth0Id) {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
+
+      const user = await auth0Client.getUser();
+  
+      if (user?.email) {
+        const hashedEmail = await sha256(user.email);
+        // @ts-ignore
+        pushToDataLayer("set", {user_id: hashedEmail });
+      }
 
       if (zToken) {
         log("message - zToken", zToken);
