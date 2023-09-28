@@ -26,7 +26,7 @@ export const runSSOFlow = (siteId = "") => {
     log("user", user);
 
     if (user?.email) {
-      pushToDataLayer("set", { user_id: user.email });
+      pushToDataLayer(["set", "user_id", user.email]);
     }
 
     try {

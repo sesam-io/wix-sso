@@ -1,13 +1,17 @@
 import { log } from "./logger";
 
-const waitForDataLayer = (callback: Function) => {
-  log("Waiting for dataLayer", JSON.stringify(window.dataLayer));
-
+const waitForDataLayer = (callback: Function, attempt = 0) => {
+  log("Waiting for dataLayer", JSON.stringify(window.dataLayer), ". Attempt: ", attempt);
+  const max_attempts = 10;
+  if (attempt > max_attempts) {
+    log("Waiting for dataLayer: Max attempts reached.")
+    return;
+  }
   if (window.dataLayer) {
     callback();
   } else {
     setTimeout(function () {
-      waitForDataLayer(callback);
+      waitForDataLayer(callback, attempt+1);
     }, 500);
   }
 };
