@@ -43,12 +43,14 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
+      await updateHttpFunctions(auth0Client, auth0Id);
+
       window.history.replaceState(
         {},
         document.title,
         redirectLoginResult.appState?.target ?? window.location.href
       );
-      updateHttpFunctions(auth0Client, auth0Id);
+
       window.location.href =
         redirectLoginResult.appState?.target ?? window.location.href;
     }
