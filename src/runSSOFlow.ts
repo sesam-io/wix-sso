@@ -65,9 +65,14 @@ export const runSSOFlow = (siteId = "") => {
     const query = window.location.search;
 
     if (query.includes("code=") && query.includes("state=")) {
-      await auth0Client.handleRedirectCallback();
+      const redirectLoginResult = await auth0Client.handleRedirectCallback<{
+        target: string;
+      }>();
+      log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
       window.history.replaceState({}, document.title, "/");
       updateHttpFunctions();
+      window.location.href =
+        redirectLoginResult.appState?.target ?? window.location.href;
     }
   };
 
@@ -104,6 +109,7 @@ export const runSSOFlow = (siteId = "") => {
       log("message - ", LoginMessageType.Login);
 
       await auth0Client.loginWithRedirect({
+        appState: { target: `${window.location.origin}/callback` },
         authorizationParams: {
           redirect_uri: window.location.origin,
           "ext-site_id": siteId,
