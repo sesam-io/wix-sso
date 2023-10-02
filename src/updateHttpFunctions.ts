@@ -34,7 +34,7 @@ export const updateHttpFunctions = (
 
       if (redirectURL) {
         await fetch(
-          window.location.origin + "/_functions/redirect/" + auth0Id,
+          window.location.origin + "/_functions/redirectUrl/" + auth0Id,
           {
             method: "POST",
             headers: {
