@@ -39,7 +39,7 @@ promise.then(() => {
 
     const isAuthenticated = await auth0Client.isAuthenticated();
 
-    console.log("🚀 ~ ssoFlow ~ isAuthenticated:", isAuthenticated);
+    log("isAuthenticated", isAuthenticated);
 
     window.onload = async () => {
       log("window has loaded");
@@ -54,9 +54,13 @@ promise.then(() => {
       const query = window.location.search;
 
       if (query.includes("code=") && query.includes("state=")) {
-        await auth0Client.handleRedirectCallback();
-        log("handleRedirectCallback");
+        const redirectLoginResult = await auth0Client.handleRedirectCallback<{
+          target: string;
+        }>();
+        log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
         window.history.replaceState({}, document.title, "/");
+        window.location.href =
+          redirectLoginResult.appState?.target ?? window.location.href;
       }
 
       const user = await auth0Client.getUser();
@@ -86,6 +90,7 @@ promise.then(() => {
         log("message - ", LoginMessageType.Login);
 
         await auth0Client.loginWithRedirect({
+          appState: { target: `${window.location.origin}/success` },
           authorizationParams: {
             redirect_uri: window.location.origin,
           },
