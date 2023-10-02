@@ -39,19 +39,26 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       const redirectLoginResult = await auth0Client.handleRedirectCallback<{
         target: string;
       }>();
-
-      await updateHttpFunctions(auth0Client, auth0Id);
-
       log(
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
+      await updateHttpFunctions(auth0Client, auth0Id);
 
-      window.history.replaceState(
-        {},
-        "",
-        redirectLoginResult.appState?.target ?? window.location.origin
-      );
+      window.history.replaceState({}, "", "/");
+
+      // window.location.href =
+      //   redirectLoginResult.appState?.target ?? window.location.href;
+
+      await fetch(window.location.origin + "/_functions/redirect/" + auth0Id, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url: redirectLoginResult.appState?.target ?? window.location.href,
+        }),
+      });
     }
   };
 
@@ -79,23 +86,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
-
-        const isAuthenticated = await auth0Client.isAuthenticated();
-
-        log("isAuthenticated?", isAuthenticated);
-
-        if (isAuthenticated) {
-          const redirectLoginResult = await auth0Client.handleRedirectCallback<{
-            target: string;
-          }>();
-
-          const newLink = document.createElement("a");
-          newLink.href = redirectLoginResult.appState?.target ?? "/";
-
-          log("link element", newLink);
-
-          newLink.click();
-        }
       } else {
         updateHttpFunctions(auth0Client, auth0Id);
       }
