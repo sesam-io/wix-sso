@@ -112,7 +112,7 @@ export const runSSOFlow = (siteId = "") => {
       log("message - ", LoginMessageType.Login);
 
       await auth0Client.loginWithRedirect({
-        appState: { target: window.location.origin },
+        appState: { target: window.location.href },
         authorizationParams: {
           redirect_uri: window.location.origin,
           "ext-site_id": siteId,
@@ -135,7 +135,7 @@ export const runSSOFlow = (siteId = "") => {
 
       auth0Client.loginWithRedirect({
         authorizationParams: {
-          redirect_uri: window.location.origin,
+          redirect_uri: window.location.href,
           screen_hint: "signup",
           "ext-site_id": siteId,
         },
