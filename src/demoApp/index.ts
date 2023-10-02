@@ -8,6 +8,14 @@ const promise = loadScript({
   name: "Auth0 SPA js",
 });
 
+/**
+ * @see https://manage.auth0.com/dashboard/eu/sesamtalk/applications/MkuAQeoLQjnYzx5BfgmXfDyXn5IdhKwa/settings
+ */
+const WixSsoDemoAppConfig = {
+  domain: "accounts.talk.sesam.io",
+  clientId: "MkuAQeoLQjnYzx5BfgmXfDyXn5IdhKwa",
+};
+
 promise.then(() => {
   loadScript({
     url: ZENDESK_WIDGET_CDN,
@@ -16,10 +24,7 @@ promise.then(() => {
   }).then(async () => {
     let auth0Id = "";
 
-    const auth0Client = new window.auth0.Auth0Client({
-      domain: "accounts.talk.sesam.io",
-      clientId: "kJpPOS30v8dpD68iRJ7PMdS03Hwvq06X",
-    });
+    const auth0Client = new window.auth0.Auth0Client(WixSsoDemoAppConfig);
 
     const btnLogin = document.getElementById("btnLogin") as HTMLButtonElement;
     const spnUsername = document.getElementById(
