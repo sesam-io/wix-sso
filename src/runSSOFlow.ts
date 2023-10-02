@@ -46,8 +46,11 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       window.history.replaceState(
         {},
         document.title,
-        redirectLoginResult.appState?.target ?? "/"
+        redirectLoginResult.appState?.target ?? window.location.href
       );
+      updateHttpFunctions(auth0Client, auth0Id);
+      window.location.href =
+        redirectLoginResult.appState?.target ?? window.location.href;
     }
   };
 
