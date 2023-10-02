@@ -58,11 +58,16 @@ promise.then(() => {
           target: string;
         }>();
         log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
-        window.history.replaceState(
-          {},
-          document.title,
-          redirectLoginResult.appState?.target ?? "/"
-        );
+        // window.history.replaceState(
+        //   {},
+        //   document.title,
+        //   redirectLoginResult.appState?.target ?? "/"
+        // );
+
+        const newLink = document.createElement("a");
+        newLink.href = redirectLoginResult.appState?.target ?? "/";
+
+        newLink.click();
       }
 
       const user = await auth0Client.getUser();
@@ -83,7 +88,7 @@ promise.then(() => {
     };
 
     window.addEventListener("message", async (event) => {
-      log("🚀 ~ window.addEventListener ~ event:", event);
+      log("🚀 ~ message event:", event);
       if (event.data.auth0Id) {
         auth0Id = event.data.auth0Id;
       }

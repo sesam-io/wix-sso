@@ -39,15 +39,25 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       const redirectLoginResult = await auth0Client.handleRedirectCallback<{
         target: string;
       }>();
+
+      await updateHttpFunctions(auth0Client, auth0Id);
+
+      // window.history.replaceState({}, "", "/");
+
       log(
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
-      window.history.replaceState(
-        {},
-        document.title,
-        redirectLoginResult.appState?.target ?? "/"
-      );
+
+      // window.location.href =
+      //   redirectLoginResult.appState?.target ?? window.location.origin;
+
+      const newLink = document.createElement("a");
+      newLink.href = redirectLoginResult.appState?.target ?? "/";
+
+      log("link", newLink);
+
+      newLink.click();
     }
   };
 
