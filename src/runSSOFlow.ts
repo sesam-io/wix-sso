@@ -43,22 +43,16 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
-      await updateHttpFunctions(auth0Client, auth0Id);
+      await updateHttpFunctions(
+        auth0Client,
+        auth0Id,
+        redirectLoginResult.appState?.target ?? window.location.href
+      );
 
       window.history.replaceState({}, "", "/");
 
       // window.location.href =
       //   redirectLoginResult.appState?.target ?? window.location.href;
-
-      await fetch(window.location.origin + "/_functions/redirect/" + auth0Id, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          url: redirectLoginResult.appState?.target ?? window.location.href,
-        }),
-      });
     }
   };
 
