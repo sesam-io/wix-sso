@@ -1,7 +1,13 @@
-import { Auth0_SPA_JS_CDN, ZENDESK_WIDGET_CDN } from "../constants";
+import {
+  Auth0_SPA_JS_CDN,
+  LOG_STORAGE_KEY,
+  ZENDESK_WIDGET_CDN,
+} from "../constants";
 import { loadScript } from "../loadScript";
 import { log } from "../logger";
 import { LoginMessageType } from "../types";
+
+localStorage.setItem(LOG_STORAGE_KEY, "true");
 
 const promise = loadScript({
   url: Auth0_SPA_JS_CDN,
