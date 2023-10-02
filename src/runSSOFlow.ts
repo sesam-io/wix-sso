@@ -89,9 +89,10 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             target: string;
           }>();
 
-          window.location.replace(
-            redirectLoginResult.appState?.target ?? window.location.origin
-          );
+          const newLink = document.createElement("a");
+          newLink.href = redirectLoginResult.appState?.target ?? "/";
+
+          newLink.click();
         }
       } else {
         updateHttpFunctions(auth0Client, auth0Id);
