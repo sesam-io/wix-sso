@@ -33,29 +33,29 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       return;
     }
 
-    const query = window.location.search;
+    // const query = window.location.search;
 
-    if (query.includes("code=") && query.includes("state=")) {
-      const redirectLoginResult = await auth0Client.handleRedirectCallback<{
-        target: string;
-      }>();
+    // if (query.includes("code=") && query.includes("state=")) {
+    //   const redirectLoginResult = await auth0Client.handleRedirectCallback<{
+    //     target: string;
+    //   }>();
 
-      await updateHttpFunctions(auth0Client, auth0Id);
+    //   await updateHttpFunctions(auth0Client, auth0Id);
 
-      log(
-        "handleRedirectCallback ~ appState:",
-        redirectLoginResult.appState?.target
-      );
+    //   log(
+    //     "handleRedirectCallback ~ appState:",
+    //     redirectLoginResult.appState?.target
+    //   );
 
-      window.history.replaceState(
-        {},
-        "",
-        redirectLoginResult.appState?.target ?? window.location.origin
-      );
+    //   window.history.replaceState(
+    //     {},
+    //     "",
+    //     redirectLoginResult.appState?.target ?? window.location.origin
+    //   );
 
-      // window.location.href =
-      //   redirectLoginResult.appState?.target ?? window.location.origin;
-    }
+    //   // window.location.href =
+    //   //   redirectLoginResult.appState?.target ?? window.location.origin;
+    // }
   };
 
   window.addEventListener("message", async (event) => {
@@ -82,6 +82,30 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
+
+        const query = window.location.search;
+
+        if (query.includes("code=") && query.includes("state=")) {
+          const redirectLoginResult = await auth0Client.handleRedirectCallback<{
+            target: string;
+          }>();
+
+          await updateHttpFunctions(auth0Client, auth0Id);
+
+          log(
+            "handleRedirectCallback ~ appState:",
+            redirectLoginResult.appState?.target
+          );
+
+          window.history.replaceState(
+            {},
+            "",
+            redirectLoginResult.appState?.target ?? window.location.origin
+          );
+
+          // window.location.href =
+          //   redirectLoginResult.appState?.target ?? window.location.origin;
+        }
       } else {
         updateHttpFunctions(auth0Client, auth0Id);
       }
