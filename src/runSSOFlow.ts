@@ -68,7 +68,10 @@ export const runSSOFlow = (siteId = "") => {
       const redirectLoginResult = await auth0Client.handleRedirectCallback<{
         target: string;
       }>();
-      log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
+      log(
+        "handleRedirectCallback ~ appState:",
+        redirectLoginResult.appState?.target
+      );
       window.history.replaceState({}, document.title, "/");
       updateHttpFunctions();
       window.location.href =
