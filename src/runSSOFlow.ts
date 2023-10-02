@@ -45,12 +45,10 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       );
       await updateHttpFunctions(auth0Client, auth0Id);
 
-      window.history.replaceState({}, "", "/");
+      // window.history.replaceState({}, "", "/");
 
       window.location.href =
-        redirectLoginResult.appState?.target ?? window.location.href;
-
-      window.location.reload();
+        redirectLoginResult.appState?.target ?? window.location.origin;
     }
   };
 
