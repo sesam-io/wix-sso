@@ -1,8 +1,15 @@
+import type { Auth0ClientOptions } from "@auth0/auth0-spa-js";
+
 export enum LoginMessageType {
   Login = "auth0:login",
   Logout = "auth0:logout",
   Signup = "auth0:signup",
 }
+
+export type RunSSOFlowArgs = {
+  auth0ClientOptions: Auth0ClientOptions;
+  siteId?: string | "";
+};
 
 export type LoadScriptArgs = {
   name: string;

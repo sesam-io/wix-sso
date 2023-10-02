@@ -1,8 +1,12 @@
 import { log } from "./logger";
+import type { RunSSOFlowArgs } from "./types";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
+import { updateHttpFunctions } from "./updateHttpFunctions";
 
-export const runSSOFlow = (siteId = "") => {
+export const runSSOFlow = (args: RunSSOFlowArgs) => {
+  const { auth0ClientOptions, siteId } = args;
+
   log("runSSOFlow start");
 
   if (!window?.auth0) {
@@ -13,40 +17,7 @@ export const runSSOFlow = (siteId = "") => {
   let auth0Id = "";
   let zToken = "";
 
-  const auth0Client = new window.auth0.Auth0Client({
-    domain: "accounts.talk.sesam.io",
-    clientId: "kJpPOS30v8dpD68iRJ7PMdS03Hwvq06X",
-  });
-
-  const updateHttpFunctions = async () => {
-    log("updateHttpFunctions called");
-
-    const user = await auth0Client.getUser();
-
-    log("user", user);
-
-    try {
-      await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user }),
-      });
-
-      const token = await auth0Client.getTokenSilently();
-
-      await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token }),
-      });
-    } catch (err) {
-      console.error("fetch error: ", err);
-    }
-  };
+  const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
   // I'm not quite sure how Wix works but it's important to note that this window.onload only runs
   // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
@@ -72,10 +43,11 @@ export const runSSOFlow = (siteId = "") => {
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
-      window.history.replaceState({}, document.title, "/");
-      updateHttpFunctions();
-      window.location.href =
-        redirectLoginResult.appState?.target ?? window.location.href;
+      window.history.replaceState(
+        {},
+        document.title,
+        redirectLoginResult.appState?.target ?? "/"
+      );
     }
   };
 
@@ -104,7 +76,7 @@ export const runSSOFlow = (siteId = "") => {
           }
         );
       } else {
-        updateHttpFunctions();
+        updateHttpFunctions(auth0Client, auth0Id);
       }
     }
 

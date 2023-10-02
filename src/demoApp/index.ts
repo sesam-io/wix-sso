@@ -58,9 +58,11 @@ promise.then(() => {
           target: string;
         }>();
         log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
-        window.history.replaceState({}, document.title, "/");
-        window.location.href =
-          redirectLoginResult.appState?.target ?? window.location.href;
+        window.history.replaceState(
+          {},
+          document.title,
+          redirectLoginResult.appState?.target ?? "/"
+        );
       }
 
       const user = await auth0Client.getUser();

@@ -18,6 +18,12 @@ promise.then(() => {
     name: "Zendesk widget",
     idAttribute: "ze-snippet",
   }).then(() => {
-    runSSOFlow(siteId);
+    runSSOFlow({
+      auth0ClientOptions: {
+        domain: "accounts.talk.sesam.io",
+        clientId: "kJpPOS30v8dpD68iRJ7PMdS03Hwvq06X",
+      },
+      siteId,
+    });
   });
 });
