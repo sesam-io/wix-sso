@@ -80,15 +80,18 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
           }
         );
 
-        const query = window.location.search;
+        const isAuthenticated = await auth0Client.isAuthenticated();
 
-        if (await auth0Client.isAuthenticated()) {
+        log("isAuthenticated?", isAuthenticated);
+
+        if (isAuthenticated) {
           const redirectLoginResult = await auth0Client.handleRedirectCallback<{
             target: string;
           }>();
 
-          window.location.href =
-            redirectLoginResult.appState?.target ?? window.location.origin;
+          window.location.replace(
+            redirectLoginResult.appState?.target ?? window.location.origin
+          );
         }
       } else {
         updateHttpFunctions(auth0Client, auth0Id);
