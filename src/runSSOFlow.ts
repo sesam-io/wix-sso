@@ -92,6 +92,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
           const newLink = document.createElement("a");
           newLink.href = redirectLoginResult.appState?.target ?? "/";
 
+          log("link element", newLink);
+
           newLink.click();
         }
       } else {
