@@ -49,6 +49,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       window.location.href =
         redirectLoginResult.appState?.target ?? window.location.href;
+
+      window.location.reload();
     }
   };
 
