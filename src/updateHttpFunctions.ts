@@ -32,21 +32,6 @@ export const updateHttpFunctions = (
         body: JSON.stringify({ token }),
       });
 
-      // if (redirectURL) {
-      //   await fetch(
-      //     window.location.origin + "/_functions/redirectUrl/" + auth0Id,
-      //     {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify({
-      //         url: redirectURL,
-      //       }),
-      //     }
-      //   );
-      // }
-
       resolve();
     } catch (err) {
       console.error("fetch error: ", err);

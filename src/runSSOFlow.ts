@@ -48,6 +48,11 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         REDIRECT_URL_KEY,
         redirectLoginResult.appState?.target ?? window.location.href
       );
+
+      log(
+        "redirectUrl is set",
+        redirectLoginResult.appState?.target ?? window.location.href
+      );
     }
   };
 
