@@ -3,6 +3,7 @@ import type { RunSSOFlowArgs } from "./types";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
 import { updateHttpFunctions } from "./updateHttpFunctions";
+import { REDIRECT_URL_KEY } from "./constants";
 
 export const runSSOFlow = (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
@@ -48,7 +49,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       window.history.replaceState({}, "", "/");
 
       localStorage.setItem(
-        "redirect",
+        REDIRECT_URL_KEY,
         redirectLoginResult.appState?.target ?? window.location.href
       );
 
