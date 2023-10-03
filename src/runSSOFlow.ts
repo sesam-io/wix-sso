@@ -21,6 +21,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
   const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
   const afterAuthentication = async () => {
+    log("afterAuthentication invoked!");
+
     const isAuthenticated = await auth0Client.isAuthenticated();
 
     if (isAuthenticated) {
@@ -49,43 +51,9 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     }
   };
 
-  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs
-  // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
-  window.onload = async () => {
-    log("window has loaded");
-
-    window.zE("messenger", "hide");
-
-    // const isAuthenticated = await auth0Client.isAuthenticated();
-
-    // if (isAuthenticated) {
-    //   log("user is authenticated");
-    //   return;
-    // }
-
-    // const query = window.location.search;
-
-    // if (query.includes("code=") && query.includes("state=")) {
-    //   const redirectLoginResult = await auth0Client.handleRedirectCallback<{
-    //     target: string;
-    //   }>();
-    //   log(
-    //     "handleRedirectCallback ~ appState:",
-    //     redirectLoginResult.appState?.target
-    //   );
-    //   await updateHttpFunctions(auth0Client, auth0Id);
-
-    //   window.history.replaceState({}, "", "/");
-
-    //   localStorage.setItem(
-    //     REDIRECT_URL_KEY,
-    //     redirectLoginResult.appState?.target ?? window.location.href
-    //   );
-    // }
-  };
-
   window.addEventListener("message", async (event) => {
     if (event.data.auth0Id) {
+      log("message data", event.data);
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
 
@@ -149,4 +117,12 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       });
     }
   });
+};
+
+// I'm not quite sure how Wix works but it's important to note that this window.onload only runs
+// when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
+window.onload = async () => {
+  log("window has loaded");
+
+  window.zE("messenger", "hide");
 };
