@@ -1,11 +1,7 @@
 import type { Auth0Client } from "@auth0/auth0-spa-js";
 import { log } from "./logger";
 
-export const updateHttpFunctions = (
-  auth0Client: Auth0Client,
-  auth0Id: string,
-  redirectURL?: string
-) => {
+export const updateWixServer = (auth0Client: Auth0Client, auth0Id: string) => {
   return new Promise<void>(async (resolve, _reject) => {
     log("updateHttpFunctions called");
 

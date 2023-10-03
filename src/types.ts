@@ -1,4 +1,4 @@
-import type { Auth0ClientOptions } from "@auth0/auth0-spa-js";
+import type { Auth0Client } from "@auth0/auth0-spa-js";
 
 export enum LoginMessageType {
   Login = "auth0:login",
@@ -7,8 +7,9 @@ export enum LoginMessageType {
 }
 
 export type RunSSOFlowArgs = {
-  auth0ClientOptions: Auth0ClientOptions;
   siteId?: string | "";
+  auth0Client: Auth0Client;
+  updateServer?: () => Promise<void>;
 };
 
 export type LoadScriptArgs = {

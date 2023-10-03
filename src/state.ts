@@ -1,19 +1,26 @@
 export type SsoFlowState = {
-  auth0Id?: string;
-  zToken?: string;
+  auth0Id: string;
+  zToken: string;
 };
 
-export const initSSOFlowState = () => () => {
+export type SsoFlowStateAPI = {
+  currentState: SsoFlowState;
+  setState: (nextState: SsoFlowState) => void;
+};
+
+export const initSSOFlowState = (): SsoFlowStateAPI => {
   const _state: { current: SsoFlowState } = {
     current: { auth0Id: "", zToken: "" },
   };
 
   return {
-    set function(nextState: SsoFlowState) {
+    setState: (nextState: SsoFlowState) => {
       _state.current = nextState;
     },
-    get function() {
+    get currentState() {
       return _state.current;
     },
   };
 };
+
+export const ssoFlowState = initSSOFlowState();

@@ -2,10 +2,10 @@ import { log } from "./logger";
 import type { RunSSOFlowArgs } from "./types";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
-import { updateHttpFunctions } from "./updateHttpFunctions";
+import { ssoFlowState } from "./state";
 
 export const runSSOFlow = (args: RunSSOFlowArgs) => {
-  const { auth0ClientOptions, siteId } = args;
+  const { auth0Client, siteId, updateServer } = args;
 
   log("runSSOFlow start");
 
@@ -13,11 +13,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     log("auth0 does not exist!");
     return;
   }
-
-  let auth0Id = "";
-  let zToken = "";
-
-  const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
   const afterAuthentication = async () => {
     log("afterAuthentication invoked!");
@@ -39,7 +34,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         "handleRedirectCallback ~ appState:",
         redirectLoginResult.appState?.target
       );
-      await updateHttpFunctions(auth0Client, auth0Id);
+      await updateServer?.();
 
       window.history.replaceState({}, "", "/");
     }
@@ -48,8 +43,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
   window.addEventListener("message", async (event) => {
     if (event.data.auth0Id) {
       log("message data", event.data);
-      auth0Id = event.data.auth0Id;
-      zToken = event.data.zendeskToken;
+      ssoFlowState.currentState.auth0Id = event.data.auth0Id;
+      ssoFlowState.currentState.zToken = event.data.zendeskToken;
 
       const user = await auth0Client.getUser();
 
@@ -59,21 +54,21 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         pushToDataLayer("set", { user_id: hashedEmail });
       }
 
-      if (zToken) {
-        log("message - zToken", zToken);
+      if (ssoFlowState.currentState.zToken) {
+        log("message - zToken", ssoFlowState.currentState.zToken);
 
         window.zE(
           "messenger",
           "loginUser",
           function (callback: ZendeskCallbackFn) {
-            callback(zToken);
+            callback(ssoFlowState.currentState.zToken);
             window.zE("messenger", "show");
           }
         );
 
         afterAuthentication();
       } else {
-        updateHttpFunctions(auth0Client, auth0Id);
+        await updateServer?.();
       }
     }
 
