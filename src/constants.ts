@@ -4,4 +4,7 @@ export const Auth0_SPA_JS_CDN =
 export const ZENDESK_WIDGET_CDN =
   "https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975";
 
+export const GOOGLE_ANALYTICS_CDN =
+  "https://www.googletagmanager.com/gtag/js?id=G-BGYX13CMXB"
+
 export const LOG_STORAGE_KEY = "_logSSOFlow_";

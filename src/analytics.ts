@@ -50,3 +50,13 @@ export async function sha256(message: string): Promise<string> {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   return hashHex;
 }
+
+export function setupGtag() {
+  window.dataLayer = window.dataLayer || [];
+  // @ts-ignore
+  function gtag(){dataLayer.push(arguments);}
+  // @ts-ignore
+  gtag('js', new Date());
+  // @ts-ignore
+  gtag('config', 'G-BGYX13CMXB');
+}

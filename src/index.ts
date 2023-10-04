@@ -1,5 +1,6 @@
 import { runSSOFlow } from "./runSSOFlow";
-import { Auth0_SPA_JS_CDN, ZENDESK_WIDGET_CDN } from "./constants";
+import { setupGtag } from "./analytics";
+import { Auth0_SPA_JS_CDN, ZENDESK_WIDGET_CDN, GOOGLE_ANALYTICS_CDN } from "./constants";
 import { loadScript } from "./loadScript";
 import { log } from "./logger";
 import { readCurrentScriptSiteId } from "./readCurrentScriptSiteId";
@@ -13,10 +14,17 @@ const promise = loadScript({
 });
 
 promise.then(() => {
-  loadScript({
+  return loadScript({
     url: ZENDESK_WIDGET_CDN,
     name: "Zendesk widget",
     idAttribute: "ze-snippet",
+  })
+}).then(() => {
+  return loadScript({
+    url: GOOGLE_ANALYTICS_CDN,
+    name: "Google Analytics",
+  }).then(() => {
+    setupGtag();
   }).then(() => {
     runSSOFlow({
       auth0ClientOptions: {
