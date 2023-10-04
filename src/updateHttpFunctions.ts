@@ -3,13 +3,17 @@ import { log } from "./logger";
 
 export const updateHttpFunctions = (
   auth0Client: Auth0Client,
-  auth0Id: string,
-  redirectURL?: string
+  auth0Id: string
 ) => {
   return new Promise<void>(async (resolve, _reject) => {
     log("updateHttpFunctions called");
 
     const user = await auth0Client.getUser();
+
+    if (!user) {
+      log("updateHttpFunctions -> user not logged-in!");
+      return;
+    }
 
     log("user", user);
 
