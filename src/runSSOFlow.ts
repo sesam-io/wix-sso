@@ -56,6 +56,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       if (user?.email) {
         const hashedEmail = await sha256(user.email);
         // @ts-ignore
+        log("setting user_id onto the gtag object", hashedEmail, gtag);
         gtag("set", { user_id: hashedEmail });
       }
 
