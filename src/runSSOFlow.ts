@@ -81,8 +81,6 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
-
-        afterAuthentication();
       } else {
         updateHttpFunctions(auth0Client, auth0Id);
       }
