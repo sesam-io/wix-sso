@@ -32,6 +32,8 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
   const query = window.location.search;
 
   if (query.includes("code=") && query.includes("state=")) {
+    log("found code and state in URL, handling redirect callback");
+
     const redirectLoginResult = await auth0Client.handleRedirectCallback<{
       target: string;
     }>();
@@ -41,6 +43,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
     );
     await updateHttpFunctions(auth0Client, auth0Id);
 
+    log("removing code and state from URL");
     window.history.replaceState({}, "", "/");
   }
 
