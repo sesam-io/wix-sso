@@ -21,7 +21,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
 
   log('auth0client', auth0Client)
 
-
+  await auth0Client.getTokenSilently();
   const isAuthenticated = await auth0Client.isAuthenticated();
 
   if (isAuthenticated) {
@@ -41,10 +41,8 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
       "handleRedirectCallback ~ appState:",
       redirectLoginResult.appState
     );
-    // if (auth0Id) {
-      await updateHttpFunctions(auth0Client, auth0Id);
+      // await updateHttpFunctions(auth0Client, auth0Id);
 
-    // }
 
     log("removing code and state from URL");
     // big hammer, but needs to be done
