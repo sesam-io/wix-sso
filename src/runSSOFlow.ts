@@ -4,7 +4,7 @@ import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
 import { updateHttpFunctions } from "./updateHttpFunctions";
 
-export const runSSOFlow = (args: RunSSOFlowArgs) => {
+export const runSSOFlow = async (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
 
   log("runSSOFlow start");
@@ -21,31 +21,28 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
   log('auth0client', auth0Client)
 
-  const afterAuthentication = async () => {
-    log("afterAuthentication invoked!");
 
-    const isAuthenticated = await auth0Client.isAuthenticated();
+  const isAuthenticated = await auth0Client.isAuthenticated();
 
-    if (isAuthenticated) {
-      log("user is authenticated");
-      return;
-    }
+  if (isAuthenticated) {
+    log("user is authenticated");
+    return;
+  }
 
-    const query = window.location.search;
+  const query = window.location.search;
 
-    if (query.includes("code=") && query.includes("state=")) {
-      const redirectLoginResult = await auth0Client.handleRedirectCallback<{
-        target: string;
-      }>();
-      log(
-        "handleRedirectCallback ~ appState:",
-        redirectLoginResult.appState?.target
-      );
-      await updateHttpFunctions(auth0Client, auth0Id);
+  if (query.includes("code=") && query.includes("state=")) {
+    const redirectLoginResult = await auth0Client.handleRedirectCallback<{
+      target: string;
+    }>();
+    log(
+      "handleRedirectCallback ~ appState:",
+      redirectLoginResult.appState?.target
+    );
+    await updateHttpFunctions(auth0Client, auth0Id);
 
-      window.history.replaceState({}, "", "/");
-    }
-  };
+    window.history.replaceState({}, "", "/");
+  }
 
   window.addEventListener("message", async (event) => {
     if (event.data.auth0Id) {
