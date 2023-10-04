@@ -41,13 +41,14 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
       "handleRedirectCallback ~ appState:",
       redirectLoginResult.appState
     );
-    if (auth0Id) {
+    // if (auth0Id) {
       await updateHttpFunctions(auth0Client, auth0Id);
 
-    }
+    // }
 
     log("removing code and state from URL");
-    window.history.replaceState({}, "", redirectLoginResult.appState?.target || '/');
+    // big hammer, but needs to be done
+    window.location.href = redirectLoginResult.appState?.target || '/';
   }
 
   window.addEventListener("message", async (event) => {
