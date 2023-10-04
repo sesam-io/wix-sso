@@ -19,6 +19,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
   const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
+  log('auth0client', auth0Client)
+
   const afterAuthentication = async () => {
     log("afterAuthentication invoked!");
 
@@ -56,19 +58,20 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       // but this time, the user we get from the next call is undefined
       try {
         const user = await auth0Client.getUser();
-        log("user", user);
+        log("user 2", user);
+        
+        if (user?.email) {
+          const hashedEmail = await sha256(user.email);
+          // @ts-ignore
+          log("setting user_id onto the gtag object", hashedEmail, gtag);
+          gtag("set", { user_id: hashedEmail });
+        }
+
         
       } catch(e) {
         log("auth0 error", e)
       }
 
-
-      if (user?.email) {
-        const hashedEmail = await sha256(user.email);
-        // @ts-ignore
-        log("setting user_id onto the gtag object", hashedEmail, gtag);
-        gtag("set", { user_id: hashedEmail });
-      }
 
       if (zToken) {
         log("message - zToken", zToken);
