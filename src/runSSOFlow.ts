@@ -44,7 +44,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
     await updateHttpFunctions(auth0Client, auth0Id);
 
     log("removing code and state from URL");
-    window.history.replaceState({}, "", "/");
+    window.history.replaceState({}, "", redirectLoginResult.appState?.target || '/');
   }
 
   window.addEventListener("message", async (event) => {
