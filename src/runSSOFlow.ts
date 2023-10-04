@@ -51,8 +51,16 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       auth0Id = event.data.auth0Id;
       zToken = event.data.zendeskToken;
 
-      const user = await auth0Client.getUser();
-      log("user", user);
+      // It looks like after we login, we do get this user object, and set the user-id
+      // but then we refresh (maybe because of the redirect), and the message listener triggers again
+      // but this time, the user we get from the next call is undefined
+      try {
+        const user = await auth0Client.getUser();
+        log("user", user);
+        
+      } catch(e) {
+        log("auth0 error", e)
+      }
 
 
       if (user?.email) {
