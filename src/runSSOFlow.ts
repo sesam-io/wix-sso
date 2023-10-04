@@ -115,8 +115,9 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
       log("message - ", LoginMessageType.Signup);
 
       auth0Client.loginWithRedirect({
+        appState: { target: window.location.href },
         authorizationParams: {
-          redirect_uri: window.location.href,
+          redirect_uri: window.location.origin,
           screen_hint: "signup",
           "ext-site_id": siteId,
         },
