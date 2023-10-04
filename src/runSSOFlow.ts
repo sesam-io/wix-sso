@@ -39,7 +39,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
     }>();
     log(
       "handleRedirectCallback ~ appState:",
-      redirectLoginResult.appState?.target
+      redirectLoginResult.appState
     );
     await updateHttpFunctions(auth0Client, auth0Id);
 
