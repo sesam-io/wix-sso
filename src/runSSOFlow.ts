@@ -33,13 +33,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     const query = window.location.search;
 
     if (query.includes("code=") && query.includes("state=")) {
-      const redirectLoginResult = await auth0Client.handleRedirectCallback<{
-        target: string;
-      }>();
-      log(
-        "handleRedirectCallback ~ appState:",
-        redirectLoginResult.appState?.target
-      );
+      await auth0Client.handleRedirectCallback();
       await updateHttpFunctions(auth0Client, auth0Id);
 
       window.history.replaceState({}, "", "/");
@@ -70,8 +64,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         pushToDataLayer("set", { user_id: hashedEmail });
       }
 
-      afterAuthentication();
-
       if (zToken) {
         log("message - zToken", zToken);
 
@@ -83,6 +75,8 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
+      } else {
+        await updateHttpFunctions(auth0Client, auth0Id);
       }
     }
 
@@ -90,7 +84,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       log("message - ", LoginMessageType.Login);
 
       await auth0Client.loginWithRedirect({
-        appState: { target: window.location.href },
         authorizationParams: {
           redirect_uri: window.location.origin,
           "ext-site_id": siteId,

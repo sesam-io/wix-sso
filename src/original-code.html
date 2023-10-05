@@ -18,16 +18,21 @@
         await configureClient()
         window.zE('messenger', 'hide');
         const isAuthenticated = await auth0Client.isAuthenticated();
+
         if (isAuthenticated) {
             return;
         }
+
         const query = window.location.search;
+        
         if (query.includes("code=") && query.includes("state=")) {
             await auth0Client.handleRedirectCallback();
             window.history.replaceState({}, document.title, "/");
-	    updateUI();
+	        
+            updateUI();
         }
     };
+
     const updateUI = async () => {
         const isAuthenticated = await auth0Client.isAuthenticated();
         
@@ -39,38 +44,38 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ user })
-        })
+        });
+
         try {
             const token = await auth0Client.getTokenSilently();
             fetch(window.location.origin + '/_functions/auth0/' + auth0Id, {
-		 method: 'POST',
-		 headers: {
-		     'Content-Type': 'application/json'
+                method: 'POST',
+                headers: {
+		        'Content-Type': 'application/json'
             },
             body: JSON.stringify({ token })
         })
         } catch(err) {
             console.log(err);
         }
-        
-       
     };
+
     window.addEventListener('message', async (event) => {
         if (event.data.auth0Id) {
             auth0Id = event.data.auth0Id;
             zToken=event.data.zendeskToken;
-            if (zToken){
-               window.zE('messenger', 'loginUser', function (callback) {
-		      callback(zToken);
-              window.zE('messenger', 'show');
-	      });
 
+            if (zToken){
+                    window.zE('messenger', 'loginUser', function (callback) {
+		            callback(zToken);
+                    window.zE('messenger', 'show');
+	            });
             }
             else{
             	updateUI();
-            }
-            
+            }   
         }
+
         if (event.data === 'auth0:login') {
             await auth0Client.loginWithRedirect({
                 authorizationParams: {
@@ -78,6 +83,7 @@
                 }
             });
         }
+
         if (event.data === 'auth0:logout') {
             auth0Client.logout({
                 logoutParams: {
@@ -85,9 +91,5 @@
                 }
             });
         }
-
     });
-    
-    
-
 </script> 
