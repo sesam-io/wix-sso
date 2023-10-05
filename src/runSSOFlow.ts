@@ -69,6 +69,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         pushToDataLayer("set", { user_id: hashedEmail });
       }
 
+      updateHttpFunctions(auth0Client, auth0Id);
       afterAuthentication();
 
       if (zToken) {
@@ -82,8 +83,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
-      } else {
-        updateHttpFunctions(auth0Client, auth0Id);
       }
     }
 
