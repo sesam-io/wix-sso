@@ -15,7 +15,7 @@ export const updateHttpFunctions = (
       return;
     }
 
-    log("user", user);
+    log("updateHttpFunctions - user", user);
 
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {

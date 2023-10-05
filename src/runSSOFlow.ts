@@ -15,6 +15,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
   }
 
   let auth0Id = "";
+  log("runSSOFlow ~ auth0Id:", auth0Id);
   let zToken = "";
 
   const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
@@ -69,7 +70,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
         pushToDataLayer("set", { user_id: hashedEmail });
       }
 
-      updateHttpFunctions(auth0Client, auth0Id);
       afterAuthentication();
 
       if (zToken) {
