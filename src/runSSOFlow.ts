@@ -75,9 +75,9 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
             window.zE("messenger", "show");
           }
         );
-      } else {
-        await updateHttpFunctions(auth0Client, auth0Id);
       }
+
+      await updateHttpFunctions(auth0Client, auth0Id);
     }
 
     if (event.data === LoginMessageType.Login) {
