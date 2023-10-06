@@ -29,7 +29,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
     isAuthenticated: isAuthenticated && !!user,
     query,
   });
-  console.log("🚀 ~ runSSOFlow ~ status:", status);
+  console.log("🚀 ~ runSSOFlow ~ status:", status, user, isAuthenticated);
 
   const afterAuthentication = async () => {
     log("afterAuthentication invoked!");
