@@ -67,6 +67,7 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
       zToken = event.data.zendeskToken;
 
       const user = await auth0Client.getUser();
+      console.log("🚀 ~ window.addEventListener ~ user:", user);
 
       if (user?.email) {
         const hashedEmail = await sha256(user.email);
