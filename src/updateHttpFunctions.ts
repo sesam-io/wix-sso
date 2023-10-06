@@ -15,7 +15,10 @@ export const updateHttpFunctions = (
       return;
     }
 
-    log("updateHttpFunctions - user and token", user, auth0Id);
+    if (!auth0Id) {
+      log("updateHttpFunctions -> auth0Id is not defined!");
+      return;
+    }
 
     try {
       await fetch(window.location.origin + "/_functions/auth0/" + auth0Id, {
