@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`calculateSSOFlowStatus test suite should return Authenticated 1`] = `"authenticated"`;
+
+exports[`calculateSSOFlowStatus test suite should return LoggedOut 1`] = `"logged-out"`;
