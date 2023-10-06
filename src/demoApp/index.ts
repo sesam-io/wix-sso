@@ -5,7 +5,7 @@ import {
 } from "../constants";
 import { loadScript } from "../loadScript";
 import { log } from "../logger";
-import { LoginMessageType } from "../types";
+import { LoginMessageType } from "../enums";
 
 localStorage.setItem(LOG_STORAGE_KEY, "true");
 
