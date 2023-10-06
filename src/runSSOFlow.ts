@@ -22,14 +22,13 @@ export const runSSOFlow = async (args: RunSSOFlowArgs) => {
   const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
   const isAuthenticated = await auth0Client.isAuthenticated();
-  const user = await auth0Client.getUser();
   const query = window.location.search;
 
   const status = calculateSSOFlowStatus({
-    isAuthenticated: isAuthenticated && !!user,
+    isAuthenticated: isAuthenticated,
     query,
   });
-  console.log("🚀 ~ runSSOFlow ~ status:", status, user, isAuthenticated);
+  console.log("🚀 ~ runSSOFlow ~ status:", status, isAuthenticated);
 
   const afterAuthentication = async () => {
     log("afterAuthentication invoked!");
