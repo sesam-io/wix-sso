@@ -1,10 +1,11 @@
 import { log } from "./logger";
 import type { RunSSOFlowArgs } from "./types";
-import { LoginMessageType } from "./types";
+import { LoginMessageType } from "./enums";
 import { pushToDataLayer, sha256 } from "./analytics";
 import { updateHttpFunctions } from "./updateHttpFunctions";
+import { calculateSSOFlowStatus } from "./utils/calculateSSOFlowStatus";
 
-export const runSSOFlow = (args: RunSSOFlowArgs) => {
+export const runSSOFlow = async (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
 
   log("runSSOFlow start");
@@ -20,6 +21,16 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
   const auth0Client = new window.auth0.Auth0Client(auth0ClientOptions);
 
+  const isAuthenticated = await auth0Client.isAuthenticated();
+  const user = await auth0Client.getUser();
+  const query = window.location.search;
+
+  const status = calculateSSOFlowStatus({
+    isAuthenticated: isAuthenticated && !!user,
+    query,
+  });
+  console.log("🚀 ~ runSSOFlow ~ status:", status);
+
   const afterAuthentication = async () => {
     log("afterAuthentication invoked!");
 
@@ -27,16 +38,15 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
     if (isAuthenticated) {
       log("user is authenticated");
-      return;
-    }
+    } else {
+      const query = window.location.search;
 
-    const query = window.location.search;
+      if (query.includes("code=") && query.includes("state=")) {
+        await auth0Client.handleRedirectCallback();
+        await updateHttpFunctions(auth0Client, auth0Id);
 
-    if (query.includes("code=") && query.includes("state=")) {
-      await auth0Client.handleRedirectCallback();
-      await updateHttpFunctions(auth0Client, auth0Id);
-
-      window.history.replaceState({}, "", "/");
+        window.history.replaceState({}, "", "/");
+      }
     }
   };
 
