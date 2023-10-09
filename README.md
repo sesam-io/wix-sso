@@ -4,6 +4,16 @@ Repo for hosting [`Auth0`](https://auth0.com) SSO sign-in/sign-up code to be use
 
 The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://forum.wixstudio.com/t/integrate-auth0-with-wix-members-complete-guide/8119) tutorial.
 
+## Table of Content
+
+- [Core logic](#core-logic)
+- [Development](#development)
+- [Build](#build)
+- [Update CDN URL](#update-cdn-url)
+- [Usage in Wix dashboard](#usage-in-wix-dashboard)
+- [Enable logger](#enable-logger)
+- [Full flow in detail](#full-flow-in-detail)
+
 ## Core logic
 
 - Required third-party JS files loaded:
