@@ -7,7 +7,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 ## Table of Content
 
 - [Core logic](#core-logic)
-- [Development](#development)
+- [Development process](#development-process)
 - [Build](#build)
 - [Update CDN URL](#update-cdn-url)
 - [Usage in Wix dashboard](#usage-in-wix-dashboard)
@@ -27,8 +27,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
     - Post to `Auth0` token to the server
 - Message events are sent in order to sign-in or sign-out
 
-
-## Development
+## Development process
 
 In order to develope and release new version, keep the following steps:
 - Clone the repository locally
