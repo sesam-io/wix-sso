@@ -1,0 +1,32 @@
+{
+  "name": "sso-custom-code",
+  "version": "1.0.0",
+  "description": "Code to be shared across sesam Wix sites",
+  "homepage": "https://sesam.io",
+  "source": "index.ts",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html watch port=8001 --open",
+    "build": "parcel build --no-source-maps index.ts --out-dir artifact --out-file sso-flow.min.js"
+  },
+  "author": "Sesam.io",
+  "license": "ISC",
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^2.1.2",
+    "parcel-bundler": "^1.6.1"
+  },
+  "devDependencies": {
+    "typescript": "4.4.4",
+    "yarn": "^1.22.19"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "sesam",
+    "wix"
+  ],
+  "repository": "git@github.com:sesam-io/wix-sso.git"
+}
