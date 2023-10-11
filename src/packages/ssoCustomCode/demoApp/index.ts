@@ -2,10 +2,10 @@ import {
   Auth0_SPA_JS_CDN,
   LOG_STORAGE_KEY,
   ZENDESK_WIDGET_CDN,
-} from "../packages/ssoCustomCode/constants";
-import { loadScript } from "../packages/ssoCustomCode/loadScript";
-import { log } from "../packages/ssoCustomCode/logger";
-import { LoginMessageType } from "../packages/ssoCustomCode/types";
+} from "../constants";
+import { loadScript } from "../loadScript";
+import { log } from "../logger";
+import { LoginMessageType } from "../types";
 
 localStorage.setItem(LOG_STORAGE_KEY, "true");
 
