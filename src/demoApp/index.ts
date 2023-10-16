@@ -1,3 +1,4 @@
+import { User } from "@auth0/auth0-spa-js";
 import {
   Auth0_SPA_JS_CDN,
   LOG_STORAGE_KEY,
@@ -6,6 +7,8 @@ import {
 import { loadScript } from "../loadScript";
 import { log } from "../logger";
 import { LoginMessageType } from "../types";
+
+const USER_STORAGE_KEY = "_user_";
 
 localStorage.setItem(LOG_STORAGE_KEY, "true");
 
@@ -22,32 +25,32 @@ const WixSsoDemoAppConfig = {
   clientId: "MkuAQeoLQjnYzx5BfgmXfDyXn5IdhKwa",
 };
 
+const btnLogin = document.getElementById("btnLogin") as HTMLButtonElement;
+const spnUsername = document.getElementById("spnUsername") as HTMLSpanElement;
+
 promise.then(() => {
   loadScript({
     url: ZENDESK_WIDGET_CDN,
     name: "Zendesk widget",
     idAttribute: "ze-snippet",
   }).then(async () => {
-    let auth0Id = "";
-
+    let currentUser: User;
     const auth0Client = new window.auth0.Auth0Client(WixSsoDemoAppConfig);
-
-    const btnLogin = document.getElementById("btnLogin") as HTMLButtonElement;
-    const spnUsername = document.getElementById(
-      "spnUsername"
-    ) as HTMLSpanElement;
-
-    const isAuthenticated = await auth0Client.isAuthenticated();
-
-    log("isAuthenticated", isAuthenticated);
 
     window.onload = async () => {
       log("window has loaded");
 
-      const isAuthenticated = await auth0Client.isAuthenticated();
+      if (localStorage.getItem(USER_STORAGE_KEY)) {
+        currentUser = JSON.parse(localStorage.getItem(USER_STORAGE_KEY) || "");
+        console.log("🚀 ~ window.onload ~ currentUser:", currentUser);
+      }
 
-      if (isAuthenticated) {
+      if (currentUser) {
         log("user is authenticated");
+
+        spnUsername.innerText = `Hi ${currentUser.name}!` ?? "";
+        btnLogin.innerText = "Logout";
+
         return;
       }
 
@@ -58,21 +61,22 @@ promise.then(() => {
           target: string;
         }>();
         log("handleRedirectCallback ~ appState:", redirectLoginResult.appState);
-        // window.history.replaceState(
-        //   {},
-        //   document.title,
-        //   redirectLoginResult.appState?.target ?? "/"
-        // );
-
-        const newLink = document.createElement("a");
-        newLink.href = redirectLoginResult.appState?.target ?? "/";
-
-        newLink.click();
+        window.history.replaceState(
+          {},
+          document.title,
+          redirectLoginResult.appState?.target ?? "/"
+        );
       }
 
       const user = await auth0Client.getUser();
 
       log("user", user);
+
+      if (user) {
+        localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+      } else {
+        localStorage.removeItem(USER_STORAGE_KEY);
+      }
 
       if (user) {
         spnUsername.innerText = `Hi ${user.name}!` ?? "";
@@ -87,41 +91,34 @@ promise.then(() => {
       }
     };
 
-    window.addEventListener("message", async (event) => {
-      log("🚀 ~ message event:", event);
-      if (event.data.auth0Id) {
-        auth0Id = event.data.auth0Id;
-      }
+    const loginUser = async () => {
+      log("message - ", LoginMessageType.Login);
 
-      if (event.data === LoginMessageType.Login) {
-        log("message - ", LoginMessageType.Login);
+      await auth0Client.loginWithRedirect({
+        appState: { target: `${window.location.origin}/success` },
+        authorizationParams: {
+          redirect_uri: window.location.origin,
+        },
+      });
+    };
 
-        await auth0Client.loginWithRedirect({
-          appState: { target: `${window.location.origin}/success` },
-          authorizationParams: {
-            redirect_uri: window.location.origin,
-          },
-        });
-      }
+    const logoutUser = async () => {
+      log("message - ", LoginMessageType.Logout);
 
-      if (event.data === LoginMessageType.Logout) {
-        log("message - ", LoginMessageType.Logout);
+      localStorage.removeItem(USER_STORAGE_KEY);
 
-        auth0Client.logout({
-          logoutParams: {
-            returnTo: window.location.origin,
-          },
-        });
-      }
-    });
+      await auth0Client.logout({
+        logoutParams: {
+          returnTo: window.location.origin,
+        },
+      });
+    };
 
     btnLogin?.addEventListener("click", async () => {
-      const user = await auth0Client.getUser();
-
-      if (user) {
-        window.postMessage(LoginMessageType.Logout);
+      if (currentUser) {
+        logoutUser();
       } else {
-        window.postMessage(LoginMessageType.Login);
+        loginUser();
       }
     });
   });
