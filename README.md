@@ -149,5 +149,5 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/assets/site-l
 ```
 #### Example
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.65-site-logos-stable/src/assets/site-logos/making-wave-talk-logo-centered.svg
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.66-stable/src/assets/site-logos/making-wave-talk-logo-centered.svg
 ```
