@@ -47,8 +47,10 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
     window.zE("messenger", "hide");
 
-    afterAuthentication();
+    // afterAuthentication();
   };
+
+  afterAuthentication();
 
   window.addEventListener("message", async (event) => {
     if (event.data.auth0Id) {
