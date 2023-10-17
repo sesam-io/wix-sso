@@ -46,8 +46,6 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     log("window has loaded");
 
     window.zE("messenger", "hide");
-
-    // afterAuthentication();
   };
 
   afterAuthentication();
