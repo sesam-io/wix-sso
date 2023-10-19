@@ -3,6 +3,7 @@ import type { RunSSOFlowArgs } from "./types";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
 import { updateHttpFunctions } from "./updateHttpFunctions";
+import { REDIRECT_URI } from "./constants";
 
 export const runSSOFlow = (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
@@ -85,7 +86,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       await auth0Client.loginWithRedirect({
         authorizationParams: {
-          redirect_uri: window.location.origin,
+          redirect_uri: REDIRECT_URI,
           "ext-site_id": siteId,
         },
       });
@@ -106,7 +107,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       auth0Client.loginWithRedirect({
         authorizationParams: {
-          redirect_uri: window.location.origin,
+          redirect_uri: REDIRECT_URI,
           screen_hint: "signup",
           "ext-site_id": siteId,
         },
