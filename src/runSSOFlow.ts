@@ -41,14 +41,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     }
   };
 
-  // I'm not quite sure how Wix works but it's important to note that this window.onload only runs
-  // when we refresh the page - not when going through the pages within the Wix site, In that sense, Wix is SPA-ish
-  window.onload = async () => {
-    log("window has loaded");
-
-    window.zE("messenger", "hide");
-  };
-
+  window.zE("messenger", "hide");
   afterAuthentication();
 
   window.addEventListener("message", async (event) => {
