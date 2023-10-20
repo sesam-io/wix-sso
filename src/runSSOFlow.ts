@@ -68,14 +68,16 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
       if (zToken) {
         log("message - zToken", zToken);
 
-        window.zE(
-          "messenger",
-          "loginUser",
-          function (callback: ZendeskCallbackFn) {
-            callback(zToken);
-            window.zE("messenger", "show");
-          }
-        );
+        if (!window.location.pathname.includes("/callback")) {
+          window.zE(
+            "messenger",
+            "loginUser",
+            function (callback: ZendeskCallbackFn) {
+              callback(zToken);
+              window.zE("messenger", "show");
+            }
+          );
+        }
       } else {
         await updateHttpFunctions(auth0Client, auth0Id);
       }
