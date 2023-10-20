@@ -47,7 +47,9 @@ To build the project run:
 yarn build
 ```
 
-The generated code will be located in `artifact/sso-flow.min.js` file.
+`yarn build` will generate 2 targets as output files under the `artifact` folder:
+  - `dev`, which outputs non-optimized [`sso-flow.dev.js`](https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@dev-target-v1/artifact/sso-flow.dev.js) file that makes it easier to debug.
+  - `prod`, which outputs optimized [`sso-flow.min.js`](https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@dev-target-v1/artifact/sso-flow.min.js) file (as it was before) for the pro env.
 
 ## Update CDN URL
 
