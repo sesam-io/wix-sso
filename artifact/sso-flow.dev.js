@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"3amXp":[function(require,module,exports) {
+})({"d4NnT":[function(require,module,exports) {
 var _runSSOFlow = require("./runSSOFlow");
 var _constants = require("./constants");
 var _loadScript = require("./loadScript");
@@ -170,7 +170,7 @@ promise.then(()=>{
     });
 });
 
-},{"./runSSOFlow":"9mSry","./constants":"6Kg74","./loadScript":"4WrfD","./logger":"i6mlO","./readCurrentScriptSiteId":"hUnYg"}],"9mSry":[function(require,module,exports) {
+},{"./runSSOFlow":"a62zZ","./constants":"6GzW2","./loadScript":"8vaJw","./logger":"jQdmP","./readCurrentScriptSiteId":"flYXi"}],"a62zZ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "runSSOFlow", ()=>runSSOFlow);
@@ -262,7 +262,7 @@ const runSSOFlow = (args)=>{
     });
 };
 
-},{"./logger":"i6mlO","./types":"iNSG6","./analytics":"bA8Qr","./updateHttpFunctions":"ccQQ2","./constants":"6Kg74","@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"i6mlO":[function(require,module,exports) {
+},{"./logger":"jQdmP","./types":"kffF3","./analytics":"3idEF","./updateHttpFunctions":"1fhiF","./constants":"6GzW2","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"jQdmP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "log", ()=>log);
@@ -274,7 +274,7 @@ const getLoggerFn = (enabled = false)=>(title, ...args)=>{
 const enabled = Boolean(localStorage.getItem((0, _constants.LOG_STORAGE_KEY)));
 const log = getLoggerFn(enabled);
 
-},{"./constants":"6Kg74","@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"6Kg74":[function(require,module,exports) {
+},{"./constants":"6GzW2","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6GzW2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Auth0_SPA_JS_CDN", ()=>Auth0_SPA_JS_CDN);
@@ -286,7 +286,7 @@ const ZENDESK_WIDGET_CDN = "https://static.zdassets.com/ekr/snippet.js?key=eb7f5
 const LOG_STORAGE_KEY = "_logSSOFlow_";
 const REDIRECT_URI = `${window.location.origin}/callback`;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"1cdyk":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"hvLRG":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -316,7 +316,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"iNSG6":[function(require,module,exports) {
+},{}],"kffF3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LoginMessageType", ()=>LoginMessageType);
@@ -327,7 +327,7 @@ var LoginMessageType;
     LoginMessageType["Signup"] = "auth0:signup";
 })(LoginMessageType || (LoginMessageType = {}));
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"bA8Qr":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"3idEF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /**
@@ -376,7 +376,7 @@ async function sha256(message) {
     return hashHex;
 }
 
-},{"./logger":"i6mlO","@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"ccQQ2":[function(require,module,exports) {
+},{"./logger":"jQdmP","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"1fhiF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "updateHttpFunctions", ()=>updateHttpFunctions);
@@ -421,7 +421,7 @@ const updateHttpFunctions = (auth0Client, auth0Id)=>{
     });
 };
 
-},{"./logger":"i6mlO","@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"4WrfD":[function(require,module,exports) {
+},{"./logger":"jQdmP","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"8vaJw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "loadScript", ()=>loadScript);
@@ -442,12 +442,12 @@ const loadScript = (args)=>{
     });
 };
 
-},{"./logger":"i6mlO","@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}],"hUnYg":[function(require,module,exports) {
+},{"./logger":"jQdmP","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"flYXi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "readCurrentScriptSiteId", ()=>readCurrentScriptSiteId);
 const readCurrentScriptSiteId = ()=>document?.currentScript?.attributes.getNamedItem("data-siteid")?.value;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1cdyk"}]},["3amXp"], "3amXp", "parcelRequire7e83")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}]},["d4NnT"], "d4NnT", "parcelRequire7e83")
 
 //# sourceMappingURL=sso-flow.dev.js.map

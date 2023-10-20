@@ -20,7 +20,7 @@
       "scopeHoist": false,
       "engines": {
         "browsers": [
-          "defaults"
+          "last 5 Chrome versions"
         ]
       }
     },
