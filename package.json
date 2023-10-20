@@ -5,13 +5,10 @@
   "homepage": "https://sesam.io",
   "scripts": {
     "start": "parcel serve index.html --port 8001 --open",
-    "build": "parcel build --no-cache"
+    "build": "parcel build --no-cache --no-content-hash"
   },
-  "dev": "artifact/sso-flow.js",
+  "dev": "artifact/sso-flow.dev.js",
   "prod": "artifact/sso-flow.min.js",
-  "browserslist": [
-    "IE 11"
-  ],
   "targets": {
     "dev": {
       "source": "src/index.ts",
@@ -19,7 +16,13 @@
       "optimize": false,
       "sourceMap": true,
       "context": "browser",
-      "outputFormat": "global"
+      "outputFormat": "global",
+      "scopeHoist": false,
+      "engines": {
+        "browsers": [
+          "defaults"
+        ]
+      }
     },
     "prod": {
       "source": "src/index.ts",
@@ -27,7 +30,12 @@
       "optimize": true,
       "sourceMap": false,
       "context": "browser",
-      "outputFormat": "global"
+      "outputFormat": "global",
+      "engines": {
+        "browsers": [
+          "last 2 versions, not dead, > 0.2%"
+        ]
+      }
     }
   },
   "author": "Sesam.io",
