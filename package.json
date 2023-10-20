@@ -14,7 +14,9 @@
       "source": "src/index.ts",
       "distDir": "./artifact",
       "optimize": false,
-      "sourceMap": true,
+      "sourceMap": {
+        "inline": true
+      },
       "context": "browser",
       "outputFormat": "global",
       "scopeHoist": false,
