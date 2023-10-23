@@ -9,6 +9,7 @@
   },
   "dev": "artifact/sso-flow.dev.js",
   "prod": "artifact/sso-flow.min.js",
+  "ulp-prod": "artifact/ulp.min.js",
   "targets": {
     "dev": {
       "source": "src/index.ts",
@@ -28,6 +29,19 @@
     },
     "prod": {
       "source": "src/index.ts",
+      "distDir": "./artifact",
+      "optimize": true,
+      "sourceMap": false,
+      "context": "browser",
+      "outputFormat": "global",
+      "engines": {
+        "browsers": [
+          "last 2 versions, not dead, > 0.2%"
+        ]
+      }
+    },
+    "ulp-prod": {
+      "source": "src/packages/universalLoginPage/index.ts",
       "distDir": "./artifact",
       "optimize": true,
       "sourceMap": false,
