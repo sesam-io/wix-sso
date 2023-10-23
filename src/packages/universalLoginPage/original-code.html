@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap">
+    {%- auth0:head -%}
+    <style>
+      {% if transaction.params.ext-site_id == "wave" %}
+      	#prompt-logo-center {
+      		content: url('https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/making-wave-talk-logo-centered.svg');
+          max-height: 55px;
+        }
+      	
+      {% elsif transaction.params.ext-site_id == "hubspot" %}
+      	#prompt-logo-center {
+      		content: url('https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/making-hubspot-talk-logo-centered.svg');
+          max-height: 55px;
+        }
+      {% elsif transaction.params.ext-site_id == "superoffice" %}
+      	#prompt-logo-center {
+      		content: url('https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/superoffice-logo.svg');
+          max-height: 55px;
+        }
+
+        h1 {
+          font-family: "Barlow",sans-serif;
+          color: #0c5d58 !important;
+        }
+      {% endif %}
+
+      .superofficeLogInTitle {
+        font-family: "Barlow",sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: #0c5d58;
+      }
+  </style>
+  </head>
+  <body class="_widget-auto-layout _use-custom-prompt-log">
+    {%- auth0:widget -%}
+    <script>
+      const formType = '{{prompt.name}}';
+      const SiteIds = {
+        wave: 'Wave',
+        hubspot: 'HubSpot',
+        sesam: 'Sesam',
+        superoffice: 'SuperOffice'
+      };
+      const siteId = '{{transaction.params.ext-site_id}}' || SiteIds.sesam;
+    	console.info(`SSO Flow - ULP - site_id: ${siteId}`);
+      console.info(`SSO Flow - ULP - form type: ${formType}`);
+
+      if (siteId !== SiteIds.sesam) {
+        let pageTitle = formType === 'login' ? "Log in to Sesam Talk." : 'Sign Up to Sesam Talk to continue to Sesam Talk.';
+
+        const pTags = document.getElementsByTagName("p") ?? {};
+
+        Array.from(pTags)?.forEach(pTag => {
+          if (pTag.textContent?.toLowerCase() === pageTitle.toLowerCase()) {
+
+            if (siteId === 'superoffice') {
+              pTag.innerText = formType === 'login' ? "Log in to SuperOffice DATA SYNC." : 'Sign Up to SuperOffice DATA SYNC.';
+              pTag.className = "superofficeLogInTitle";
+            }
+            else {
+              pTag.innerText = `${formType === 'login' ? 'Log in' : 'Sign up'} to Making ${SiteIds[siteId]} Talk.`;
+            }
+          }
+        });
+      }
+
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BGYX13CMXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BGYX13CMXB');
+    </script>
+  </body>
+</html>
