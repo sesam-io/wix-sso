@@ -14,6 +14,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 - [Enable logger](#enable-logger)
 - [Full flow in detail](#full-flow-in-detail)
 - [Site logos](#site-logos)
+- [Universal Login Page](#universal-login-page)
 
 ## Core logic
 
@@ -153,3 +154,27 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/assets/site-l
 ```
 https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.66-stable/src/assets/site-logos/making-wave-talk-logo-centered.svg
 ```
+
+## Universal Login Page
+
+### Development
+In order to edit the Universal Login Page (ULP)
+1. Open terminal (recommended the built-in `VSCode`)
+2. run the  following commands
+
+    ```hash
+    // select VSCode as the default editor
+    export EDITOR="code --wait"
+
+    // open the ULP template
+    auth0 universal-login templates update
+    ```
+
+3. Update the code and when finish create Github release
+4. Update Github release version in the `script` src URL as follow:
+
+    ```html
+    <script src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-ulp/artifact/ulp.min.js"></script>
+```
+
+5. After finishing to edit, close the file and select `Y` in the terminal to save and update the changes in the ULP
