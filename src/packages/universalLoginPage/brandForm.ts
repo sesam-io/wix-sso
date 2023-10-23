@@ -18,8 +18,8 @@ export const brandForm = (formType: FormType, siteId: SiteId) => {
         if (siteId === "superoffice") {
           pTag.innerText =
             formType === "login"
-              ? "Log in to SuperOffice DATA SYNC."
-              : "Sign Up to SuperOffice DATA SYNC.";
+              ? "Log in to SuperOffice Data Sync."
+              : "Sign Up to SuperOffice Data Sync.";
           pTag.className = "superofficeLogInTitle";
         } else {
           pTag.innerText = `${
