@@ -1,5 +1,9 @@
 # universal-login-page
 
+Branding the `auth0` universal login page.
+
+![Alt text](<src/assets/ulp-example.png>)
+
 ### Development
 In order to edit the Universal Login Page (ULP)
 1. Open terminal (recommended the built-in `VSCode`)
