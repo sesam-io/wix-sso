@@ -18,22 +18,22 @@ export const WixSites: Sites = {
   poweroffice: {
     id: "poweroffice",
     logoUrl: "",
-    loginSubTitle: " to Sesam Talk to continue to Sesam Talk.",
-    signupSubTitle: " to Sesam Talk to continue to Sesam Talk.",
+    loginSubTitle: "Log in to PowerOffice Data Sync.",
+    signupSubTitle: "Sign up to PowerOffice Data Sync.",
   },
   sesam: {
     id: "sesam",
     logoUrl:
       "https://raw.githubusercontent.com/datanav/docs/master/icons/logos/Sesam_Talk_RGB.png",
     loginSubTitle: "Log in to Sesam Talk.",
-    signupSubTitle: "Sign Up to Sesam Talk to continue to Sesam Talk.",
+    signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
   },
   superoffice: {
     id: "superoffice",
     logoUrl:
       "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/superoffice-logo.svg",
     loginSubTitle: "Log in to SuperOffice Data Sync.",
-    signupSubTitle: "Sign Up to SuperOffice Data Sync.",
+    signupSubTitle: "Sign up to SuperOffice Data Sync.",
   },
   wave: {
     id: "wave",

@@ -1,6 +1,6 @@
 import { SiteIds } from "./constants";
 
-export type FormType = "login" | "logout";
+export type FormType = "login" | "logout" | "signup";
 
 export type SiteId = keyof typeof SiteIds;
 

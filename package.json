@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel serve index.html --port 8001 --open",
     "build": "parcel build --no-cache --no-content-hash",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dev": "artifact/sso-flow.dev.js",
   "prod": "artifact/sso-flow.min.js",

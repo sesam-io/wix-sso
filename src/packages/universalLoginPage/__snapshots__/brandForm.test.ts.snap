@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`brandForm test suite login should return Sesam site, when  1`] = `"Log in to Sesam Talk."`;
+exports[`getSiteTitle test suite login should return HubSpot site 1`] = `"Log in to Making HubSpot Talk."`;
+
+exports[`getSiteTitle test suite login should return PowerOffice site 1`] = `"Log in to PowerOffice Data Sync."`;
+
+exports[`getSiteTitle test suite login should return Sesam site 1`] = `"Log in to Sesam Talk."`;
+
+exports[`getSiteTitle test suite login should return Sesam site as default site 1`] = `"Log in to Sesam Talk."`;
+
+exports[`getSiteTitle test suite login should return SuperOffice site 1`] = `"Log in to SuperOffice Data Sync."`;
+
+exports[`getSiteTitle test suite login should return Wave site 1`] = `"Log in to Making Wave Talk."`;
+
+exports[`getSiteTitle test suite signup should return HubSpot site 1`] = `"Sign up to Making HubSpot Talk."`;
+
+exports[`getSiteTitle test suite signup should return PowerOffice site 1`] = `"Sign up to PowerOffice Data Sync."`;
+
+exports[`getSiteTitle test suite signup should return Sesam site 1`] = `"Sign up to Sesam Talk to continue to Sesam Talk."`;
+
+exports[`getSiteTitle test suite signup should return Sesam site as default site 1`] = `"Sign up to Sesam Talk to continue to Sesam Talk."`;
+
+exports[`getSiteTitle test suite signup should return SuperOffice site 1`] = `"Sign up to SuperOffice Data Sync."`;
+
+exports[`getSiteTitle test suite signup should return Wave site 1`] = `"Sign up to Making Wave Talk."`;
+
+exports[`getWixSite test suite should return default site 1`] = `
+{
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://raw.githubusercontent.com/datanav/docs/master/icons/logos/Sesam_Talk_RGB.png",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
