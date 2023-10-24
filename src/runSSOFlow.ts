@@ -1,9 +1,9 @@
-import { log } from "./logger";
 import type { RunSSOFlowArgs } from "./types";
 import { LoginMessageType } from "./types";
 import { pushToDataLayer, sha256 } from "./analytics";
 import { updateHttpFunctions } from "./updateHttpFunctions";
 import { REDIRECT_URI } from "./constants";
+import { log } from "./logger";
 
 export const runSSOFlow = (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
