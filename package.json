@@ -43,21 +43,21 @@
     "ulp-prod": {
       "source": "src/packages/universalLoginPage/index.ts",
       "distDir": "./artifact",
-      "optimize": true,
+      "optimize": false,
       "sourceMap": false,
       "context": "browser",
       "outputFormat": "global",
+      "scopeHoist": false,
       "engines": {
-        "browsers": [
-          "last 2 versions, not dead, > 0.2%"
-        ]
+        "browsers": "defaults and fully supports es6-module"
       }
     }
   },
   "author": "Sesam.io",
   "license": "ISC",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^2.1.2"
+    "@auth0/auth0-spa-js": "^2.1.2",
+    "@babel/preset-typescript": "^7.23.2"
   },
   "devDependencies": {
     "parcel": "^2.10.0",
