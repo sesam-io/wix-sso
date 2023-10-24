@@ -16,21 +16,6 @@ export const getDefaultPageTitle = (formType: FormType, siteId: SiteId) =>
     ? WixSites.sesam.loginSubTitle
     : WixSites.sesam.signupSubTitle;
 
-export const getSiteTitle = (formType: FormType, siteId: SiteId) => {
-  console.info(`SSO Flow - ULP - site_id: ${siteId}`);
-  console.info(`SSO Flow - ULP - form type: ${formType}`);
-
-  const site = WixSites[siteId];
-
-  if (!site) {
-    return formType === "login"
-      ? WixSites.sesam.loginSubTitle
-      : WixSites.sesam.signupSubTitle;
-  }
-
-  return formType === "login" ? site.loginSubTitle : site.signupSubTitle;
-};
-
 export const brandLogo = (imgElement: HTMLImageElement, logoUrl?: string) => {
   if (logoUrl) {
     imgElement.src = logoUrl;
