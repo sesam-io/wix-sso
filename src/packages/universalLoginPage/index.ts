@@ -4,7 +4,7 @@ import {
   getDefaultPageTitle,
   getWixSite,
 } from "./brandForm";
-import { LOGO_IMG_ID, SiteIds } from "./constants";
+import { LOGO_IMG_ID } from "./constants";
 
 // @ts-ignore
 if (formType && siteId) {
