@@ -1,4 +1,4 @@
-import { log } from "packages/logger/logger";
+import { getLoggerFn } from "packages/logger/logger";
 import {
   brandLogo,
   getBrandTitleFn,
@@ -6,6 +6,10 @@ import {
   getWixSite,
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
+
+const enabled = Boolean(localStorage.getItem("_log_"));
+
+export const log = getLoggerFn(enabled, "ulp");
 
 // @ts-ignore
 if (formType && siteId) {

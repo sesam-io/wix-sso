@@ -143,15 +143,20 @@
     }
   }
 })({"5e26n":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "log", ()=>log);
 var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
+const enabled = Boolean(localStorage.getItem("_log_"));
+const log = (0, _logger.getLoggerFn)(enabled, "ulp");
 // @ts-ignore
 if (formType && siteId) {
     // @ts-ignore
-    (0, _logger.log)("siteId", siteId);
+    log("siteId", siteId);
     // @ts-ignore
-    (0, _logger.log)("formType", formType);
+    log("formType", formType);
     // @ts-ignore
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, // @ts-ignore
@@ -162,16 +167,14 @@ if (formType && siteId) {
     formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
-},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK"}],"iqOAs":[function(require,module,exports) {
+},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "log", ()=>log);
-const getLoggerFn = (enabled = false)=>(title, ...args)=>{
+parcelHelpers.export(exports, "getLoggerFn", ()=>getLoggerFn);
+const getLoggerFn = (enabled = false, prefix = "SSO Flow")=>(title, ...args)=>{
         if (!enabled) return;
-        console.info(`SSO FLow - ${title}`, args.length ? args : "", new Date().toLocaleTimeString());
+        console.info(`${prefix} - ${title}`, args.length ? args : "", new Date().toLocaleTimeString());
     };
-const enabled = Boolean(localStorage.getItem("_log_"));
-const log = getLoggerFn(enabled);
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"3Jrbz":[function(require,module,exports) {
 exports.interopDefault = function(a) {
