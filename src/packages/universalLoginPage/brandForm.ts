@@ -15,7 +15,7 @@ export const brandForm = (formType: FormType, siteId: SiteId) => {
 
     Array.from(pTags)?.forEach((pTag) => {
       if (pTag.textContent?.toLowerCase() === pageTitle.toLowerCase()) {
-        if (siteId === "superoffice") {
+        if (siteId === SiteIds.superoffice) {
           pTag.innerText =
             formType === "login"
               ? "Log in to SuperOffice Data Sync."

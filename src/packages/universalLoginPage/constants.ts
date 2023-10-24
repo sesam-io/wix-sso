@@ -1,6 +1,7 @@
 export const SiteIds = {
-  wave: "Wave",
   hubspot: "HubSpot",
+  poweroffice: "PowerOffice",
   sesam: "Sesam",
   superoffice: "SuperOffice",
+  wave: "Wave",
 };
