@@ -2,7 +2,7 @@
 
 Branding the `auth0` universal login page.
 
-![Alt text](<src/assets/ulp-example.png>)
+![Alt text](<../../assets/ulp-example.png>)
 
 ### Development
 In order to edit the Universal Login Page (ULP)
