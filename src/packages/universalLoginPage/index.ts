@@ -27,5 +27,6 @@ if (formType && siteId) {
 
   brandLogo(imgElement, site.logoUrl);
 
-  brandTitle(site.loginSubTitle);
+  // @ts-ignore
+  brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle);
 }
