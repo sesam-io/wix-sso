@@ -6,20 +6,23 @@ import {
 } from "./brandForm";
 import { LOGO_IMG_ID, SiteIds } from "./constants";
 
-const formType = "{{prompt.name}}";
-const siteId = "{{transaction.params.ext-site_id}}" || SiteIds.sesam;
+// const formType = "{{prompt.name}}";
+// const siteId = "{{transaction.params.ext-site_id}}" || SiteIds.sesam;
 
 // @ts-ignore
-const site = getWixSite(siteId);
-
-const brandTitle = getBrandTitleFn(
-  document.getElementsByTagName("p") ?? {},
+if (window.formType && window.siteId) {
   // @ts-ignore
-  getDefaultPageTitle(formType, siteId)
-);
+  const site = getWixSite(window.siteId);
 
-const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
+  const brandTitle = getBrandTitleFn(
+    document.getElementsByTagName("p") ?? {},
+    // @ts-ignore
+    getDefaultPageTitle(window.formType, window.siteId)
+  );
 
-brandLogo(imgElement, site.logoUrl);
+  const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
 
-brandTitle(site.loginSubTitle);
+  brandLogo(imgElement, site.logoUrl);
+
+  brandTitle(site.loginSubTitle);
+}

@@ -174,7 +174,11 @@ In order to edit the Universal Login Page (ULP)
 4. Update Github release version in the `script` src URL as follow:
 
     ```html
-    <script src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-ulp/artifact/ulp.min.js"></script>
+    <script>
+        const formType = '{{prompt.name}}';
+        const siteId = '{{transaction.params.ext-site_id}}' || 'sesam';
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2-ulp/artifact/ulp.min.js"></script>
 ```
 
 5. After finishing to edit, close the file and select `Y` in the terminal to save and update the changes in the ULP
