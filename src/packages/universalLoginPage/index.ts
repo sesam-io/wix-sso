@@ -1,3 +1,4 @@
+import { log } from "packages/logger/logger";
 import {
   brandLogo,
   getBrandTitleFn,
@@ -8,6 +9,11 @@ import { LOGO_IMG_ID } from "./constants";
 
 // @ts-ignore
 if (formType && siteId) {
+  // @ts-ignore
+  log("siteId", siteId);
+  // @ts-ignore
+  log("formType", formType);
+
   // @ts-ignore
   const site = getWixSite(siteId);
 
