@@ -1,4 +1,14 @@
-import { getSiteTitle, getWixSite } from "./brandForm";
+/**
+ * @jest-environment jsdom
+ */
+
+import {
+  getBrandTitleFn,
+  getSiteTitle,
+  getWixSite,
+  getDefaultPageTitle,
+} from "./brandForm";
+import { WixSites } from "./constants";
 import { SiteId } from "./types";
 
 describe("getSiteTitle test suite", () => {
@@ -74,5 +84,23 @@ describe("getWixSite test suite", () => {
 
   it("should return SuperOffice site", () => {
     expect(getWixSite("superoffice")).toMatchSnapshot();
+  });
+});
+
+describe.only("brandTitle test suite", () => {
+  it("should brand Wave site", () => {
+    document.body.innerHTML = `<div>
+        <p>Some title</p>
+        <p>${WixSites.sesam.loginSubTitle}</p>
+        <p>Some text</p>
+    </div>`;
+
+    const brandTitle = getBrandTitleFn(
+      document.getElementsByTagName("p") ?? {},
+
+      getDefaultPageTitle("login", "wave")
+    );
+
+    brandTitle(WixSites.wave.loginSubTitle);
   });
 });
