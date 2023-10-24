@@ -6,6 +6,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 
 ## Table of Content
 
+- [SSO-Flow](#sso-flow-package)
 - [Core logic](#core-logic)
 - [Development process](#development-process)
 - [Build](#build)
@@ -14,9 +15,10 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 - [Enable logger](#enable-logger)
 - [Full flow in detail](#full-flow-in-detail)
 - [Site logos](#site-logos)
-- [Universal Login Page](#universal-login-page)
+- [Universal Login Page](#universal-login-page-package)
 
-## Core logic
+## SSO-Flow package
+### Core logic
 
 - Required third-party JS files loaded:
     - [Auth0 SPA js](https://static.zdassets.com/ekr/snippet.js?key=eb7f5552-be33-4b0f-a55d-ce9a8a7aa975)
@@ -29,7 +31,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
     - Post to `Auth0` token to the server
 - Message events are sent in order to sign-in or sign-out
 
-## Development process
+### Development process
 
 In order to develope and release new version, keep the following steps:
 - Clone the repository locally
@@ -40,7 +42,7 @@ In order to develope and release new version, keep the following steps:
 - Create new release
 - Update the CDN URL (see details under [build section](#build))
 
-## Build
+### Build
 
 To build the project run:
 
@@ -52,7 +54,7 @@ yarn build
   - `dev`, which outputs non-optimized [`sso-flow.dev.js`](https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@dev-target-v1/artifact/sso-flow.dev.js) file that makes it easier to debug.
   - `prod`, which outputs optimized [`sso-flow.min.js`](https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@dev-target-v1/artifact/sso-flow.min.js) file (as it was before) for the pro env.
 
-## Update CDN URL
+### Update CDN URL
 
 The builded code can be used with [jsdelivr](https://www.jsdelivr.com/?docs=gh) CDN service.
 
@@ -76,7 +78,7 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@latest/artifact/sso-flow.min.js
 
 In that case we need to take care to not release a broken version that can cause multiple sites to be broken at once.
 
-## Usage in Wix dashboard
+### Usage in Wix dashboard
 
 Paste the following code:
 
@@ -94,14 +96,14 @@ in Wix site's Custom code:
 
 ![Alt text](<src/assets//script-example.png>)
 
-## Enable logger
+### Enable logger
 
 In order to enable the console logger, please add to `localStorage` the key `_logSSOFlow_` with the value `true` under the site domain and follow the console logs that prefixed with `SSO Flow` title. See screenshot example:
 
 
 ![Alt text](<src/assets/logger-example.png>)
 
-## Full flow in detail
+### Full flow in detail
 
 When the `masterPage.js` is loaded, a generated `auth0Id` is messaged to the the client listener from 
 
@@ -135,6 +137,7 @@ When user clicks on the `Login button`
         name: "auth0",
         resourceId: auth0Id,
     }
+    ```
 
 ## Site logos
 
@@ -155,7 +158,7 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/assets/site-l
 https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.66-stable/src/assets/site-logos/making-wave-talk-logo-centered.svg
 ```
 
-## Universal Login Page
+## Universal Login Page package
 
 ### Development
 In order to edit the Universal Login Page (ULP)
