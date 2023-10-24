@@ -87,7 +87,7 @@ describe("getWixSite test suite", () => {
   });
 });
 
-describe.only("brandTitle test suite", () => {
+describe("brandTitle test suite", () => {
   it("should brand login Wave site subtitle", () => {
     document.body.innerHTML = `<div>
         <p>Some title</p>
