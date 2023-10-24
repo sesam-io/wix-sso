@@ -1,5 +1,7 @@
 import type { Sites } from "./types";
 
+export const LOGO_IMG_ID = "custom-prompt-logo";
+
 export const SiteIds = {
   hubspot: "HubSpot",
   poweroffice: "PowerOffice",
