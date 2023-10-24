@@ -34,6 +34,7 @@ export const WixSites: Sites = {
       "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/superoffice-logo.svg",
     loginSubTitle: "Log in to SuperOffice Data Sync.",
     signupSubTitle: "Sign up to SuperOffice Data Sync.",
+    titleClassName: "superofficeLogInTitle",
   },
   wave: {
     id: "wave",

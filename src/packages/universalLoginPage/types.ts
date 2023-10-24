@@ -9,6 +9,7 @@ export type Site = {
   logoUrl?: string;
   loginSubTitle: string;
   signupSubTitle: string;
+  titleClassName?: string;
 };
 
 type SiteIdKey = keyof typeof SiteIds;

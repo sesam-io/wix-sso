@@ -24,6 +24,16 @@ exports[`getSiteTitle test suite signup should return SuperOffice site 1`] = `"S
 
 exports[`getSiteTitle test suite signup should return Wave site 1`] = `"Sign up to Making Wave Talk."`;
 
+exports[`getWixSite test suite should return SuperOffice site 1`] = `
+{
+  "id": "superoffice",
+  "loginSubTitle": "Log in to SuperOffice Data Sync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/superoffice-logo.svg",
+  "signupSubTitle": "Sign up to SuperOffice Data Sync.",
+  "titleClassName": "superofficeLogInTitle",
+}
+`;
+
 exports[`getWixSite test suite should return Wave site 1`] = `
 {
   "id": "wave",

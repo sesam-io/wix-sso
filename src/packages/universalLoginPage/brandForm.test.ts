@@ -71,4 +71,8 @@ describe("getWixSite test suite", () => {
   it("should return Wave site", () => {
     expect(getWixSite("wave")).toMatchSnapshot();
   });
+
+  it("should return SuperOffice site", () => {
+    expect(getWixSite("superoffice")).toMatchSnapshot();
+  });
 });

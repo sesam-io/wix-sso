@@ -1,5 +1,5 @@
 import { SiteIds, WixSites } from "./constants";
-import { FormType, SiteId } from "./types";
+import { FormType, Site, SiteId } from "./types";
 
 export const getWixSite = (siteId: SiteId) => {
   const site = WixSites[siteId];
@@ -10,6 +10,11 @@ export const getWixSite = (siteId: SiteId) => {
 
   return site;
 };
+
+export const getDefaultPageTitle = (formType: FormType, siteId: SiteId) =>
+  formType === "login"
+    ? WixSites.sesam.loginSubTitle
+    : WixSites.sesam.signupSubTitle;
 
 export const getSiteTitle = (formType: FormType, siteId: SiteId) => {
   console.info(`SSO Flow - ULP - site_id: ${siteId}`);
@@ -24,27 +29,20 @@ export const getSiteTitle = (formType: FormType, siteId: SiteId) => {
   }
 
   return formType === "login" ? site.loginSubTitle : site.signupSubTitle;
-
-  //   let pageTitle =
-  //     formType === "login"
-  //       ? "Log in to Sesam Talk."
-  //       : "Sign Up to Sesam Talk to continue to Sesam Talk.";
-
-  //   const pTags = document.getElementsByTagName("p") ?? {};
-
-  //   Array.from(pTags)?.forEach((pTag) => {
-  //     if (pTag.textContent?.toLowerCase() === pageTitle.toLowerCase()) {
-  //       if (siteId === SiteIds.superoffice) {
-  //         pTag.innerText =
-  //           formType === "login"
-  //             ? "Log in to SuperOffice Data Sync."
-  //             : "Sign Up to SuperOffice Data Sync.";
-  //         pTag.className = "superofficeLogInTitle";
-  //       } else {
-  //         pTag.innerText = `${
-  //           formType === "login" ? "Log in" : "Sign up"
-  //         } to Making ${WixSites[siteId].title} Talk.`;
-  //       }
-  //     }
-  //   });
 };
+
+export const brandLogo = () => {};
+
+export const getBrandTitleFn =
+  (pTags: HTMLCollectionOf<HTMLParagraphElement>, defaultPageTitle: string) =>
+  (subTitle: string, titleClassName?: string) => {
+    Array.from(pTags)?.forEach((pTag) => {
+      if (pTag.textContent?.toLowerCase() === defaultPageTitle.toLowerCase()) {
+        pTag.innerText = subTitle;
+
+        if (titleClassName) {
+          pTag.className = titleClassName;
+        }
+      }
+    });
+  };
