@@ -63,4 +63,12 @@ describe("getWixSite test suite", () => {
   it("should return default site", () => {
     expect(getWixSite("none-exist-site" as SiteId)).toMatchSnapshot();
   });
+
+  it("should return sesam site", () => {
+    expect(getWixSite("sesam")).toMatchSnapshot();
+  });
+
+  it("should return Wave site", () => {
+    expect(getWixSite("wave")).toMatchSnapshot();
+  });
 });
