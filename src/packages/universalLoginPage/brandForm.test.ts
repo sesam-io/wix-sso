@@ -87,17 +87,18 @@ describe("getWixSite test suite", () => {
   });
 });
 
-describe("brandTitle test suite", () => {
-  it("should brand Wave site", () => {
+describe.only("brandTitle test suite", () => {
+  it("should brand login Wave site subtitle", () => {
     document.body.innerHTML = `<div>
         <p>Some title</p>
         <p>${WixSites.sesam.loginSubTitle}</p>
         <p>Some text</p>
     </div>`;
 
-    const brandTitle = getBrandTitleFn(
-      document.getElementsByTagName("p") ?? {},
+    const pTags = document.getElementsByTagName("p");
 
+    const brandTitle = getBrandTitleFn(
+      pTags,
       getDefaultPageTitle("login", "wave")
     );
 

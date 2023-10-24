@@ -31,7 +31,11 @@ export const getSiteTitle = (formType: FormType, siteId: SiteId) => {
   return formType === "login" ? site.loginSubTitle : site.signupSubTitle;
 };
 
-export const brandLogo = () => {};
+export const brandLogo = (imgElement: HTMLImageElement, logoUrl?: string) => {
+  if (logoUrl) {
+    imgElement.src = logoUrl;
+  }
+};
 
 export const getBrandTitleFn =
   (pTags: HTMLCollectionOf<HTMLParagraphElement>, defaultPageTitle: string) =>
