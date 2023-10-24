@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`brandForm test suite login should return Sesam site, when  1`] = `"Log in to Sesam Talk."`;
