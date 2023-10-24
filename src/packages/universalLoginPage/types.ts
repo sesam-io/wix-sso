@@ -4,15 +4,15 @@ export type FormType = "login" | "logout";
 
 export type SiteId = keyof typeof SiteIds;
 
+export type Site = {
+  id: string;
+  logoUrl?: string;
+  loginSubTitle: string;
+  signupSubTitle: string;
+};
+
+type SiteIdKey = keyof typeof SiteIds;
+
 export type Sites = {
-  [key: string]: {
-    title: string;
-    logoUrl?: string;
-    logIn: {
-      subTitle: string;
-    };
-    signup: {
-      subTitle: string;
-    };
-  };
+  [key in SiteIdKey]: Site;
 };
