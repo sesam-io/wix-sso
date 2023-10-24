@@ -159,7 +159,7 @@ if (formType && siteId) {
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     // @ts-ignore
-    brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle);
+    brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
 },{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK"}],"iqOAs":[function(require,module,exports) {
