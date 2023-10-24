@@ -175,8 +175,8 @@ In order to edit the Universal Login Page (ULP)
 
     ```html
     <script>
-        const formType = '{{prompt.name}}';
-        const siteId = '{{transaction.params.ext-site_id}}' || 'sesam';
+        window.formType = '{{prompt.name}}';
+        window.siteId = '{{transaction.params.ext-site_id}}' || 'sesam';
     </script>
     <script src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.2-ulp/artifact/ulp.min.js"></script>
 ```

@@ -1,6 +1,6 @@
 import type { Sites } from "./types";
 
-export const LOGO_IMG_ID = "custom-prompt-logo";
+export const LOGO_IMG_ID = "prompt-logo-center";
 
 export const SiteIds = {
   hubspot: "HubSpot",
