@@ -6,9 +6,6 @@ import {
 } from "./brandForm";
 import { LOGO_IMG_ID, SiteIds } from "./constants";
 
-// const formType = "{{prompt.name}}";
-// const siteId = "{{transaction.params.ext-site_id}}" || SiteIds.sesam;
-
 // @ts-ignore
 if (formType && siteId) {
   // @ts-ignore
