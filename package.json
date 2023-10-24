@@ -10,7 +10,7 @@
   },
   "dev": "artifact/sso-flow.dev.js",
   "prod": "artifact/sso-flow.min.js",
-  "ulp-prod": "artifact/ulp.min.js",
+  "ulp-prod": "artifact/ulp.js",
   "targets": {
     "dev": {
       "source": "src/index.ts",
