@@ -246,7 +246,7 @@ const SiteIds = {
 const WixSites = {
     hubspot: {
         id: "hubspot",
-        logoUrl: "",
+        logoUrl: "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.71-stable-site-logos/src/assets/site-logos/making-hubspot-talk-logo-centered.svg",
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk."
     },
