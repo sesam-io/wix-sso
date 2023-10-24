@@ -8,12 +8,12 @@
     "build": "parcel build --no-cache --no-content-hash",
     "test": "jest --watch"
   },
-  "dev": "artifact/sso-flow.dev.js",
-  "prod": "artifact/sso-flow.min.js",
+  "sso-flow-dev": "artifact/sso-flow.dev.js",
+  "sso-flow-prod": "artifact/sso-flow.min.js",
   "ulp-prod": "artifact/ulp.js",
   "targets": {
-    "dev": {
-      "source": "src/index.ts",
+    "sso-flow-dev": {
+      "source": "src/packages/ssoFlow/index.ts",
       "distDir": "./artifact",
       "optimize": false,
       "sourceMap": {
@@ -28,8 +28,8 @@
         ]
       }
     },
-    "prod": {
-      "source": "src/index.ts",
+    "sso-flow-prod": {
+      "source": "src/packages/ssoFlow/index.ts",
       "distDir": "./artifact",
       "optimize": true,
       "sourceMap": false,
