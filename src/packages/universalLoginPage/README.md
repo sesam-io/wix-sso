@@ -19,6 +19,10 @@ In order to edit the Universal Login Page (ULP)
     auth0 universal-login templates update
     ```
 
+![Alt text](<../../assets/ulp-template-example.png>)
+
+> Note: Running `auth0 universal-login templates update` will also open a Storybook page in the browser. That's for designing the ULP. However, since we added a custom scripts code in the `body` of the template, the design in Storybook seems to be broken.
+
 3. Update the code and when finish create Github release
 4. Update Github release version in the `script` src URL as follow:
 
@@ -34,3 +38,5 @@ In order to edit the Universal Login Page (ULP)
 ```
 
 5. After finishing to edit, close the file and select `Y` in the terminal to save and update the changes in the ULP
+
+![Alt text](<../../assets/ulp-template-terminal-example.png>)
