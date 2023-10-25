@@ -18,4 +18,4 @@ jobs:
         
       - name: Running tests
         run: |
-          cd ${GITHUB_WORKSPACE}/ && yarn test
+          cd ${GITHUB_WORKSPACE} && yarn test
