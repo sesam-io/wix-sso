@@ -32,8 +32,10 @@ In order to edit the Universal Login Page (ULP)
 ```html
 <!-- should be permanently in the page header -->
 <script>
-    const formType = '{{prompt.name}}';
-    const siteId = '{{transaction.params.ext-site_id}}' || 'sesam';
+    window.ulpState = {
+        formType: '{{prompt.name}}',
+        siteId: '{{transaction.params.ext-site_id}}' || 'sesam'
+    };
 </script>
 
 <!-- should be in the page body, under {%- auth0:widget -%} -->
