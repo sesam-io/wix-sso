@@ -34,10 +34,7 @@ describe("brandTitle test suite", () => {
 
     const pTags = document.getElementsByTagName("p");
 
-    const brandTitle = getBrandTitleFn(
-      pTags,
-      getDefaultPageTitle("login", "wave")
-    );
+    const brandTitle = getBrandTitleFn(pTags, getDefaultPageTitle("login"));
 
     brandTitle(WixSites.wave.loginSubTitle);
   });

@@ -54,6 +54,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       if (user?.email) {
         const hashedEmail = await sha256(user.email);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         pushToDataLayer("set", { user_id: hashedEmail });
       }

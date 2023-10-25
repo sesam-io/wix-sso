@@ -1,5 +1,5 @@
-import { SiteIds, WixSites } from "./constants";
-import { FormType, Site, SiteId } from "./types";
+import { WixSites } from "./constants";
+import { FormType, SiteId } from "./types";
 
 export const getWixSite = (siteId: SiteId) => {
   const site = WixSites[siteId];
@@ -11,7 +11,7 @@ export const getWixSite = (siteId: SiteId) => {
   return site;
 };
 
-export const getDefaultPageTitle = (formType: FormType, siteId: SiteId) =>
+export const getDefaultPageTitle = (formType: FormType) =>
   formType === "login"
     ? WixSites.sesam.loginSubTitle
     : WixSites.sesam.signupSubTitle;

@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 import type { Auth0Client } from "@auth0/auth0-spa-js";
 import { log } from "./logger";
 
