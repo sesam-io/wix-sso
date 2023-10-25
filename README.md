@@ -1,8 +1,10 @@
 # SSO Flow in Wix sites
 
-Repo for hosting packages for maintaining SSO sign-in/sign-up code and branding to be used across Sesam Wix sites.
+`wix-sso` repository hosting packages for maintaining SSO authentication code and Universal Login Page branding to be used across Sesam Wix sites.
 
-## Table of Content
+The codebase structured as packages that each responsible for different environments and purposes.
+
+## Packages
 
 - [SSO-Flow](/src/packages/ssoFlow/README.md)
 - [Site logos](/src/packages/siteLogos/README.md)
