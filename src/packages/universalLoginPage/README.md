@@ -31,6 +31,6 @@ In order to edit the Universal Login Page (ULP)
 
 <!-- should be in the page body, under {%- auth0:widget -%} -->
 <script src="https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.5-ulp/artifact/ulp.js"></script>
-    ```
+```
 
 5. After finishing to edit, close the file and select `Y` in the terminal to save and update the changes in the ULP
