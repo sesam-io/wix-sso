@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getWixSite test suite should return SuperOffice site 1`] = `
+{
+  "id": "superoffice",
+  "loginSubTitle": "Log in to SuperOffice Data Sync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.5-site-logos/src/packages/siteLogos/superoffice-logo.svg",
+  "signupSubTitle": "Sign up to SuperOffice Data Sync.",
+  "titleClassName": "superofficeLogInTitle",
+}
+`;
+
+exports[`getWixSite test suite should return Wave site 1`] = `
+{
+  "id": "wave",
+  "loginSubTitle": "Log in to Making Wave Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.5-site-logos/src/packages/siteLogos/making-wave-talk-logo-centered.svg",
+  "signupSubTitle": "Sign up to Making Wave Talk.",
+}
+`;
+
+exports[`getWixSite test suite should return default site 1`] = `
+{
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.5-site-logos/src/packages/siteLogos/sesam-talk-rgb.png",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
+
+exports[`getWixSite test suite should return sesam site 1`] = `
+{
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.5-site-logos/src/packages/siteLogos/sesam-talk-rgb.png",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
