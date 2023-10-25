@@ -21,7 +21,10 @@ In order to edit the Universal Login Page (ULP)
 
 ![Alt text](<../../assets/ulp-template-example.png>)
 
-> Note: Running `auth0 universal-login templates update` will also open a Storybook page in the browser. That's for designing the ULP. However, since we added a custom scripts code in the `body` of the template, the design in Storybook seems to be broken.
+> Note: Running `auth0 universal-login templates update` will also open a Storybook page in the browser. That's for designing the ULP. However, since we added a custom scripts code in the `body` of the template, the design in Storybook seems to be broken. Possible solution for design mode, it suggested to turn `<script>` tags temporarily into `<scr`+`ipt>`.
+
+![Alt text](<../../assets/ulp-template-warning.png>)
+
 
 3. Update the code and when finish create Github release
 4. Update Github release version in the `script` src URL as follow:
