@@ -11,7 +11,7 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.2-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = "v1.0.3-site-logos";
 
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/assets/siteLogos`;
 
