@@ -10,8 +10,9 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const BASE_LOGO_URL =
-  "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-site-logos/src/assets/siteLogos";
+const SITE_LOGOS_RELEASE_VERSION = "v1.0.1-site-logos";
+
+const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/assets/siteLogos`;
 
 export const WixSites: Sites = {
   hubspot: {
