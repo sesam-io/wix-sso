@@ -5,5 +5,5 @@ Repo for hosting packages for maintaining SSO sign-in/sign-up code and branding 
 ## Table of Content
 
 - [SSO-Flow](/src/packages/ssoFlow/README.md)
-- [Site logos](/src/assets/site-logos/README.md)
+- [Site logos](/src/packages/site-logos/README.md)
 - [Universal Login Page](/src/packages/universalLoginPage/README.md)
