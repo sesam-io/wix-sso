@@ -11,7 +11,7 @@ export const SiteIds = {
 };
 
 const BASE_LOGO_URL =
-  "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-site-logos/src/assets/site-logos";
+  "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-site-logos/src/assets/siteLogos";
 
 export const WixSites: Sites = {
   hubspot: {

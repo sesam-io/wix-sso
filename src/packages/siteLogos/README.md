@@ -9,5 +9,5 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/assets/siteLo
 ```
 #### Example
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.66-stable/src/assets/siteLogos/making-wave-talk-logo-centered.svg
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.0-site-logos/src/assets/siteLogos/making-wave-talk-logo-centered.svg
 ```
