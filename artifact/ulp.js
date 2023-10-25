@@ -151,27 +151,23 @@ var _brandForm = require("./brandForm");
 var _constants = require("./constants");
 const enabled = Boolean(localStorage.getItem("_log_"));
 const log = (0, _logger.getLoggerFn)(enabled, "ulp");
-// @ts-ignore
-if (formType && siteId) {
-    // @ts-ignore
+if (window.ulpState) {
+    const { siteId, formType } = window.ulpState;
     log("siteId", siteId);
-    // @ts-ignore
     log("formType", formType);
-    // @ts-ignore
     const site = (0, _brandForm.getWixSite)(siteId);
-    const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, // @ts-ignore
-    (0, _brandForm.getDefaultPageTitle)(formType, siteId));
+    const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
-    brandTitle(// @ts-ignore
-    formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
+    brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
 },{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getLoggerFn", ()=>getLoggerFn);
-const getLoggerFn = (enabled = false, prefix = "SSO Flow")=>(title, ...args)=>{
+const getLoggerFn = (enabled = false, prefix = "SSO Flow")=>// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (title, ...args)=>{
         if (!enabled) return;
         console.info(`${prefix} - ${title}`, args.length ? args : "", new Date().toLocaleTimeString());
     };
@@ -219,7 +215,7 @@ const getWixSite = (siteId)=>{
     if (!site) return (0, _constants.WixSites).sesam;
     return site;
 };
-const getDefaultPageTitle = (formType, siteId)=>formType === "login" ? (0, _constants.WixSites).sesam.loginSubTitle : (0, _constants.WixSites).sesam.signupSubTitle;
+const getDefaultPageTitle = (formType)=>formType === "login" ? (0, _constants.WixSites).sesam.loginSubTitle : (0, _constants.WixSites).sesam.signupSubTitle;
 const brandLogo = (imgElement, logoUrl)=>{
     if (logoUrl) imgElement.src = logoUrl;
 };
