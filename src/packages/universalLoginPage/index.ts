@@ -8,23 +8,18 @@ import {
 import { LOGO_IMG_ID } from "./constants";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
-
 export const log = getLoggerFn(enabled, "ulp");
 
-// @ts-ignore
-if (formType && siteId) {
-  // @ts-ignore
+if (window.ulpState) {
+  const { siteId, formType } = window.ulpState;
   log("siteId", siteId);
-  // @ts-ignore
   log("formType", formType);
 
-  // @ts-ignore
   const site = getWixSite(siteId);
 
   const brandTitle = getBrandTitleFn(
     document.getElementsByTagName("p") ?? {},
-    // @ts-ignore
-    getDefaultPageTitle(formType, siteId)
+    getDefaultPageTitle(formType)
   );
 
   const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
@@ -32,7 +27,6 @@ if (formType && siteId) {
   brandLogo(imgElement, site.logoUrl);
 
   brandTitle(
-    // @ts-ignore
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
     site.titleClassName
   );

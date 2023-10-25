@@ -21,6 +21,6 @@ export type LoadScriptArgs = {
 // it can be used to configure GA, set options or send specific events
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }

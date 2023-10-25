@@ -4,7 +4,7 @@ import { LoadScriptArgs } from "./types";
 export const loadScript = (args: LoadScriptArgs) => {
   const { url, idAttribute, name } = args;
 
-  return new Promise<void>((resolve, _reject) => {
+  return new Promise<void>((resolve) => {
     const head = document.head;
     const script = document.createElement("script");
     script.type = "text/javascript";

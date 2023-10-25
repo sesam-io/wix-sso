@@ -1,5 +1,6 @@
 import { log } from "./logger";
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const waitForDataLayer = (callback: Function, attempt = 0) => {
   log(
     "Waiting for GA dataLayer",
@@ -33,6 +34,7 @@ const waitForDataLayer = (callback: Function, attempt = 0) => {
  */
 export function pushToDataLayer() {
   log("Attempting to push user_id to GA dataLayer.");
+  // eslint-disable-next-line prefer-rest-params
   const args = arguments;
   waitForDataLayer(() => {
     log("Setting the user-id");
