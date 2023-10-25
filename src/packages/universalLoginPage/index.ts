@@ -8,12 +8,11 @@ import {
 import { LOGO_IMG_ID } from "./constants";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
-export const log = getLoggerFn(enabled, "ulp");
+export const log = getLoggerFn(enabled, "ULP Flow");
 
 if (window.ulpState) {
   const { siteId, formType } = window.ulpState;
-  log("siteId", siteId);
-  log("formType", formType);
+  log("ulpState", window.ulpState);
 
   const site = getWixSite(siteId);
 

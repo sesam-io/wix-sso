@@ -150,11 +150,10 @@ var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
 const enabled = Boolean(localStorage.getItem("_log_"));
-const log = (0, _logger.getLoggerFn)(enabled, "ulp");
+const log = (0, _logger.getLoggerFn)(enabled, "ULP Flow");
 if (window.ulpState) {
     const { siteId, formType } = window.ulpState;
-    log("siteId", siteId);
-    log("formType", formType);
+    log("ulpState", window.ulpState);
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
