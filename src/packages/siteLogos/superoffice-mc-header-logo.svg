@@ -31,7 +31,7 @@
       ></path>
     </g>
     <g fill="#0c5d58">
-      <text x="200" y="29" font-size="1.25rem" font-weight="700">
+      <text x="200" y="29" font-size="1.25rem" font-weight="700" font-family="Barlow, sans-serif">
         Data Sync
       </text>
     </g>

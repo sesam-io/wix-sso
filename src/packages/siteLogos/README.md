@@ -12,5 +12,5 @@ https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/packages/site
 ```
 ## Example
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.72-site-logos/src/packages/siteLogos/making-wave-talk-logo-centered.svg
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.74-site-logos/src/packages/siteLogos/superoffice-mc-header-logo.svg
 ```
