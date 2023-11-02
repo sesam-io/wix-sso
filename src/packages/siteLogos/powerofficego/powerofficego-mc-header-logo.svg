@@ -17,7 +17,7 @@
     </svg>
   </g>
   <g fill="#333">
-    <text transform="translate(145, -2.2)" font-size="48px" font-weight="700" font-family="Barlow, sans-serif">
+    <text x="146" y="31" font-weight="700" font-family="Barlow, sans-serif">
       Data Sync
     </text>
   </g>
