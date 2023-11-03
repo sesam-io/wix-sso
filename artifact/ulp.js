@@ -270,7 +270,7 @@ const WixSites = {
     },
     poweroffice: {
         id: "poweroffice",
-        logoUrl: DEFAULT_LOGO_URL,
+        logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-mc-header-logo.svg`,
         loginSubTitle: "Log in to PowerOffice Data Sync.",
         signupSubTitle: "Sign up to PowerOffice Data Sync."
     },
@@ -282,7 +282,7 @@ const WixSites = {
     },
     superoffice: {
         id: "superoffice",
-        logoUrl: `${BASE_LOGO_URL}/superoffice-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/superoffice-mc-header-logo.svg`,
         loginSubTitle: "Log in to SuperOffice Data Sync.",
         signupSubTitle: "Sign up to SuperOffice Data Sync.",
         titleClassName: "superofficeLogInTitle"
