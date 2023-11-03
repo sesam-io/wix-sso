@@ -258,7 +258,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.96-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = "v1.0.97-site-logos";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
