@@ -236,7 +236,9 @@ const addPoweredBySesamImg = (imgElement)=>{
     const poweredBySesamWrapper = document.createElement("div");
     const poweredBySesamImg = document.createElement("img");
     poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/powered-by-sesam.svg`;
+    poweredBySesamImg.className = "poweredBySesamImg";
     poweredBySesamWrapper.appendChild(poweredBySesamImg);
+    poweredBySesamWrapper.className = "poweredBySesamWrapper";
     insertElementAfter(imgElement, poweredBySesamWrapper);
 };
 
