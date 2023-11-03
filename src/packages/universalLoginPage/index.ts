@@ -1,5 +1,6 @@
 import { getLoggerFn } from "packages/logger/logger";
 import {
+  addPoweredBySesamImg,
   brandLogo,
   getBrandTitleFn,
   getDefaultPageTitle,
@@ -22,6 +23,8 @@ if (window.ulpState) {
   );
 
   const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
+
+  addPoweredBySesamImg(imgElement);
 
   brandLogo(imgElement, site.logoUrl);
 

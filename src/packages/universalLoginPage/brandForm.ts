@@ -1,4 +1,4 @@
-import { WixSites } from "./constants";
+import { BASE_LOGO_URL, WixSites } from "./constants";
 import { FormType, SiteId } from "./types";
 
 export const getWixSite = (siteId: SiteId) => {
@@ -35,3 +35,18 @@ export const getBrandTitleFn =
       }
     });
   };
+
+export const insertElementAfter = (
+  referenceNode: HTMLImageElement,
+  newNode: HTMLDivElement
+) => {
+  referenceNode?.parentNode?.insertBefore(newNode, referenceNode.nextSibling);
+};
+
+export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
+  const poweredBySesamWrapper = document.createElement("div");
+  const poweredBySesamImg = document.createElement("img");
+  poweredBySesamImg.src = `${BASE_LOGO_URL}/powered-by-sesam.svg`;
+  poweredBySesamWrapper.appendChild(poweredBySesamImg);
+  insertElementAfter(imgElement, poweredBySesamWrapper);
+};
