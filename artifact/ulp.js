@@ -157,7 +157,7 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
-    (0, _brandForm.addPoweredBySesamImg)(imgElement);
+    if (siteId === (0, _constants.SiteIds).superoffice || siteId === (0, _constants.SiteIds).poweroffice) (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }

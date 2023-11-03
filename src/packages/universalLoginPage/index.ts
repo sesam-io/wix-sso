@@ -6,7 +6,7 @@ import {
   getDefaultPageTitle,
   getWixSite,
 } from "./brandForm";
-import { LOGO_IMG_ID } from "./constants";
+import { LOGO_IMG_ID, SiteIds } from "./constants";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -24,7 +24,9 @@ if (window.ulpState) {
 
   const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
 
-  addPoweredBySesamImg(imgElement);
+  if (siteId === SiteIds.superoffice || siteId === SiteIds.poweroffice) {
+    addPoweredBySesamImg(imgElement);
+  }
 
   brandLogo(imgElement, site.logoUrl);
 
