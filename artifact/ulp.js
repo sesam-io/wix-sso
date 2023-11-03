@@ -157,6 +157,7 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
+    (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
@@ -208,6 +209,8 @@ parcelHelpers.export(exports, "getWixSite", ()=>getWixSite);
 parcelHelpers.export(exports, "getDefaultPageTitle", ()=>getDefaultPageTitle);
 parcelHelpers.export(exports, "brandLogo", ()=>brandLogo);
 parcelHelpers.export(exports, "getBrandTitleFn", ()=>getBrandTitleFn);
+parcelHelpers.export(exports, "insertElementAfter", ()=>insertElementAfter);
+parcelHelpers.export(exports, "addPoweredBySesamImg", ()=>addPoweredBySesamImg);
 var _constants = require("./constants");
 const getWixSite = (siteId)=>{
     const site = (0, _constants.WixSites)[siteId];
@@ -226,12 +229,23 @@ const getBrandTitleFn = (pTags, defaultPageTitle)=>(subTitle, titleClassName)=>{
             }
         });
     };
+const insertElementAfter = (referenceNode, newNode)=>{
+    referenceNode?.parentNode?.insertBefore(newNode, referenceNode.nextSibling);
+};
+const addPoweredBySesamImg = (imgElement)=>{
+    const poweredBySesamWrapper = document.createElement("div");
+    const poweredBySesamImg = document.createElement("img");
+    poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/powered-by-sesam.svg`;
+    poweredBySesamWrapper.appendChild(poweredBySesamImg);
+    insertElementAfter(imgElement, poweredBySesamWrapper);
+};
 
 },{"./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iRfSK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
 parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
+parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "WixSites", ()=>WixSites);
 const LOGO_IMG_ID = "prompt-logo-center";
 const SiteIds = {
@@ -242,7 +256,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.5-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = "v1.0.93-site-logos";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
