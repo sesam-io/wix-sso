@@ -1,5 +1,6 @@
 import type { Sites } from "./types";
 
+const SITE_LOGOS_VERSION_KEY = "_v_";
 export const LOGO_IMG_ID = "prompt-logo-center";
 
 export const SiteIds = {
@@ -11,7 +12,8 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.97-site-logos";
+const SITE_LOGOS_RELEASE_VERSION =
+  localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.98-site-logos";
 
 export const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 
@@ -38,7 +40,7 @@ export const WixSites: Sites = {
   },
   superoffice: {
     id: "superoffice",
-    logoUrl: `${BASE_LOGO_URL}/superoffice-mc-header-logo.svg`,
+    logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
     loginSubTitle: "Log in to SuperOffice Data Sync.",
     signupSubTitle: "Sign up to SuperOffice Data Sync.",
     titleClassName: "superofficeLogInTitle",
