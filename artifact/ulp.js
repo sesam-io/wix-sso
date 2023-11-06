@@ -262,7 +262,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.98-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.107-site-logos";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
@@ -274,7 +274,7 @@ const WixSites = {
     },
     poweroffice: {
         id: "poweroffice",
-        logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-mc-header-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-ulp-header-logo.svg`,
         loginSubTitle: "Log in to PowerOffice Data Sync.",
         signupSubTitle: "Sign up to PowerOffice Data Sync."
     },
