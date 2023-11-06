@@ -249,6 +249,7 @@ parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
 parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "WixSites", ()=>WixSites);
+const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
 const SiteIds = {
     hubspot: "HubSpot",
@@ -258,7 +259,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.97-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.98-site-logos";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
@@ -282,7 +283,7 @@ const WixSites = {
     },
     superoffice: {
         id: "superoffice",
-        logoUrl: `${BASE_LOGO_URL}/superoffice-mc-header-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
         loginSubTitle: "Log in to SuperOffice Data Sync.",
         signupSubTitle: "Sign up to SuperOffice Data Sync.",
         titleClassName: "superofficeLogInTitle"
