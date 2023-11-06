@@ -1,17 +1,21 @@
 import type { Sites } from "./types";
 
+const SITE_LOGOS_VERSION_KEY = "_v_";
 export const LOGO_IMG_ID = "prompt-logo-center";
 
 export const SiteIds = {
   hubspot: "HubSpot",
-  poweroffice: "PowerOffice",
+  powerofficego: "PowerOfficeGo",
   sesam: "Sesam",
   superoffice: "SuperOffice",
   tripletex: "Tripletex",
   wave: "Wave",
 };
 
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.97-site-logos";
+const STABLE_VERSION = "v1.0.119-site-logos";
+
+const SITE_LOGOS_RELEASE_VERSION =
+  localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 
 export const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 
@@ -24,9 +28,9 @@ export const WixSites: Sites = {
     loginSubTitle: "Log in to Making HubSpot Talk.",
     signupSubTitle: "Sign up to Making HubSpot Talk.",
   },
-  poweroffice: {
-    id: "poweroffice",
-    logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-mc-header-logo.svg`,
+  powerofficego: {
+    id: "powerofficego",
+    logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
     loginSubTitle: "Log in to PowerOffice Data Sync.",
     signupSubTitle: "Sign up to PowerOffice Data Sync.",
   },
@@ -38,14 +42,14 @@ export const WixSites: Sites = {
   },
   superoffice: {
     id: "superoffice",
-    logoUrl: `${BASE_LOGO_URL}/superoffice-mc-header-logo.svg`,
+    logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
     loginSubTitle: "Log in to SuperOffice Data Sync.",
     signupSubTitle: "Sign up to SuperOffice Data Sync.",
     titleClassName: "superofficeLogInTitle",
   },
   tripletex: {
     id: "tripletex",
-    logoUrl: DEFAULT_LOGO_URL,
+    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
     loginSubTitle: "Log in to Making Tripletex Talk.",
     signupSubTitle: "Sign up to Making Tripletex Talk.",
   },

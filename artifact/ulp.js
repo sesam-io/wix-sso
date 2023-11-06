@@ -157,7 +157,11 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
-    if (siteId === (0, _constants.SiteIds).superoffice || siteId === (0, _constants.SiteIds).poweroffice) (0, _brandForm.addPoweredBySesamImg)(imgElement);
+    if ([
+        (0, _constants.SiteIds).superoffice.toLowerCase(),
+        (0, _constants.SiteIds).powerofficego.toLowerCase(),
+        (0, _constants.SiteIds).tripletex.toLowerCase()
+    ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
@@ -249,16 +253,18 @@ parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
 parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "WixSites", ()=>WixSites);
+const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
 const SiteIds = {
     hubspot: "HubSpot",
-    poweroffice: "PowerOffice",
+    powerofficego: "PowerOfficeGo",
     sesam: "Sesam",
     superoffice: "SuperOffice",
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = "v1.0.97-site-logos";
+const STABLE_VERSION = "v1.0.119-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
@@ -268,9 +274,9 @@ const WixSites = {
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk."
     },
-    poweroffice: {
-        id: "poweroffice",
-        logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-mc-header-logo.svg`,
+    powerofficego: {
+        id: "powerofficego",
+        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
         loginSubTitle: "Log in to PowerOffice Data Sync.",
         signupSubTitle: "Sign up to PowerOffice Data Sync."
     },
@@ -282,14 +288,14 @@ const WixSites = {
     },
     superoffice: {
         id: "superoffice",
-        logoUrl: `${BASE_LOGO_URL}/superoffice-mc-header-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
         loginSubTitle: "Log in to SuperOffice Data Sync.",
         signupSubTitle: "Sign up to SuperOffice Data Sync.",
         titleClassName: "superofficeLogInTitle"
     },
     tripletex: {
         id: "tripletex",
-        logoUrl: DEFAULT_LOGO_URL,
+        logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
         loginSubTitle: "Log in to Making Tripletex Talk.",
         signupSubTitle: "Sign up to Making Tripletex Talk."
     },
