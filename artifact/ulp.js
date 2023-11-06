@@ -256,7 +256,7 @@ const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
 const SiteIds = {
     hubspot: "HubSpot",
-    poweroffice: "PowerOfficeGo",
+    powerofficego: "PowerOfficeGo",
     sesam: "Sesam",
     superoffice: "SuperOffice",
     tripletex: "Tripletex",
@@ -272,8 +272,8 @@ const WixSites = {
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk."
     },
-    poweroffice: {
-        id: "poweroffice",
+    powerofficego: {
+        id: "powerofficego",
         logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
         loginSubTitle: "Log in to PowerOffice Data Sync.",
         signupSubTitle: "Sign up to PowerOffice Data Sync."
