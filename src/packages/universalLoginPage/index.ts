@@ -28,6 +28,7 @@ if (window.ulpState) {
     [
       SiteIds.superoffice.toLowerCase(),
       SiteIds.powerofficego.toLowerCase(),
+      SiteIds.tripletex.toLowerCase(),
     ].includes(siteId)
   ) {
     addPoweredBySesamImg(imgElement);

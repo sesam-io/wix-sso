@@ -159,7 +159,8 @@ if (window.ulpState) {
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
-        (0, _constants.SiteIds).powerofficego.toLowerCase()
+        (0, _constants.SiteIds).powerofficego.toLowerCase(),
+        (0, _constants.SiteIds).tripletex.toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
@@ -293,7 +294,7 @@ const WixSites = {
     },
     tripletex: {
         id: "tripletex",
-        logoUrl: DEFAULT_LOGO_URL,
+        logoUrl: `${DEFAULT_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
         loginSubTitle: "Log in to Making Tripletex Talk.",
         signupSubTitle: "Sign up to Making Tripletex Talk."
     },

@@ -47,7 +47,7 @@ export const WixSites: Sites = {
   },
   tripletex: {
     id: "tripletex",
-    logoUrl: DEFAULT_LOGO_URL,
+    logoUrl: `${DEFAULT_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
     loginSubTitle: "Log in to Making Tripletex Talk.",
     signupSubTitle: "Sign up to Making Tripletex Talk.",
   },
