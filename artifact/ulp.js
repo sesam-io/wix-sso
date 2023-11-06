@@ -263,7 +263,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.107-site-logos";
+const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.111-site-logos";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
@@ -294,7 +294,7 @@ const WixSites = {
     },
     tripletex: {
         id: "tripletex",
-        logoUrl: `${DEFAULT_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
         loginSubTitle: "Log in to Making Tripletex Talk.",
         signupSubTitle: "Sign up to Making Tripletex Talk."
     },
