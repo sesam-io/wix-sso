@@ -24,7 +24,12 @@ if (window.ulpState) {
 
   const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
 
-  if (siteId === SiteIds.superoffice || siteId === SiteIds.poweroffice) {
+  if (
+    [
+      SiteIds.superoffice.toLowerCase(),
+      SiteIds.poweroffice.toLowerCase(),
+    ].includes(siteId)
+  ) {
     addPoweredBySesamImg(imgElement);
   }
 
