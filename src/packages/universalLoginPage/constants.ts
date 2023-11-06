@@ -5,7 +5,7 @@ export const LOGO_IMG_ID = "prompt-logo-center";
 
 export const SiteIds = {
   hubspot: "HubSpot",
-  poweroffice: "PowerOffice",
+  poweroffice: "PowerOfficeGo",
   sesam: "Sesam",
   superoffice: "SuperOffice",
   tripletex: "Tripletex",

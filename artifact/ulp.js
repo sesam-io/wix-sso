@@ -256,7 +256,7 @@ const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
 const SiteIds = {
     hubspot: "HubSpot",
-    poweroffice: "PowerOffice",
+    poweroffice: "PowerOfficeGo",
     sesam: "Sesam",
     superoffice: "SuperOffice",
     tripletex: "Tripletex",
