@@ -159,7 +159,8 @@ if (window.ulpState) {
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
-        (0, _constants.SiteIds).poweroffice.toLowerCase()
+        (0, _constants.SiteIds).poweroffice.toLowerCase(),
+        `${(0, _constants.SiteIds).poweroffice.toLowerCase()}go`
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
