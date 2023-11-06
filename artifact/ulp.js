@@ -294,7 +294,7 @@ const WixSites = {
     },
     tripletex: {
         id: "tripletex",
-        logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
+        logoUrl: DEFAULT_LOGO_URL,
         loginSubTitle: "Log in to Making Tripletex Talk.",
         signupSubTitle: "Sign up to Making Tripletex Talk."
     },
