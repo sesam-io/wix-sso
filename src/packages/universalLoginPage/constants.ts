@@ -12,8 +12,10 @@ export const SiteIds = {
   wave: "Wave",
 };
 
+const STABLE_VERSION = "v1.0.112-site-logos";
+
 const SITE_LOGOS_RELEASE_VERSION =
-  localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? "v1.0.111-site-logos";
+  localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 
 export const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 
@@ -47,7 +49,7 @@ export const WixSites: Sites = {
   },
   tripletex: {
     id: "tripletex",
-    logoUrl: DEFAULT_LOGO_URL,
+    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
     loginSubTitle: "Log in to Making Tripletex Talk.",
     signupSubTitle: "Sign up to Making Tripletex Talk.",
   },
