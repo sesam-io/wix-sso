@@ -28,7 +28,7 @@ export const WixSites: Sites = {
   },
   poweroffice: {
     id: "poweroffice",
-    logoUrl: `${BASE_LOGO_URL}/powerofficego/powerofficego-ulp-header-logo.svg`,
+    logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
     loginSubTitle: "Log in to PowerOffice Data Sync.",
     signupSubTitle: "Sign up to PowerOffice Data Sync.",
   },
