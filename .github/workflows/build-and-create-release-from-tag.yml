@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use default Node.js version
         uses: actions/setup-node@v3
@@ -24,12 +24,14 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE} && yarn build
 
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact
-          path: |
-           artifact
+      - uses: actions/checkout@v4
+      - run: |
+          date > generated.txt
+          git config user.name shimizacken
+          git config user.email shimi.zacken@sesam.io
+          git add .
+          git commit -m "generated artifacts"
+          git push
 
       - name: Create GitHub release
         uses: Roang-zero1/github-create-release-action@v3
