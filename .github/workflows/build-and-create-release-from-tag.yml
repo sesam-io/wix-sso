@@ -15,13 +15,9 @@ jobs:
 
       - name: Use default Node.js version
         uses: actions/setup-node@v3
-
-      - name: Install yarn dependencies
-        run: |
-          cd ${GITHUB_WORKSPACE} && yarn --frozen-lockfile
         
-      - uses: actions/checkout@v4
       - run: |
+          yarn --frozen-lockfile
           yarn build
           git config user.name shimizacken
           git config user.email shimi.zacken@sesam.io
