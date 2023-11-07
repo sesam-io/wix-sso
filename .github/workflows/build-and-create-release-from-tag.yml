@@ -20,13 +20,9 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE} && yarn --frozen-lockfile
         
-      - name: Build packages
-        run: |
-          cd ${GITHUB_WORKSPACE} && yarn build
-
       - uses: actions/checkout@v4
       - run: |
-          date > generated.txt
+          yarn build
           git config user.name shimizacken
           git config user.email shimi.zacken@sesam.io
           git add .
