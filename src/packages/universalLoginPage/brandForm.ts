@@ -47,7 +47,7 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
   const poweredBySesamWrapper = document.createElement("div");
   const poweredBySesamImg = document.createElement("img");
 
-  poweredBySesamImg.src = `${BASE_LOGO_URL}/powered-by-sesam.svg`;
+  poweredBySesamImg.src = `${BASE_LOGO_URL}/sesam/powered-by-sesam.svg`;
   poweredBySesamImg.className = "poweredBySesamImg";
   poweredBySesamWrapper.appendChild(poweredBySesamImg);
   poweredBySesamWrapper.className = "poweredBySesamWrapper";

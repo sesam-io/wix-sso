@@ -24,7 +24,7 @@ const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 export const WixSites: Sites = {
   hubspot: {
     id: "hubspot",
-    logoUrl: `${BASE_LOGO_URL}/making-hubspot-talk-logo-centered.svg`,
+    logoUrl: `${BASE_LOGO_URL}/hubspot/making-hubspot-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making HubSpot Talk.",
     signupSubTitle: "Sign up to Making HubSpot Talk.",
   },
@@ -55,7 +55,7 @@ export const WixSites: Sites = {
   },
   wave: {
     id: "wave",
-    logoUrl: `${BASE_LOGO_URL}/making-wave-talk-logo-centered.svg`,
+    logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making Wave Talk.",
     signupSubTitle: "Sign up to Making Wave Talk.",
   },
