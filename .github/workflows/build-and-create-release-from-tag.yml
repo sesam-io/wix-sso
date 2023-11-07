@@ -1,0 +1,33 @@
+name: Build and create a release from new tag
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use default Node.js version
+        uses: actions/setup-node@v3
+        
+      - run: |
+          yarn --frozen-lockfile
+          yarn build
+          git config user.name shimizacken
+          git config user.email shimi.zacken@sesam.io
+          git add .
+          git commit -m "generated artifacts"
+          git push
+
+      - name: Create GitHub release
+        uses: Roang-zero1/github-create-release-action@v3
+        with:
+          version_regex: ^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
