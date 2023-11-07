@@ -239,7 +239,7 @@ const insertElementAfter = (referenceNode, newNode)=>{
 const addPoweredBySesamImg = (imgElement)=>{
     const poweredBySesamWrapper = document.createElement("div");
     const poweredBySesamImg = document.createElement("img");
-    poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/powered-by-sesam.svg`;
+    poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/sesam/powered-by-sesam.svg`;
     poweredBySesamImg.className = "poweredBySesamImg";
     poweredBySesamWrapper.appendChild(poweredBySesamImg);
     poweredBySesamWrapper.className = "poweredBySesamWrapper";
@@ -263,14 +263,14 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const STABLE_VERSION = "v1.0.119-site-logos";
+const STABLE_VERSION = "v1.0.120-site-logos";
 const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
 const WixSites = {
     hubspot: {
         id: "hubspot",
-        logoUrl: `${BASE_LOGO_URL}/making-hubspot-talk-logo-centered.svg`,
+        logoUrl: `${BASE_LOGO_URL}/hubspot/making-hubspot-talk-logo-centered.svg`,
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk."
     },
@@ -301,7 +301,7 @@ const WixSites = {
     },
     wave: {
         id: "wave",
-        logoUrl: `${BASE_LOGO_URL}/making-wave-talk-logo-centered.svg`,
+        logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
         loginSubTitle: "Log in to Making Wave Talk.",
         signupSubTitle: "Sign up to Making Wave Talk."
     }
