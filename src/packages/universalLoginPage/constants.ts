@@ -12,14 +12,14 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const STABLE_VERSION = "v1.0.120-site-logos";
+const STABLE_VERSION = "v1.0.121-site-logos";
 
 const SITE_LOGOS_RELEASE_VERSION =
   localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 
 export const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 
-const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam-talk-rgb.png`;
+const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
 
 export const WixSites: Sites = {
   hubspot: {
