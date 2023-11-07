@@ -8,9 +8,9 @@ Once a logo is added to the root package's `siteLogos` folder and pushed to Gith
 
 ## Usage
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/packages/siteLogos/[file-name]
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@[release-version]/src/packages/siteLogos/[connector-folder][file-name]
 ```
 ## Example
 ```
-https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.74-site-logos/src/packages/siteLogos/superoffice-mc-header-logo.svg
+https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.74-site-logos/src/packages/siteLogos/superoffice/superoffice-mc-header-logo.svg
 ```
