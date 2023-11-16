@@ -11,7 +11,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
     navigator.userAgent.includes("Safari") &&
     !navigator.userAgent.includes("Chrome");
 
-  const redirectUri = isSafari ? window.location.hostname : REDIRECT_URI;
+  const redirectUri = isSafari ? window.location.origin : REDIRECT_URI;
 
   log("runSSOFlow start");
 
