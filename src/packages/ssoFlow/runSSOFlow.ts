@@ -7,11 +7,6 @@ import { log } from "./logger";
 
 export const runSSOFlow = (args: RunSSOFlowArgs) => {
   const { auth0ClientOptions, siteId } = args;
-  const isSafari =
-    navigator.userAgent.includes("Safari") &&
-    !navigator.userAgent.includes("Chrome");
-
-  const redirectUri = isSafari ? window.location.origin : REDIRECT_URI;
 
   log("runSSOFlow start");
 
@@ -87,7 +82,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       await auth0Client.loginWithRedirect({
         authorizationParams: {
-          redirect_uri: redirectUri,
+          redirect_uri: REDIRECT_URI,
           "ext-site_id": siteId,
         },
       });
@@ -108,7 +103,7 @@ export const runSSOFlow = (args: RunSSOFlowArgs) => {
 
       auth0Client.loginWithRedirect({
         authorizationParams: {
-          redirect_uri: redirectUri,
+          redirect_uri: REDIRECT_URI,
           screen_hint: "signup",
           "ext-site_id": siteId,
         },
