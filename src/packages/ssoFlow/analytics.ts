@@ -1,5 +1,7 @@
 import { log } from "./logger";
 
+// GA script is loaded in Wix site and not by `loadScript`, therefore `window.dataLayer` loading might be delayed.
+//TODO: Worth to try https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
 // eslint-disable-next-line @typescript-eslint/ban-types
 const waitForDataLayer = (callback: Function, attempt = 0) => {
   log(
