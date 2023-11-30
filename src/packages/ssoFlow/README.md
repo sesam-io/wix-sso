@@ -145,4 +145,4 @@ GA (Google Analytics) code is taken from `https://analytics.google.com` -> `Data
 In order to embed it in `Wix` site, there is a built-in way to do that: `Wix site` -> `Settings` -> `Marketing Integrations` -> `Google Analytics`, where there GA ID is the only requirement and the rest of the code is added by `Wix`.
 
 #### `ssoFlow` issue
-`ssoFlow` logic adding arguments to the `window.dataLayer` object of GA. However, since the source code is loaded by the `Wix` site, we first need to make sure that the `dataLayer` object is exist and therefore we have the `waitForDataLayer` function.
+`ssoFlow` logic adding arguments to the [`window.dataLayer`](https://developers.google.com/tag-platform/tag-manager/datalayer) object of GA. However, since the source code is loaded by the `Wix` site, we first need to make sure that the `window.dataLayer` object is exist and therefore we have the `waitForDataLayer` function.
