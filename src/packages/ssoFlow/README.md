@@ -13,6 +13,7 @@ The code is based on [Integrate Auth0 with Wix Members: Complete Guide](https://
 - [Usage in Wix dashboard](#usage-in-wix-dashboard)
 - [Enable logger](#enable-logger)
 - [Full flow in detail](#full-flow-in-detail)
+- [Google Analytics](#google-analytics)
 
 ## Core logic
 
@@ -134,3 +135,14 @@ When user clicks on the `Login button`
         resourceId: auth0Id,
     }
     ```
+
+### Google Analytics
+
+#### Getting the code and the ID
+GA (Google Analytics) code is taken from `https://analytics.google.com` -> `Data streams` -> `View tag  instructions`.
+
+#### Adding to Wix site
+In order to embed it in `Wix` site, there is a built-in way to do that: `Wix site` -> `Settings` -> `Marketing Integrations` -> `Google Analytics`, where there GA ID is the only requirement and the rest of the code is added by `Wix`.
+
+#### `ssoFlow` issue
+`ssoFlow` logic adding arguments to the `window.dataLayer` object of GA. However, since the source code is loaded by the `Wix` site, we first need to make sure that the `dataLayer` object is exist and therefore we have the `waitForDataLayer` function.
