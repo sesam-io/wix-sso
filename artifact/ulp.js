@@ -295,7 +295,7 @@ const WixSites = {
     },
     tripletex: {
         id: "tripletex",
-        logoUrl: `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/siteLogos/tripletex/tripletex-mc-header-logo.svg`,
+        logoUrl: "https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/siteLogos/tripletex/tripletex-mc-header-logo.svg",
         loginSubTitle: "Log in to Tripletex Data Sync.",
         signupSubTitle: "Sign up to Tripletex Data Sync."
     },
