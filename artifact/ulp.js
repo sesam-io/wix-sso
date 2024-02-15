@@ -296,8 +296,8 @@ const WixSites = {
     tripletex: {
         id: "tripletex",
         logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to Making Tripletex Talk.",
-        signupSubTitle: "Sign up to Making Tripletex Talk."
+        loginSubTitle: "Log in to Tripletex Data Sync.",
+        signupSubTitle: "Sign up to Tripletex Data Sync."
     },
     wave: {
         id: "wave",
