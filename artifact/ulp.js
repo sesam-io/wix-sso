@@ -263,7 +263,7 @@ const SiteIds = {
     tripletex: "Tripletex",
     wave: "Wave"
 };
-const STABLE_VERSION = "latest";
+const STABLE_VERSION = "v1.1.1";
 const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
@@ -277,8 +277,8 @@ const WixSites = {
     powerofficego: {
         id: "powerofficego",
         logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to PowerOffice Data Sync.",
-        signupSubTitle: "Sign up to PowerOffice Data Sync."
+        loginSubTitle: "Log in to PowerOffice DataSync.",
+        signupSubTitle: "Sign up to PowerOffice DataSync."
     },
     sesam: {
         id: "sesam",
@@ -289,15 +289,15 @@ const WixSites = {
     superoffice: {
         id: "superoffice",
         logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to SuperOffice Data Sync.",
-        signupSubTitle: "Sign up to SuperOffice Data Sync.",
+        loginSubTitle: "Log in to SuperOffice DataSync.",
+        signupSubTitle: "Sign up to SuperOffice DataSync.",
         titleClassName: "superofficeLogInTitle"
     },
     tripletex: {
         id: "tripletex",
         logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to Tripletex Data Sync.",
-        signupSubTitle: "Sign up to Tripletex Data Sync."
+        loginSubTitle: "Log in to Tripletex DataSync.",
+        signupSubTitle: "Sign up to Tripletex DataSync."
     },
     wave: {
         id: "wave",
