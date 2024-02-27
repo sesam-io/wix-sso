@@ -1,4 +1,4 @@
-import type { Sites } from "./types";
+import type { Site, Sites } from "./types";
 
 const SITE_LOGOS_VERSION_KEY = "_v_";
 export const LOGO_IMG_ID = "prompt-logo-center";
@@ -21,6 +21,13 @@ const SITE_LOGOS_RELEASE_VERSION =
 export const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
+
+const tripletexSite: Site = {
+  id: "tripletex",
+  logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
+  loginSubTitle: "Log in to Tripletex DataSync.",
+  signupSubTitle: "Sign up to Tripletex DataSync.",
+};
 
 export const WixSites: Sites = {
   hubspot: {
@@ -48,17 +55,10 @@ export const WixSites: Sites = {
     signupSubTitle: "Sign up to SuperOffice DataSync.",
     titleClassName: "superofficeLogInTitle",
   },
-  tripletex: {
-    id: "tripletex",
-    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
-    loginSubTitle: "Log in to Tripletex DataSync.",
-    signupSubTitle: "Sign up to Tripletex DataSync.",
-  },
+  tripletex: tripletexSite,
   "tripletex-test": {
+    ...tripletexSite,
     id: "tripletex-test",
-    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
-    loginSubTitle: "Log in to Tripletex DataSync.",
-    signupSubTitle: "Sign up to Tripletex DataSync.",
   },
   wave: {
     id: "wave",
