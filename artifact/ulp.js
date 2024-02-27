@@ -261,12 +261,19 @@ const SiteIds = {
     sesam: "Sesam",
     superoffice: "SuperOffice",
     tripletex: "Tripletex",
+    "tripletex-test": "Tripletex test",
     wave: "Wave"
 };
 const STABLE_VERSION = "v1.1.2";
 const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
+const tripletexSite = {
+    id: "tripletex",
+    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
+    loginSubTitle: "Log in to Tripletex DataSync.",
+    signupSubTitle: "Sign up to Tripletex DataSync."
+};
 const WixSites = {
     hubspot: {
         id: "hubspot",
@@ -293,11 +300,10 @@ const WixSites = {
         signupSubTitle: "Sign up to SuperOffice DataSync.",
         titleClassName: "superofficeLogInTitle"
     },
-    tripletex: {
-        id: "tripletex",
-        logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to Tripletex DataSync.",
-        signupSubTitle: "Sign up to Tripletex DataSync."
+    tripletex: tripletexSite,
+    "tripletex-test": {
+        ...tripletexSite,
+        id: "tripletex-test"
     },
     wave: {
         id: "wave",
