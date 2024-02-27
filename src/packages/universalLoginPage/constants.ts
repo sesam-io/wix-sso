@@ -13,7 +13,7 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const STABLE_VERSION = "v1.0.122-site-logos";
+const STABLE_VERSION = "v1.0.124-site-logos";
 
 const SITE_LOGOS_RELEASE_VERSION =
   localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
