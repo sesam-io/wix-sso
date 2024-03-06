@@ -8,6 +8,7 @@ export const SiteIds = {
   powerofficego: "PowerOfficeGo",
   sesam: "Sesam",
   superoffice: "SuperOffice",
+  "superoffice-test": "SuperOffice test",
   tripletex: "Tripletex",
   "tripletex-test": "Tripletex test",
   wave: "Wave",
@@ -27,6 +28,14 @@ const tripletexSite: Site = {
   logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
   loginSubTitle: "Log in to Tripletex DataSync.",
   signupSubTitle: "Sign up to Tripletex DataSync.",
+};
+
+const superofficeSite: Site = {
+  id: "superoffice",
+  logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
+  loginSubTitle: "Log in to SuperOffice DataSync.",
+  signupSubTitle: "Sign up to SuperOffice DataSync.",
+  titleClassName: "superofficeLogInTitle",
 };
 
 export const WixSites: Sites = {
@@ -54,6 +63,10 @@ export const WixSites: Sites = {
     loginSubTitle: "Log in to SuperOffice DataSync.",
     signupSubTitle: "Sign up to SuperOffice DataSync.",
     titleClassName: "superofficeLogInTitle",
+  },
+  "superoffice-test": {
+    ...superofficeSite,
+    id: "superoffice-test",
   },
   tripletex: tripletexSite,
   "tripletex-test": {
