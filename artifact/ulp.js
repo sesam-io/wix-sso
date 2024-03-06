@@ -260,6 +260,7 @@ const SiteIds = {
     powerofficego: "PowerOfficeGo",
     sesam: "Sesam",
     superoffice: "SuperOffice",
+    "superoffice-test": "SuperOffice test",
     tripletex: "Tripletex",
     "tripletex-test": "Tripletex test",
     wave: "Wave"
@@ -273,6 +274,13 @@ const tripletexSite = {
     logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
     loginSubTitle: "Log in to Tripletex DataSync.",
     signupSubTitle: "Sign up to Tripletex DataSync."
+};
+const superofficeSite = {
+    id: "superoffice",
+    logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
+    loginSubTitle: "Log in to SuperOffice DataSync.",
+    signupSubTitle: "Sign up to SuperOffice DataSync.",
+    titleClassName: "superofficeLogInTitle"
 };
 const WixSites = {
     hubspot: {
@@ -299,6 +307,10 @@ const WixSites = {
         loginSubTitle: "Log in to SuperOffice DataSync.",
         signupSubTitle: "Sign up to SuperOffice DataSync.",
         titleClassName: "superofficeLogInTitle"
+    },
+    "superoffice-test": {
+        ...superofficeSite,
+        id: "superoffice-test"
     },
     tripletex: tripletexSite,
     "tripletex-test": {
