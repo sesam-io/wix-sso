@@ -291,7 +291,7 @@ const WixSites = {
     },
     powerofficego: {
         id: "powerofficego",
-        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-header-logo.svg`,
+        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-logo-naked-new.svg`,
         loginSubTitle: "Log in to PowerOffice DataSync.",
         signupSubTitle: "Sign up to PowerOffice DataSync."
     },
