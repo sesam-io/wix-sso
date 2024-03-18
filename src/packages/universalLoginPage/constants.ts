@@ -14,7 +14,7 @@ export const SiteIds = {
   wave: "Wave",
 };
 
-const STABLE_VERSION = "v1.0.124-site-logos";
+const STABLE_VERSION = "v1.0.126-new-pogo-naked-logo";
 
 const SITE_LOGOS_RELEASE_VERSION =
   localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
