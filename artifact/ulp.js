@@ -165,7 +165,7 @@ if (window.ulpState) {
         (0, _constants.SiteIds)["tripletex-test"].toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     else if (isPowerOffice) (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter);
-    if (!isPowerOffice) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
+    (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
