@@ -1,4 +1,4 @@
-import { SiteIds } from "./constants";
+import { SiteIds } from "./siteIds";
 
 export type FormType = "login" | "logout" | "signup";
 

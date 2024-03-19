@@ -3,17 +3,6 @@ import type { Site, Sites } from "./types";
 const SITE_LOGOS_VERSION_KEY = "_v_";
 export const LOGO_IMG_ID = "prompt-logo-center";
 
-export const SiteIds = {
-  hubspot: "HubSpot",
-  powerofficego: "PowerOfficeGo",
-  sesam: "Sesam",
-  superoffice: "SuperOffice",
-  "superoffice-test": "SuperOffice test",
-  tripletex: "Tripletex",
-  "tripletex-test": "Tripletex test",
-  wave: "Wave",
-};
-
 const STABLE_VERSION = "v1.0.127-site-logos";
 
 const SITE_LOGOS_RELEASE_VERSION =

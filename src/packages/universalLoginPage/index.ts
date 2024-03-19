@@ -7,7 +7,9 @@ import {
   getDefaultPageTitle,
   getWixSite,
 } from "./brandForm";
-import { LOGO_IMG_ID, SiteIds } from "./constants";
+import { LOGO_IMG_ID } from "./constants";
+import { BrandedSiteIds, SiteIds } from "./siteIds";
+import { isInBrandedSites } from "./utils";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -29,22 +31,13 @@ if (window.ulpState) {
 
   const isPowerOffice = SiteIds.powerofficego.toLowerCase() === siteId;
 
-  if (
-    [
-      SiteIds.superoffice.toLowerCase(),
-      SiteIds["superoffice-test"].toLowerCase(),
-      SiteIds.tripletex.toLowerCase(),
-      SiteIds["tripletex-test"].toLowerCase(),
-    ].includes(siteId)
-  ) {
-    addPoweredBySesamImg(promptLogoCenter);
-  } else if (isPowerOffice) {
-    buildPowerOfficeLogo(promptLogoCenter);
+  if (isInBrandedSites(BrandedSiteIds, siteId)) {
+    isPowerOffice
+      ? buildPowerOfficeLogo(promptLogoCenter)
+      : addPoweredBySesamImg(promptLogoCenter);
   }
 
-  if (!isPowerOffice) {
-    brandLogo(promptLogoCenter, site.logoUrl);
-  }
+  brandLogo(promptLogoCenter, site.logoUrl);
 
   brandTitle(
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
