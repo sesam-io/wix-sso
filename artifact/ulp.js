@@ -156,15 +156,17 @@ if (window.ulpState) {
     log("ulpState", window.ulpState);
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
-    const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
+    const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
-        (0, _constants.SiteIds).tripletex.toLowerCase()
-    ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
+        (0, _constants.SiteIds)["superoffice-test"].toLowerCase(),
+        (0, _constants.SiteIds).tripletex.toLowerCase(),
+        (0, _constants.SiteIds)["tripletex-test"].toLowerCase()
+    ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     else if ([
         (0, _constants.SiteIds).powerofficego.toLowerCase()
-    ].includes(siteId)) (0, _brandForm.addBySesamImg)(imgElement);
-    (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
+    ].includes(siteId)) (0, _brandForm.addBySesamImg)(promptLogoCenter);
+    (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
