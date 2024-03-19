@@ -23,20 +23,24 @@ if (window.ulpState) {
     getDefaultPageTitle(formType)
   );
 
-  const imgElement = document.getElementById(LOGO_IMG_ID) as HTMLImageElement;
+  const promptLogoCenter = document.getElementById(
+    LOGO_IMG_ID
+  ) as HTMLImageElement;
 
   if (
     [
       SiteIds.superoffice.toLowerCase(),
+      SiteIds["superoffice-test"].toLowerCase(),
       SiteIds.tripletex.toLowerCase(),
+      SiteIds["tripletex-test"].toLowerCase(),
     ].includes(siteId)
   ) {
-    addPoweredBySesamImg(imgElement);
+    addPoweredBySesamImg(promptLogoCenter);
   } else if ([SiteIds.powerofficego.toLowerCase()].includes(siteId)) {
-    addBySesamImg(imgElement);
+    addBySesamImg(promptLogoCenter);
   }
 
-  brandLogo(imgElement, site.logoUrl);
+  brandLogo(promptLogoCenter, site.logoUrl);
 
   brandTitle(
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
