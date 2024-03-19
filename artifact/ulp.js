@@ -157,18 +157,15 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
+    const isPowerOffice = (0, _constants.SiteIds).powerofficego.toLowerCase() === siteId;
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
         (0, _constants.SiteIds)["superoffice-test"].toLowerCase(),
         (0, _constants.SiteIds).tripletex.toLowerCase(),
         (0, _constants.SiteIds)["tripletex-test"].toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    else if ([
-        (0, _constants.SiteIds).powerofficego.toLowerCase()
-    ].includes(siteId)) (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter);
-    if (![
-        (0, _constants.SiteIds).powerofficego.toLowerCase()
-    ].includes(siteId)) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
+    else if (isPowerOffice) (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter);
+    if (!isPowerOffice) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 

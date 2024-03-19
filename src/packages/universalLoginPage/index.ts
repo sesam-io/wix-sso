@@ -27,6 +27,8 @@ if (window.ulpState) {
     LOGO_IMG_ID
   ) as HTMLImageElement;
 
+  const isPowerOffice = SiteIds.powerofficego.toLowerCase() === siteId;
+
   if (
     [
       SiteIds.superoffice.toLowerCase(),
@@ -36,11 +38,11 @@ if (window.ulpState) {
     ].includes(siteId)
   ) {
     addPoweredBySesamImg(promptLogoCenter);
-  } else if ([SiteIds.powerofficego.toLowerCase()].includes(siteId)) {
+  } else if (isPowerOffice) {
     buildPowerOfficeLogo(promptLogoCenter);
   }
 
-  if (![SiteIds.powerofficego.toLowerCase()].includes(siteId)) {
+  if (!isPowerOffice) {
     brandLogo(promptLogoCenter, site.logoUrl);
   }
 
