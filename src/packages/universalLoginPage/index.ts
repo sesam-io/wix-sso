@@ -42,7 +42,9 @@ if (window.ulpState) {
     buildPowerOfficeLogo(promptLogoCenter);
   }
 
-  brandLogo(promptLogoCenter, site.logoUrl);
+  if (!isPowerOffice) {
+    brandLogo(promptLogoCenter, site.logoUrl);
+  }
 
   brandTitle(
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
