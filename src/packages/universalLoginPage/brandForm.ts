@@ -55,7 +55,7 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
   insertElementAfter(imgElement, poweredBySesamWrapper);
 };
 
-export const buildPowerOfficeLogo = async () => {
+export const buildPowerOfficeLogo = async (imgElement: HTMLImageElement) => {
   const poweredBySesamWrapper = document.createElement("div");
 
   fetch(
@@ -66,4 +66,8 @@ export const buildPowerOfficeLogo = async () => {
       poweredBySesamWrapper.innerHTML = text;
       console.log(text);
     });
+
+  imgElement.src = "";
+
+  insertElementAfter(imgElement, poweredBySesamWrapper);
 };

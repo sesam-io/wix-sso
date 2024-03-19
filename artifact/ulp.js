@@ -164,7 +164,7 @@ if (window.ulpState) {
         (0, _constants.SiteIds).tripletex.toLowerCase(),
         (0, _constants.SiteIds)["tripletex-test"].toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    else if (isPowerOffice) (0, _brandForm.buildPowerOfficeLogo)();
+    else if (isPowerOffice) (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter);
     if (!isPowerOffice) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
@@ -249,12 +249,14 @@ const addPoweredBySesamImg = (imgElement)=>{
     poweredBySesamWrapper.className = "poweredBySesamWrapper";
     insertElementAfter(imgElement, poweredBySesamWrapper);
 };
-const buildPowerOfficeLogo = async ()=>{
+const buildPowerOfficeLogo = async (imgElement)=>{
     const poweredBySesamWrapper = document.createElement("div");
     fetch("https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/poweroffice-logo.html").then((response)=>response.text()).then((text)=>{
         poweredBySesamWrapper.innerHTML = text;
         console.log(text);
     });
+    imgElement.src = "";
+    insertElementAfter(imgElement, poweredBySesamWrapper);
 };
 
 },{"./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iRfSK":[function(require,module,exports) {

@@ -39,7 +39,7 @@ if (window.ulpState) {
   ) {
     addPoweredBySesamImg(promptLogoCenter);
   } else if (isPowerOffice) {
-    buildPowerOfficeLogo();
+    buildPowerOfficeLogo(promptLogoCenter);
   }
 
   if (!isPowerOffice) {
