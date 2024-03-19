@@ -69,7 +69,6 @@ export const buildPowerOfficeLogo = async (imgElement: HTMLImageElement) => {
       console.log(text);
     });
 
-  imgElement.remove();
-
   insertElementAfter(imgElement, poweredBySesamWrapper);
+  imgElement.remove();
 };

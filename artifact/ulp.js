@@ -257,8 +257,8 @@ const buildPowerOfficeLogo = async (imgElement)=>{
         poweredBySesamWrapper.style.justifyContent = "center";
         console.log(text);
     });
-    imgElement.remove();
     insertElementAfter(imgElement, poweredBySesamWrapper);
+    imgElement.remove();
 };
 
 },{"./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iRfSK":[function(require,module,exports) {
