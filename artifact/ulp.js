@@ -159,9 +159,11 @@ if (window.ulpState) {
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
-        // SiteIds.powerofficego.toLowerCase(),
         (0, _constants.SiteIds).tripletex.toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
+    else if ([
+        (0, _constants.SiteIds).powerofficego.toLowerCase()
+    ].includes(siteId)) (0, _brandForm.addBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
@@ -215,6 +217,7 @@ parcelHelpers.export(exports, "brandLogo", ()=>brandLogo);
 parcelHelpers.export(exports, "getBrandTitleFn", ()=>getBrandTitleFn);
 parcelHelpers.export(exports, "insertElementAfter", ()=>insertElementAfter);
 parcelHelpers.export(exports, "addPoweredBySesamImg", ()=>addPoweredBySesamImg);
+parcelHelpers.export(exports, "addBySesamImg", ()=>addBySesamImg);
 var _constants = require("./constants");
 const getWixSite = (siteId)=>{
     const site = (0, _constants.WixSites)[siteId];
@@ -240,6 +243,15 @@ const addPoweredBySesamImg = (imgElement)=>{
     const poweredBySesamWrapper = document.createElement("div");
     const poweredBySesamImg = document.createElement("img");
     poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/sesam/powered-by-sesam.svg`;
+    poweredBySesamImg.className = "poweredBySesamImg";
+    poweredBySesamWrapper.appendChild(poweredBySesamImg);
+    poweredBySesamWrapper.className = "poweredBySesamWrapper";
+    insertElementAfter(imgElement, poweredBySesamWrapper);
+};
+const addBySesamImg = (imgElement)=>{
+    const poweredBySesamWrapper = document.createElement("div");
+    const poweredBySesamImg = document.createElement("img");
+    poweredBySesamImg.src = `${0, _constants.BASE_LOGO_URL}/sesam/sesam-only.svg`;
     poweredBySesamImg.className = "poweredBySesamImg";
     poweredBySesamWrapper.appendChild(poweredBySesamImg);
     poweredBySesamWrapper.className = "poweredBySesamWrapper";

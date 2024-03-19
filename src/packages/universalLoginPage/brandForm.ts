@@ -54,3 +54,15 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
 
   insertElementAfter(imgElement, poweredBySesamWrapper);
 };
+
+export const addBySesamImg = (imgElement: HTMLImageElement) => {
+  const poweredBySesamWrapper = document.createElement("div");
+  const poweredBySesamImg = document.createElement("img");
+
+  poweredBySesamImg.src = `${BASE_LOGO_URL}/sesam/sesam-only.svg`;
+  poweredBySesamImg.className = "poweredBySesamImg";
+  poweredBySesamWrapper.appendChild(poweredBySesamImg);
+  poweredBySesamWrapper.className = "poweredBySesamWrapper";
+
+  insertElementAfter(imgElement, poweredBySesamWrapper);
+};
