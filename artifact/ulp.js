@@ -149,6 +149,8 @@ parcelHelpers.export(exports, "log", ()=>log);
 var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
+var _siteIds = require("./siteIds");
+var _utils = require("./utils");
 const enabled = Boolean(localStorage.getItem("_log_"));
 const log = (0, _logger.getLoggerFn)(enabled, "ULP Flow");
 if (window.ulpState) {
@@ -157,19 +159,13 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
-    const isPowerOffice = (0, _constants.SiteIds).powerofficego.toLowerCase() === siteId;
-    if ([
-        (0, _constants.SiteIds).superoffice.toLowerCase(),
-        (0, _constants.SiteIds)["superoffice-test"].toLowerCase(),
-        (0, _constants.SiteIds).tripletex.toLowerCase(),
-        (0, _constants.SiteIds)["tripletex-test"].toLowerCase()
-    ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    else if (isPowerOffice) (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter);
+    const isPowerOffice = (0, _siteIds.SiteIds).powerofficego.toLowerCase() === siteId;
+    if ((0, _utils.isInBrandedSites)((0, _siteIds.BrandedSiteIds), siteId)) isPowerOffice ? (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter) : (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
-},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
+},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./siteIds":"g8ilt","./utils":"epG7m","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getLoggerFn", ()=>getLoggerFn);
@@ -265,21 +261,10 @@ const buildPowerOfficeLogo = async (imgElement)=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
-parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "WixSites", ()=>WixSites);
 const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
-const SiteIds = {
-    hubspot: "HubSpot",
-    powerofficego: "PowerOfficeGo",
-    sesam: "Sesam",
-    superoffice: "SuperOffice",
-    "superoffice-test": "SuperOffice test",
-    tripletex: "Tripletex",
-    "tripletex-test": "Tripletex test",
-    wave: "Wave"
-};
 const STABLE_VERSION = "v1.0.127-site-logos";
 const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
@@ -339,6 +324,35 @@ const WixSites = {
         signupSubTitle: "Sign up to Making Wave Talk."
     }
 };
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"g8ilt":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
+parcelHelpers.export(exports, "BrandedSiteIds", ()=>BrandedSiteIds);
+const SiteIds = {
+    hubspot: "HubSpot",
+    powerofficego: "PowerOfficeGo",
+    sesam: "Sesam",
+    superoffice: "SuperOffice",
+    "superoffice-test": "SuperOffice test",
+    tripletex: "Tripletex",
+    "tripletex-test": "Tripletex test",
+    wave: "Wave"
+};
+const BrandedSiteIds = [
+    "superoffice",
+    "superoffice-test",
+    "tripletex",
+    "tripletex-test",
+    "powerofficego"
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"epG7m":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "isInBrandedSites", ()=>isInBrandedSites);
+const isInBrandedSites = (siteIds, siteId)=>siteIds.includes(siteId);
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
 
