@@ -159,7 +159,7 @@ if (window.ulpState) {
     const imgElement = document.getElementById((0, _constants.LOGO_IMG_ID));
     if ([
         (0, _constants.SiteIds).superoffice.toLowerCase(),
-        (0, _constants.SiteIds).powerofficego.toLowerCase(),
+        // SiteIds.powerofficego.toLowerCase(),
         (0, _constants.SiteIds).tripletex.toLowerCase()
     ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(imgElement);
     (0, _brandForm.brandLogo)(imgElement, site.logoUrl);
@@ -291,7 +291,7 @@ const WixSites = {
     },
     powerofficego: {
         id: "powerofficego",
-        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-ulp-naked-new.svg`,
+        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-new-logo.png`,
         loginSubTitle: "Log in to PowerOffice DataSync.",
         signupSubTitle: "Sign up to PowerOffice DataSync."
     },

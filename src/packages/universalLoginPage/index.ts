@@ -27,7 +27,7 @@ if (window.ulpState) {
   if (
     [
       SiteIds.superoffice.toLowerCase(),
-      SiteIds.powerofficego.toLowerCase(),
+      // SiteIds.powerofficego.toLowerCase(),
       SiteIds.tripletex.toLowerCase(),
     ].includes(siteId)
   ) {
