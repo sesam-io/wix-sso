@@ -1,6 +1,6 @@
 import { getLoggerFn } from "packages/logger/logger";
 import {
-  addBySesamImg,
+  buildPowerOfficeLogo,
   addPoweredBySesamImg,
   brandLogo,
   getBrandTitleFn,
@@ -37,7 +37,7 @@ if (window.ulpState) {
   ) {
     addPoweredBySesamImg(promptLogoCenter);
   } else if ([SiteIds.powerofficego.toLowerCase()].includes(siteId)) {
-    addBySesamImg(promptLogoCenter);
+    buildPowerOfficeLogo(promptLogoCenter);
   }
 
   brandLogo(promptLogoCenter, site.logoUrl);
