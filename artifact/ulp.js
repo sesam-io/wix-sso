@@ -253,9 +253,11 @@ const buildPowerOfficeLogo = async (imgElement)=>{
     const poweredBySesamWrapper = document.createElement("div");
     fetch("https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/poweroffice-logo.html").then((response)=>response.text()).then((text)=>{
         poweredBySesamWrapper.innerHTML = text;
+        poweredBySesamWrapper.style.display = "flex";
+        poweredBySesamWrapper.style.justifyContent = "center";
         console.log(text);
     });
-    imgElement.src = "";
+    imgElement.remove();
     insertElementAfter(imgElement, poweredBySesamWrapper);
 };
 

@@ -64,10 +64,12 @@ export const buildPowerOfficeLogo = async (imgElement: HTMLImageElement) => {
     .then((response) => response.text())
     .then((text) => {
       poweredBySesamWrapper.innerHTML = text;
+      poweredBySesamWrapper.style.display = "flex";
+      poweredBySesamWrapper.style.justifyContent = "center";
       console.log(text);
     });
 
-  imgElement.src = "";
+  imgElement.remove();
 
   insertElementAfter(imgElement, poweredBySesamWrapper);
 };
