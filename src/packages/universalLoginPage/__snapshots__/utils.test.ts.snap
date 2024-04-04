@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getBaseSiteId test suite should return default, when siteId not exist 1`] = `""`;
+
+exports[`getBaseSiteId test suite should return poweroffice, when siteId is camel-cased PowerofficeGo 1`] = `"poweroffice"`;
+
+exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 1`] = `"poweroffice"`;
+
+exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 2`] = `"poweroffice"`;
+
+exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego-test 1`] = `"poweroffice"`;
+
+exports[`getBaseSiteId test suite should return tripletex, when siteId is tripletex 1`] = `"tripletex"`;
+
+exports[`getBaseSiteId test suite should return tripletex, when siteId is tripletex-test 1`] = `"tripletex"`;
+
 exports[`utils test suite isInBrandedSites is "hubspot" in the branded list 1`] = `false`;
 
 exports[`utils test suite isInBrandedSites is "powerofficego" in the branded list 1`] = `true`;
