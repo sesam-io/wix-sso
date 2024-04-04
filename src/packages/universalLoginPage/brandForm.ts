@@ -67,7 +67,6 @@ export const buildBrandedHorizontalLogo = async (
       poweredBySesamWrapper.innerHTML = text;
       poweredBySesamWrapper.style.display = "flex";
       poweredBySesamWrapper.style.justifyContent = "center";
-      console.log(text);
     });
 
   insertElementAfter(imgElement, poweredBySesamWrapper);

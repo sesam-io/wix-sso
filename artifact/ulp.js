@@ -159,7 +159,6 @@ if (window.ulpState) {
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
     const brandedSiteId = (0, _utils.getBaseSiteId)(siteId);
-    console.log("\uD83D\uDE80 ~ brandedSiteId:", brandedSiteId);
     if (brandedSiteId) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html`);
     else (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
@@ -252,7 +251,6 @@ const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl)=>{
         poweredBySesamWrapper.innerHTML = text;
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
-        console.log(text);
     });
     insertElementAfter(imgElement, poweredBySesamWrapper);
     imgElement.remove();
