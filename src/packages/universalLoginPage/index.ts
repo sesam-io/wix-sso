@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { getLoggerFn } from "packages/logger/logger";
 import {
   buildBrandedHorizontalLogo,
@@ -33,7 +34,7 @@ if (window.ulpState) {
   if (brandedSiteId) {
     buildBrandedHorizontalLogo(
       promptLogoCenter,
-      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=8da5933eb426`
+      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${uuidv4()}`
     );
   } else {
     addPoweredBySesamImg(promptLogoCenter);

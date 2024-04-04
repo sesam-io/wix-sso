@@ -57,12 +57,15 @@
   },
   "author": "Sesam.io",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
   "devDependencies": {
     "@auth0/auth0-spa-js": "^2.1.2",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
     "@types/jest": "^29.5.6",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint": "^8.52.0",
