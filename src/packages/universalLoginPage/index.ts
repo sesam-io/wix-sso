@@ -8,8 +8,7 @@ import {
   getWixSite,
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
-import { BrandedSiteIds, SiteIds } from "./siteIds";
-import { getBaseSiteId, isInBrandedSites } from "./utils";
+import { getBaseSiteId } from "./utils";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -29,17 +28,15 @@ if (window.ulpState) {
     LOGO_IMG_ID
   ) as HTMLImageElement;
 
-  const isPowerOffice = SiteIds.powerofficego.toLowerCase() === siteId;
+  const brandedSiteId = getBaseSiteId(siteId);
 
-  if (isInBrandedSites(BrandedSiteIds, siteId)) {
-    const baseSiteId = getBaseSiteId(siteId);
-
-    isPowerOffice
-      ? buildBrandedHorizontalLogo(
-          promptLogoCenter,
-          `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${baseSiteId}-logo.html`
-        )
-      : addPoweredBySesamImg(promptLogoCenter);
+  if (!brandedSiteId) {
+    buildBrandedHorizontalLogo(
+      promptLogoCenter,
+      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html`
+    );
+  } else {
+    addPoweredBySesamImg(promptLogoCenter);
   }
 
   brandLogo(promptLogoCenter, site.logoUrl);
