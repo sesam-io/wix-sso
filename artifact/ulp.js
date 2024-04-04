@@ -149,7 +149,6 @@ parcelHelpers.export(exports, "log", ()=>log);
 var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
-var _siteIds = require("./siteIds");
 var _utils = require("./utils");
 const enabled = Boolean(localStorage.getItem("_log_"));
 const log = (0, _logger.getLoggerFn)(enabled, "ULP Flow");
@@ -159,16 +158,14 @@ if (window.ulpState) {
     const site = (0, _brandForm.getWixSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
-    const isPowerOffice = (0, _siteIds.SiteIds).powerofficego.toLowerCase() === siteId;
-    if ((0, _utils.isInBrandedSites)((0, _siteIds.BrandedSiteIds), siteId)) {
-        const baseSiteId = (0, _utils.getBaseSiteId)(siteId);
-        isPowerOffice ? (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${baseSiteId}-logo.html`) : (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    }
+    const brandedSiteId = (0, _utils.getBaseSiteId)(siteId);
+    if (!brandedSiteId) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html`);
+    else (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
-},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./siteIds":"g8ilt","./utils":"epG7m","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
+},{"packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./utils":"epG7m","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"iqOAs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getLoggerFn", ()=>getLoggerFn);
@@ -330,7 +327,22 @@ const WixSites = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"g8ilt":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"epG7m":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "isInBrandedSites", ()=>isInBrandedSites);
+parcelHelpers.export(exports, "getBaseSiteIdFn", ()=>getBaseSiteIdFn);
+parcelHelpers.export(exports, "getBaseSiteId", ()=>getBaseSiteId);
+var _siteIds = require("./siteIds");
+const isInBrandedSites = (siteIds, siteId)=>siteIds.includes(siteId);
+const getBaseSiteIdFn = (siteIds)=>(siteId)=>{
+        if (siteId?.toLowerCase().startsWith(siteIds.tripletex.toLowerCase())) return "tripletex";
+        if (siteId?.toLowerCase().startsWith(siteIds.powerofficego.toLowerCase())) return "poweroffice";
+        return "";
+    };
+const getBaseSiteId = getBaseSiteIdFn((0, _siteIds.SiteIds));
+
+},{"./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"g8ilt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
@@ -353,20 +365,5 @@ const BrandedSiteIds = [
     "powerofficego"
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"epG7m":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "isInBrandedSites", ()=>isInBrandedSites);
-parcelHelpers.export(exports, "getBaseSiteIdFn", ()=>getBaseSiteIdFn);
-parcelHelpers.export(exports, "getBaseSiteId", ()=>getBaseSiteId);
-var _siteIds = require("./siteIds");
-const isInBrandedSites = (siteIds, siteId)=>siteIds.includes(siteId);
-const getBaseSiteIdFn = (siteIds)=>(siteId)=>{
-        if (siteId?.toLowerCase().startsWith(siteIds.tripletex.toLowerCase())) return "tripletex";
-        if (siteId?.toLowerCase().startsWith(siteIds.powerofficego.toLowerCase())) return "poweroffice";
-        return "";
-    };
-const getBaseSiteId = getBaseSiteIdFn((0, _siteIds.SiteIds));
-
-},{"./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
 
