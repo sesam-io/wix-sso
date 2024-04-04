@@ -31,7 +31,7 @@ if (window.ulpState) {
   const brandedSiteId = getBaseSiteId(siteId);
   console.log("🚀 ~ brandedSiteId:", brandedSiteId);
 
-  if (!brandedSiteId) {
+  if (brandedSiteId) {
     buildBrandedHorizontalLogo(
       promptLogoCenter,
       `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html`
