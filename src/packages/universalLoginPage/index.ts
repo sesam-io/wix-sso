@@ -33,7 +33,7 @@ if (window.ulpState) {
   if (brandedSiteId) {
     buildBrandedHorizontalLogo(
       promptLogoCenter,
-      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html`
+      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=8da5933eb426`
     );
   } else {
     addPoweredBySesamImg(promptLogoCenter);
