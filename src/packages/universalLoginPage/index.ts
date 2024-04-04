@@ -29,6 +29,7 @@ if (window.ulpState) {
   ) as HTMLImageElement;
 
   const brandedSiteId = getBaseSiteId(siteId);
+  console.log("🚀 ~ brandedSiteId:", brandedSiteId);
 
   if (!brandedSiteId) {
     buildBrandedHorizontalLogo(
