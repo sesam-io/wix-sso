@@ -160,7 +160,10 @@ if (window.ulpState) {
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
     const isPowerOffice = (0, _siteIds.SiteIds).powerofficego.toLowerCase() === siteId;
-    if ((0, _utils.isInBrandedSites)((0, _siteIds.BrandedSiteIds), siteId)) isPowerOffice ? (0, _brandForm.buildPowerOfficeLogo)(promptLogoCenter) : (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
+    if ((0, _utils.isInBrandedSites)((0, _siteIds.BrandedSiteIds), siteId)) {
+        const baseSiteId = (0, _utils.getBaseSiteId)(siteId);
+        isPowerOffice ? (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${baseSiteId}-logo.html`) : (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
+    }
     (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
@@ -214,7 +217,7 @@ parcelHelpers.export(exports, "brandLogo", ()=>brandLogo);
 parcelHelpers.export(exports, "getBrandTitleFn", ()=>getBrandTitleFn);
 parcelHelpers.export(exports, "insertElementAfter", ()=>insertElementAfter);
 parcelHelpers.export(exports, "addPoweredBySesamImg", ()=>addPoweredBySesamImg);
-parcelHelpers.export(exports, "buildPowerOfficeLogo", ()=>buildPowerOfficeLogo);
+parcelHelpers.export(exports, "buildBrandedHorizontalLogo", ()=>buildBrandedHorizontalLogo);
 var _constants = require("./constants");
 const getWixSite = (siteId)=>{
     const site = (0, _constants.WixSites)[siteId];
@@ -245,9 +248,9 @@ const addPoweredBySesamImg = (imgElement)=>{
     poweredBySesamWrapper.className = "poweredBySesamWrapper";
     insertElementAfter(imgElement, poweredBySesamWrapper);
 };
-const buildPowerOfficeLogo = async (imgElement)=>{
+const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl)=>{
     const poweredBySesamWrapper = document.createElement("div");
-    fetch("https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/poweroffice-logo.html").then((response)=>response.text()).then((text)=>{
+    fetch(htmlLogoUrl).then((response)=>response.text()).then((text)=>{
         poweredBySesamWrapper.innerHTML = text;
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
@@ -354,7 +357,16 @@ const BrandedSiteIds = [
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isInBrandedSites", ()=>isInBrandedSites);
+parcelHelpers.export(exports, "getBaseSiteIdFn", ()=>getBaseSiteIdFn);
+parcelHelpers.export(exports, "getBaseSiteId", ()=>getBaseSiteId);
+var _siteIds = require("./siteIds");
 const isInBrandedSites = (siteIds, siteId)=>siteIds.includes(siteId);
+const getBaseSiteIdFn = (siteIds)=>(siteId)=>{
+        if (siteId?.toLowerCase().startsWith(siteIds.tripletex.toLowerCase())) return "tripletex";
+        if (siteId?.toLowerCase().startsWith(siteIds.powerofficego.toLowerCase())) return "poweroffice";
+        return "";
+    };
+const getBaseSiteId = getBaseSiteIdFn((0, _siteIds.SiteIds));
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
+},{"./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
 
