@@ -261,17 +261,19 @@ const buildPowerOfficeLogo = async (imgElement)=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
+parcelHelpers.export(exports, "CONNECTOR_LOGO_BASE_URL", ()=>CONNECTOR_LOGO_BASE_URL);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "WixSites", ()=>WixSites);
 const SITE_LOGOS_VERSION_KEY = "_v_";
 const LOGO_IMG_ID = "prompt-logo-center";
 const STABLE_VERSION = "v1.0.127-site-logos";
 const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
+const CONNECTOR_LOGO_BASE_URL = "https://raw.githubusercontent.com/sesam-io";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
 const tripletexSite = {
     id: "tripletex",
-    logoUrl: `${BASE_LOGO_URL}/tripletex/tripletex-ulp-header-logo.svg`,
+    logoUrl: `${CONNECTOR_LOGO_BASE_URL}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
     loginSubTitle: "Log in to Tripletex DataSync.",
     signupSubTitle: "Sign up to Tripletex DataSync."
 };
