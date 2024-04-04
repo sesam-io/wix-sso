@@ -55,12 +55,13 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
   insertElementAfter(imgElement, poweredBySesamWrapper);
 };
 
-export const buildPowerOfficeLogo = async (imgElement: HTMLImageElement) => {
+export const buildBrandedHorizontalLogo = async (
+  imgElement: HTMLImageElement,
+  htmlLogoUrl: string
+) => {
   const poweredBySesamWrapper = document.createElement("div");
 
-  fetch(
-    "https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/poweroffice-logo.html"
-  )
+  fetch(htmlLogoUrl)
     .then((response) => response.text())
     .then((text) => {
       poweredBySesamWrapper.innerHTML = text;

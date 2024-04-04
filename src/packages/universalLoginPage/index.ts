@@ -1,6 +1,6 @@
 import { getLoggerFn } from "packages/logger/logger";
 import {
-  buildPowerOfficeLogo,
+  buildBrandedHorizontalLogo,
   addPoweredBySesamImg,
   brandLogo,
   getBrandTitleFn,
@@ -9,7 +9,7 @@ import {
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
 import { BrandedSiteIds, SiteIds } from "./siteIds";
-import { isInBrandedSites } from "./utils";
+import { getBaseSiteId, isInBrandedSites } from "./utils";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -32,8 +32,13 @@ if (window.ulpState) {
   const isPowerOffice = SiteIds.powerofficego.toLowerCase() === siteId;
 
   if (isInBrandedSites(BrandedSiteIds, siteId)) {
+    const baseSiteId = getBaseSiteId(siteId);
+
     isPowerOffice
-      ? buildPowerOfficeLogo(promptLogoCenter)
+      ? buildBrandedHorizontalLogo(
+          promptLogoCenter,
+          `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${baseSiteId}-logo.html`
+        )
       : addPoweredBySesamImg(promptLogoCenter);
   }
 
