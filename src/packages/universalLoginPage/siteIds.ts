@@ -14,5 +14,5 @@ export const BrandedSiteIds = [
   "superoffice-test",
   "tripletex",
   "tripletex-test",
-  "powerofficego",
+  "wave",
 ];

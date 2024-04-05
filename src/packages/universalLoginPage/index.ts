@@ -10,6 +10,7 @@ import {
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
 import { getBaseSiteId } from "./utils";
+import { BrandedSiteIds } from "./siteIds";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -36,7 +37,7 @@ if (window.ulpState) {
       promptLogoCenter,
       `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${uuidv4()}`
     );
-  } else if (siteId === "wave") {
+  } else if (Object.values(BrandedSiteIds).includes(siteId)) {
     brandLogo(promptLogoCenter, site.logoUrl);
   } else {
     addPoweredBySesamImg(promptLogoCenter);

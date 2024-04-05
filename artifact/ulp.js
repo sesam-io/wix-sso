@@ -151,6 +151,7 @@ var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
 var _utils = require("./utils");
+var _siteIds = require("./siteIds");
 const enabled = Boolean(localStorage.getItem("_log_"));
 const log = (0, _logger.getLoggerFn)(enabled, "ULP Flow");
 if (window.ulpState) {
@@ -161,12 +162,12 @@ if (window.ulpState) {
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
     const brandedSiteId = (0, _utils.getBaseSiteId)(siteId);
     if (brandedSiteId) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${(0, _uuid.v4)()}`);
-    else if (siteId === "wave") (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
+    else if (Object.values((0, _siteIds.BrandedSiteIds)).includes(siteId)) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     else (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
-},{"uuid":"kQDP0","packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./utils":"epG7m","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"kQDP0":[function(require,module,exports) {
+},{"uuid":"kQDP0","packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./utils":"epG7m","./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"kQDP0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "v1", ()=>(0, _v1JsDefault.default));
@@ -485,7 +486,7 @@ const BrandedSiteIds = [
     "superoffice-test",
     "tripletex",
     "tripletex-test",
-    "powerofficego"
+    "wave"
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
