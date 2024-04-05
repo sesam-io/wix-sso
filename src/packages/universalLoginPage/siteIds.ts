@@ -9,10 +9,4 @@ export const SiteIds = {
   wave: "Wave",
 } as const;
 
-export const BrandedSiteIds = [
-  "superoffice",
-  "superoffice-test",
-  "tripletex",
-  "tripletex-test",
-  "wave",
-];
+export const BrandedSiteIds = ["superoffice", "superoffice-test", "wave"];

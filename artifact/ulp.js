@@ -484,8 +484,6 @@ const SiteIds = {
 const BrandedSiteIds = [
     "superoffice",
     "superoffice-test",
-    "tripletex",
-    "tripletex-test",
     "wave"
 ];
 
