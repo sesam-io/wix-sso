@@ -161,8 +161,8 @@ if (window.ulpState) {
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
     const brandedSiteId = (0, _utils.getBaseSiteId)(siteId);
     if (brandedSiteId) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${(0, _uuid.v4)()}`);
+    else if (siteId === "wave") (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     else (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
 }
 
