@@ -36,11 +36,11 @@ if (window.ulpState) {
       promptLogoCenter,
       `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${uuidv4()}`
     );
+  } else if (siteId === "wave") {
+    brandLogo(promptLogoCenter, site.logoUrl);
   } else {
     addPoweredBySesamImg(promptLogoCenter);
   }
-
-  brandLogo(promptLogoCenter, site.logoUrl);
 
   brandTitle(
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
