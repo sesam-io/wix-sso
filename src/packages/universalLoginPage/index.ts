@@ -39,6 +39,10 @@ if (window.ulpState) {
     );
   } else if (Object.values(BrandedSiteIds).includes(siteId)) {
     brandLogo(promptLogoCenter, site.logoUrl);
+
+    if (["superoffice", "superoffice-test"].includes(siteId)) {
+      addPoweredBySesamImg(promptLogoCenter);
+    }
   } else {
     addPoweredBySesamImg(promptLogoCenter);
   }
