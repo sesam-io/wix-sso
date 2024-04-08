@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`utils test suite getBaseSiteId test suite should return default, when siteId not exist 1`] = `""`;
-
-exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is camel-cased PowerofficeGo 1`] = `"poweroffice"`;
-
-exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 1`] = `"poweroffice"`;
-
-exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 2`] = `"poweroffice"`;
-
-exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego-test 1`] = `"poweroffice"`;
-
-exports[`utils test suite getBaseSiteId test suite should return tripletex, when siteId is tripletex 1`] = `"tripletex"`;
-
-exports[`utils test suite getBaseSiteId test suite should return tripletex, when siteId is tripletex-test 1`] = `"tripletex"`;
-
 exports[`utils test suite getWixSite test suite should return SuperOffice site 1`] = `
 {
   "baseId": "superoffice",
   "displayPoweredBySesam": true,
   "id": "superoffice",
+  "isBrandLogo": true,
+  "loginSubTitle": "Log in to SuperOffice DataSync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
+  "name": "",
+  "signupSubTitle": "Sign up to SuperOffice DataSync.",
+  "titleClassName": "superofficeLogInTitle",
+}
+`;
+
+exports[`utils test suite getWixSite test suite should return SuperOffice-test site 1`] = `
+{
+  "baseId": "superoffice",
+  "displayPoweredBySesam": true,
+  "id": "superoffice-test",
   "isBrandLogo": true,
   "loginSubTitle": "Log in to SuperOffice DataSync.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
@@ -48,6 +48,32 @@ exports[`utils test suite getWixSite test suite should return default site 1`] =
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
   "name": "Sesam",
   "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
+
+exports[`utils test suite getWixSite test suite should return powerofficego site 1`] = `
+{
+  "baseId": "powerofficego",
+  "displayPoweredBySesam": false,
+  "html": "powerofficego-logo.html",
+  "id": "powerofficego",
+  "loginSubTitle": "Log in to PowerOffice DataSync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/poweroffice/poweroffice-new-logo.png",
+  "name": "PowerOffice",
+  "signupSubTitle": "Sign up to PowerOffice DataSync.",
+}
+`;
+
+exports[`utils test suite getWixSite test suite should return powerofficego-test site 1`] = `
+{
+  "baseId": "powerofficego",
+  "displayPoweredBySesam": false,
+  "html": "powerofficego-logo.html",
+  "id": "powerofficego-test",
+  "loginSubTitle": "Log in to PowerOffice DataSync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/poweroffice/poweroffice-new-logo.png",
+  "name": "PowerOffice",
+  "signupSubTitle": "Sign up to PowerOffice DataSync.",
 }
 `;
 
