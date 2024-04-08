@@ -5,11 +5,9 @@ import {
   addPoweredBySesamImg,
   brandLogo,
   getBrandTitleFn,
-  getDefaultPageTitle,
-  getWixSite,
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
-import { getBaseSiteId } from "./utils";
+import { getBaseSiteId, getDefaultPageTitle, getWixSite } from "./utils";
 import { BrandedSiteIds } from "./siteIds";
 
 const enabled = Boolean(localStorage.getItem("_log_"));

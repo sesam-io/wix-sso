@@ -1,12 +1,15 @@
+// import { SiteIds } from "./siteIds";
 import { SiteIds } from "./siteIds";
+
+export type ValueOf<T> = T[keyof T];
 
 export type FormType = "login" | "logout" | "signup";
 
-export type SiteId = keyof typeof SiteIds;
+export type SiteId = ValueOf<typeof SiteIds>;
 
 export type Site = {
-  id: string;
-  baseId?: string;
+  id: SiteId;
+  baseId?: SiteId;
   name: string;
   logoUrl?: string;
   loginSubTitle: string;
@@ -15,8 +18,4 @@ export type Site = {
   html?: string;
 };
 
-type SiteIdKey = keyof typeof SiteIds;
-
-export type Sites = {
-  [key in SiteIdKey]: Site;
-};
+export type Sites = Site[];

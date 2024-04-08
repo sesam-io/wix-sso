@@ -5,6 +5,14 @@ import {
 } from "./constants";
 import { Site, Sites } from "./types";
 
+export const SesamDefaultSite: Site = {
+  id: "sesam",
+  name: "Sesam",
+  logoUrl: DEFAULT_LOGO_URL,
+  loginSubTitle: "Log in to Sesam Talk.",
+  signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
+};
+
 const tripletexSite: Site = {
   id: "tripletex",
   baseId: "tripletex",
@@ -35,29 +43,23 @@ const powerofficego: Site = {
   html: "html/powerofficego-logo.html",
 } as const;
 
-export const WixSites: Sites = {
-  hubspot: {
+export const WixSites: Sites = [
+  {
     id: "hubspot",
     name: "Hubspot",
     logoUrl: `${BASE_LOGO_URL}/hubspot/making-hubspot-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making HubSpot Talk.",
     signupSubTitle: "Sign up to Making HubSpot Talk.",
   },
-  powerofficego: {
+  {
     ...powerofficego,
   },
-  "powerofficego-test": {
+  {
     ...powerofficego,
     id: "powerofficego-test",
   },
-  sesam: {
-    id: "sesam",
-    name: "Sesam",
-    logoUrl: DEFAULT_LOGO_URL,
-    loginSubTitle: "Log in to Sesam Talk.",
-    signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
-  },
-  superoffice: {
+  SesamDefaultSite,
+  {
     id: "superoffice",
     baseId: "superoffice",
     name: "Superoffice",
@@ -66,20 +68,20 @@ export const WixSites: Sites = {
     signupSubTitle: "Sign up to SuperOffice DataSync.",
     titleClassName: "superofficeLogInTitle",
   },
-  "superoffice-test": {
+  {
     ...superofficeSite,
     id: "superoffice-test",
   },
-  tripletex: tripletexSite,
-  "tripletex-test": {
+  tripletexSite,
+  {
     ...tripletexSite,
     id: "tripletex-test",
   },
-  wave: {
+  {
     id: "wave",
     name: "Wave",
     logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making Wave Talk.",
     signupSubTitle: "Sign up to Making Wave Talk.",
   },
-} as const;
+];

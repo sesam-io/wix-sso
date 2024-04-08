@@ -1,21 +1,4 @@
 import { BASE_LOGO_URL } from "./constants";
-import { WixSites } from "./sites";
-import { FormType, SiteId } from "./types";
-
-export const getWixSite = (siteId: SiteId) => {
-  const site = WixSites[siteId];
-
-  if (!site) {
-    return WixSites.sesam;
-  }
-
-  return site;
-};
-
-export const getDefaultPageTitle = (formType: FormType) =>
-  formType === "login"
-    ? WixSites.sesam.loginSubTitle
-    : WixSites.sesam.signupSubTitle;
 
 export const brandLogo = (imgElement: HTMLImageElement, logoUrl?: string) => {
   if (logoUrl) {

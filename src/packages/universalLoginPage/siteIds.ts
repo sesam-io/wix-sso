@@ -1,13 +1,13 @@
 export const SiteIds = {
-  hubspot: "HubSpot",
-  powerofficego: "PowerOfficeGo",
+  hubspot: "hubspot",
+  powerofficego: "powerofficego",
   "powerofficego-test": "powerofficego-test",
-  sesam: "Sesam",
-  superoffice: "SuperOffice",
-  "superoffice-test": "SuperOffice test",
-  tripletex: "Tripletex",
-  "tripletex-test": "Tripletex test",
-  wave: "Wave",
+  sesam: "sesam",
+  superoffice: "superoffice",
+  "superoffice-test": "superoffice-test",
+  tripletex: "tripletex",
+  "tripletex-test": "tripletex-test",
+  wave: "wave",
 } as const;
 
 export const BrandedSiteIds = ["superoffice", "superoffice-test", "wave"];
