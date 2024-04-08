@@ -1,4 +1,4 @@
-import { SiteIds } from "./siteIds";
+import { SiteIds } from "./constants";
 import { SesamDefaultSite, WixSites } from "./sites";
 import { FormType, SiteId } from "./types";
 

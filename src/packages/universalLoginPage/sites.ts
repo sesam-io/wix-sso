@@ -11,6 +11,7 @@ export const SesamDefaultSite: Site = {
   logoUrl: DEFAULT_LOGO_URL,
   loginSubTitle: "Log in to Sesam Talk.",
   signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
+  displayPoweredBySesam: false,
 };
 
 const tripletexSite: Site = {
@@ -20,7 +21,8 @@ const tripletexSite: Site = {
   logoUrl: `${CONNECTOR_LOGO_BASE_URL}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
   loginSubTitle: "Log in to Tripletex DataSync.",
   signupSubTitle: "Sign up to Tripletex DataSync.",
-  html: "html/tripletex-logo.html",
+  html: "tripletex-logo.html",
+  displayPoweredBySesam: false,
 } as const;
 
 const superofficeSite: Site = {
@@ -31,6 +33,8 @@ const superofficeSite: Site = {
   loginSubTitle: "Log in to SuperOffice DataSync.",
   signupSubTitle: "Sign up to SuperOffice DataSync.",
   titleClassName: "superofficeLogInTitle",
+  displayPoweredBySesam: true,
+  isBrandLogo: true,
 } as const;
 
 const powerofficego: Site = {
@@ -40,7 +44,8 @@ const powerofficego: Site = {
   logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-new-logo.png`,
   loginSubTitle: "Log in to PowerOffice DataSync.",
   signupSubTitle: "Sign up to PowerOffice DataSync.",
-  html: "html/powerofficego-logo.html",
+  html: "powerofficego-logo.html",
+  displayPoweredBySesam: false,
 } as const;
 
 export const WixSites: Sites = [
@@ -50,6 +55,7 @@ export const WixSites: Sites = [
     logoUrl: `${BASE_LOGO_URL}/hubspot/making-hubspot-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making HubSpot Talk.",
     signupSubTitle: "Sign up to Making HubSpot Talk.",
+    displayPoweredBySesam: true,
   },
   {
     ...powerofficego,
@@ -59,15 +65,7 @@ export const WixSites: Sites = [
     id: "powerofficego-test",
   },
   SesamDefaultSite,
-  {
-    id: "superoffice",
-    baseId: "superoffice",
-    name: "Superoffice",
-    logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
-    loginSubTitle: "Log in to SuperOffice DataSync.",
-    signupSubTitle: "Sign up to SuperOffice DataSync.",
-    titleClassName: "superofficeLogInTitle",
-  },
+  superofficeSite,
   {
     ...superofficeSite,
     id: "superoffice-test",
@@ -83,5 +81,7 @@ export const WixSites: Sites = [
     logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
     loginSubTitle: "Log in to Making Wave Talk.",
     signupSubTitle: "Sign up to Making Wave Talk.",
+    displayPoweredBySesam: false,
+    isBrandLogo: true,
   },
 ];

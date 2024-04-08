@@ -1,5 +1,5 @@
 // import { SiteIds } from "./siteIds";
-import { SiteIds } from "./siteIds";
+import { SiteIds } from "./constants";
 
 export type ValueOf<T> = T[keyof T];
 
@@ -16,6 +16,8 @@ export type Site = {
   signupSubTitle: string;
   titleClassName?: string;
   html?: string;
+  isBrandLogo?: boolean;
+  displayPoweredBySesam: boolean;
 };
 
 export type Sites = Site[];
