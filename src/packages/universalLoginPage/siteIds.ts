@@ -1,6 +1,7 @@
 export const SiteIds = {
   hubspot: "HubSpot",
   powerofficego: "PowerOfficeGo",
+  "powerofficego-test": "powerofficego-test",
   sesam: "Sesam",
   superoffice: "SuperOffice",
   "superoffice-test": "SuperOffice test",

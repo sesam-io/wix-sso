@@ -2,6 +2,7 @@
 
 exports[`getWixSite test suite should return SuperOffice site 1`] = `
 {
+  "baseId": "superoffice",
   "id": "superoffice",
   "loginSubTitle": "Log in to SuperOffice DataSync.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",

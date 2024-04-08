@@ -16,7 +16,7 @@ exports[`getBaseSiteId test suite should return tripletex, when siteId is triple
 
 exports[`utils test suite isInBrandedSites is "hubspot" in the branded list 1`] = `false`;
 
-exports[`utils test suite isInBrandedSites is "powerofficego" in the branded list 1`] = `true`;
+exports[`utils test suite isInBrandedSites is "powerofficego" in the branded list 1`] = `false`;
 
 exports[`utils test suite isInBrandedSites is "sesam" in the branded list 1`] = `false`;
 
@@ -24,8 +24,8 @@ exports[`utils test suite isInBrandedSites is "superoffice" in the branded list 
 
 exports[`utils test suite isInBrandedSites is "superoffice-test" in the branded list 1`] = `true`;
 
-exports[`utils test suite isInBrandedSites is "tripletex" in the branded list 1`] = `true`;
+exports[`utils test suite isInBrandedSites is "tripletex" in the branded list 1`] = `false`;
 
-exports[`utils test suite isInBrandedSites is "tripletex-test" in the branded list 1`] = `true`;
+exports[`utils test suite isInBrandedSites is "tripletex-test" in the branded list 1`] = `false`;
 
-exports[`utils test suite isInBrandedSites is "wave" in the branded list 1`] = `false`;
+exports[`utils test suite isInBrandedSites is "wave" in the branded list 1`] = `true`;

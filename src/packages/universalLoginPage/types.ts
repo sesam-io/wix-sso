@@ -7,10 +7,12 @@ export type SiteId = keyof typeof SiteIds;
 export type Site = {
   id: string;
   baseId?: string;
+  name: string;
   logoUrl?: string;
   loginSubTitle: string;
   signupSubTitle: string;
   titleClassName?: string;
+  html?: string;
 };
 
 type SiteIdKey = keyof typeof SiteIds;
