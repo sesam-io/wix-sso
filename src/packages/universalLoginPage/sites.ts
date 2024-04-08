@@ -11,8 +11,8 @@ export const SesamDefaultSite: Site = {
   logoUrl: DEFAULT_LOGO_URL,
   loginSubTitle: "Log in to Sesam Talk.",
   signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
-  displayPoweredBySesam: false,
-};
+  displayPoweredBySesam: true,
+} as const;
 
 const tripletexSite: Site = {
   id: "tripletex",
@@ -48,6 +48,16 @@ const powerofficego: Site = {
   displayPoweredBySesam: false,
 } as const;
 
+export const Wave: Site = {
+  id: "wave",
+  name: "Wave",
+  logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
+  loginSubTitle: "Log in to Making Wave Talk.",
+  signupSubTitle: "Sign up to Making Wave Talk.",
+  displayPoweredBySesam: false,
+  isBrandLogo: true,
+} as const;
+
 export const WixSites: Sites = [
   {
     id: "hubspot",
@@ -75,13 +85,5 @@ export const WixSites: Sites = [
     ...tripletexSite,
     id: "tripletex-test",
   },
-  {
-    id: "wave",
-    name: "Wave",
-    logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
-    loginSubTitle: "Log in to Making Wave Talk.",
-    signupSubTitle: "Sign up to Making Wave Talk.",
-    displayPoweredBySesam: false,
-    isBrandLogo: true,
-  },
+  Wave,
 ];

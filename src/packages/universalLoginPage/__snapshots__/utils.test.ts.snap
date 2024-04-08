@@ -1,31 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getBaseSiteId test suite should return default, when siteId not exist 1`] = `""`;
+exports[`utils test suite getBaseSiteId test suite should return default, when siteId not exist 1`] = `""`;
 
-exports[`getBaseSiteId test suite should return poweroffice, when siteId is camel-cased PowerofficeGo 1`] = `"poweroffice"`;
+exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is camel-cased PowerofficeGo 1`] = `"poweroffice"`;
 
-exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 1`] = `"poweroffice"`;
+exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 1`] = `"poweroffice"`;
 
-exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 2`] = `"poweroffice"`;
+exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego 2`] = `"poweroffice"`;
 
-exports[`getBaseSiteId test suite should return poweroffice, when siteId is powerofficego-test 1`] = `"poweroffice"`;
+exports[`utils test suite getBaseSiteId test suite should return poweroffice, when siteId is powerofficego-test 1`] = `"poweroffice"`;
 
-exports[`getBaseSiteId test suite should return tripletex, when siteId is tripletex 1`] = `"tripletex"`;
+exports[`utils test suite getBaseSiteId test suite should return tripletex, when siteId is tripletex 1`] = `"tripletex"`;
 
-exports[`getBaseSiteId test suite should return tripletex, when siteId is tripletex-test 1`] = `"tripletex"`;
+exports[`utils test suite getBaseSiteId test suite should return tripletex, when siteId is tripletex-test 1`] = `"tripletex"`;
 
-exports[`utils test suite isInBrandedSites is "hubspot" in the branded list 1`] = `false`;
+exports[`utils test suite getWixSite test suite should return SuperOffice site 1`] = `
+{
+  "baseId": "superoffice",
+  "displayPoweredBySesam": true,
+  "id": "superoffice",
+  "isBrandLogo": true,
+  "loginSubTitle": "Log in to SuperOffice DataSync.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
+  "name": "",
+  "signupSubTitle": "Sign up to SuperOffice DataSync.",
+  "titleClassName": "superofficeLogInTitle",
+}
+`;
 
-exports[`utils test suite isInBrandedSites is "powerofficego" in the branded list 1`] = `false`;
+exports[`utils test suite getWixSite test suite should return Wave site 1`] = `
+{
+  "displayPoweredBySesam": false,
+  "id": "wave",
+  "isBrandLogo": true,
+  "loginSubTitle": "Log in to Making Wave Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/wave/making-wave-talk-logo-centered.svg",
+  "name": "Wave",
+  "signupSubTitle": "Sign up to Making Wave Talk.",
+}
+`;
 
-exports[`utils test suite isInBrandedSites is "sesam" in the branded list 1`] = `false`;
+exports[`utils test suite getWixSite test suite should return default site 1`] = `
+{
+  "displayPoweredBySesam": true,
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
+  "name": "Sesam",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
 
-exports[`utils test suite isInBrandedSites is "superoffice" in the branded list 1`] = `true`;
-
-exports[`utils test suite isInBrandedSites is "superoffice-test" in the branded list 1`] = `true`;
-
-exports[`utils test suite isInBrandedSites is "tripletex" in the branded list 1`] = `false`;
-
-exports[`utils test suite isInBrandedSites is "tripletex-test" in the branded list 1`] = `false`;
-
-exports[`utils test suite isInBrandedSites is "wave" in the branded list 1`] = `true`;
+exports[`utils test suite getWixSite test suite should return sesam site 1`] = `
+{
+  "displayPoweredBySesam": true,
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
+  "name": "Sesam",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+}
+`;
