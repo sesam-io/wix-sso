@@ -5,21 +5,23 @@ import {
   addPoweredBySesamImg,
   brandLogo,
   getBrandTitleFn,
-  getDefaultPageTitle,
-  getWixSite,
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
-import { getBaseSiteId } from "./utils";
-import { BrandedSiteIds } from "./siteIds";
+import { getDefaultPageTitle, getSite } from "./utils";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
 
-if (window.ulpState) {
+const run = () => {
+  if (!window.ulpState) {
+    log("no site id found!", window.ulpState);
+    return;
+  }
+
   const { siteId, formType } = window.ulpState;
   log("ulpState", window.ulpState);
 
-  const site = getWixSite(siteId);
+  const site = getSite(siteId);
 
   const brandTitle = getBrandTitleFn(
     document.getElementsByTagName("p") ?? {},
@@ -30,20 +32,20 @@ if (window.ulpState) {
     LOGO_IMG_ID
   ) as HTMLImageElement;
 
-  const brandedSiteId = getBaseSiteId(siteId);
-
-  if (brandedSiteId) {
+  if (site.html) {
     buildBrandedHorizontalLogo(
       promptLogoCenter,
-      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${uuidv4()}`
+      `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/html/${
+        site.html
+      }?v=${uuidv4()}`
     );
-  } else if (Object.values(BrandedSiteIds).includes(siteId)) {
-    brandLogo(promptLogoCenter, site.logoUrl);
+  }
 
-    if (["superoffice", "superoffice-test"].includes(siteId)) {
-      addPoweredBySesamImg(promptLogoCenter);
-    }
-  } else {
+  if (site.isBrandLogo) {
+    brandLogo(promptLogoCenter, site.logoUrl);
+  }
+
+  if (site.displayPoweredBySesam) {
     addPoweredBySesamImg(promptLogoCenter);
   }
 
@@ -51,4 +53,6 @@ if (window.ulpState) {
     formType === "login" ? site.loginSubTitle : site.signupSubTitle,
     site.titleClassName
   );
-}
+};
+
+run();
