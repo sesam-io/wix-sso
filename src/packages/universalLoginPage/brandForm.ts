@@ -1,4 +1,5 @@
-import { BASE_LOGO_URL, WixSites } from "./constants";
+import { BASE_LOGO_URL } from "./constants";
+import { WixSites } from "./sites";
 import { FormType, SiteId } from "./types";
 
 export const getWixSite = (siteId: SiteId) => {

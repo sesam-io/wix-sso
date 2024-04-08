@@ -3,7 +3,7 @@
  */
 
 import { getBrandTitleFn, getWixSite, getDefaultPageTitle } from "./brandForm";
-import { WixSites } from "./constants";
+import { WixSites } from "./sites";
 import { SiteId } from "./types";
 
 describe("getWixSite test suite", () => {
