@@ -151,28 +151,26 @@ var _logger = require("packages/logger/logger");
 var _brandForm = require("./brandForm");
 var _constants = require("./constants");
 var _utils = require("./utils");
-var _siteIds = require("./siteIds");
 const enabled = Boolean(localStorage.getItem("_log_"));
 const log = (0, _logger.getLoggerFn)(enabled, "ULP Flow");
-if (window.ulpState) {
+const run = ()=>{
+    if (!window.ulpState) {
+        log("no site id found!", window.ulpState);
+        return;
+    }
     const { siteId, formType } = window.ulpState;
     log("ulpState", window.ulpState);
-    const site = (0, _brandForm.getWixSite)(siteId);
-    const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _brandForm.getDefaultPageTitle)(formType));
+    const site = (0, _utils.getSite)(siteId);
+    const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _utils.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
-    const brandedSiteId = (0, _utils.getBaseSiteId)(siteId);
-    if (brandedSiteId) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/${brandedSiteId}-logo.html?v=${(0, _uuid.v4)()}`);
-    else if (Object.values((0, _siteIds.BrandedSiteIds)).includes(siteId)) {
-        (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
-        if ([
-            "superoffice",
-            "superoffice-test"
-        ].includes(siteId)) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
-    } else (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
+    if (site.html) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/html/${site.html}?v=${(0, _uuid.v4)()}`);
+    if (site.isBrandLogo) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
+    if (site.displayPoweredBySesam) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
-}
+};
+run();
 
-},{"uuid":"kQDP0","packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./utils":"epG7m","./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"kQDP0":[function(require,module,exports) {
+},{"uuid":"kQDP0","packages/logger/logger":"iqOAs","./brandForm":"lqEUo","./constants":"iRfSK","./utils":"epG7m","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"kQDP0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "v1", ()=>(0, _v1JsDefault.default));
@@ -338,20 +336,12 @@ const getLoggerFn = (enabled = false, prefix = "SSO Flow")=>// eslint-disable-ne
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"lqEUo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getWixSite", ()=>getWixSite);
-parcelHelpers.export(exports, "getDefaultPageTitle", ()=>getDefaultPageTitle);
 parcelHelpers.export(exports, "brandLogo", ()=>brandLogo);
 parcelHelpers.export(exports, "getBrandTitleFn", ()=>getBrandTitleFn);
 parcelHelpers.export(exports, "insertElementAfter", ()=>insertElementAfter);
 parcelHelpers.export(exports, "addPoweredBySesamImg", ()=>addPoweredBySesamImg);
 parcelHelpers.export(exports, "buildBrandedHorizontalLogo", ()=>buildBrandedHorizontalLogo);
 var _constants = require("./constants");
-const getWixSite = (siteId)=>{
-    const site = (0, _constants.WixSites)[siteId];
-    if (!site) return (0, _constants.WixSites).sesam;
-    return site;
-};
-const getDefaultPageTitle = (formType)=>formType === "login" ? (0, _constants.WixSites).sesam.loginSubTitle : (0, _constants.WixSites).sesam.signupSubTitle;
 const brandLogo = (imgElement, logoUrl)=>{
     if (logoUrl) imgElement.src = logoUrl;
 };
@@ -392,105 +382,123 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
 parcelHelpers.export(exports, "CONNECTOR_LOGO_BASE_URL", ()=>CONNECTOR_LOGO_BASE_URL);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
-parcelHelpers.export(exports, "WixSites", ()=>WixSites);
-const SITE_LOGOS_VERSION_KEY = "_v_";
+parcelHelpers.export(exports, "DEFAULT_LOGO_URL", ()=>DEFAULT_LOGO_URL);
+parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
 const LOGO_IMG_ID = "prompt-logo-center";
 const STABLE_VERSION = "v1.0.127-site-logos";
-const SITE_LOGOS_RELEASE_VERSION = localStorage.getItem(SITE_LOGOS_VERSION_KEY) ?? STABLE_VERSION;
 const CONNECTOR_LOGO_BASE_URL = "https://raw.githubusercontent.com/sesam-io";
-const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${SITE_LOGOS_RELEASE_VERSION}/src/packages/siteLogos`;
+const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${STABLE_VERSION}/src/packages/siteLogos`;
 const DEFAULT_LOGO_URL = `${BASE_LOGO_URL}/sesam/sesam-talk-rgb.png`;
-const tripletexSite = {
-    id: "tripletex",
-    logoUrl: `${CONNECTOR_LOGO_BASE_URL}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
-    loginSubTitle: "Log in to Tripletex DataSync.",
-    signupSubTitle: "Sign up to Tripletex DataSync."
-};
-const superofficeSite = {
-    id: "superoffice",
-    logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
-    loginSubTitle: "Log in to SuperOffice DataSync.",
-    signupSubTitle: "Sign up to SuperOffice DataSync.",
-    titleClassName: "superofficeLogInTitle"
-};
-const WixSites = {
-    hubspot: {
-        id: "hubspot",
-        logoUrl: `${BASE_LOGO_URL}/hubspot/making-hubspot-talk-logo-centered.svg`,
-        loginSubTitle: "Log in to Making HubSpot Talk.",
-        signupSubTitle: "Sign up to Making HubSpot Talk."
-    },
-    powerofficego: {
-        id: "powerofficego",
-        logoUrl: `${BASE_LOGO_URL}/poweroffice/poweroffice-new-logo.png`,
-        loginSubTitle: "Log in to PowerOffice DataSync.",
-        signupSubTitle: "Sign up to PowerOffice DataSync."
-    },
-    sesam: {
-        id: "sesam",
-        logoUrl: DEFAULT_LOGO_URL,
-        loginSubTitle: "Log in to Sesam Talk.",
-        signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk."
-    },
-    superoffice: {
-        id: "superoffice",
-        logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
-        loginSubTitle: "Log in to SuperOffice DataSync.",
-        signupSubTitle: "Sign up to SuperOffice DataSync.",
-        titleClassName: "superofficeLogInTitle"
-    },
-    "superoffice-test": {
-        ...superofficeSite,
-        id: "superoffice-test"
-    },
-    tripletex: tripletexSite,
-    "tripletex-test": {
-        ...tripletexSite,
-        id: "tripletex-test"
-    },
-    wave: {
-        id: "wave",
-        logoUrl: `${BASE_LOGO_URL}/wave/making-wave-talk-logo-centered.svg`,
-        loginSubTitle: "Log in to Making Wave Talk.",
-        signupSubTitle: "Sign up to Making Wave Talk."
-    }
+const SiteIds = {
+    hubspot: "hubspot",
+    powerofficego: "powerofficego",
+    "powerofficego-test": "powerofficego-test",
+    sesam: "sesam",
+    superoffice: "superoffice",
+    "superoffice-test": "superoffice-test",
+    tripletex: "tripletex",
+    "tripletex-test": "tripletex-test",
+    wave: "wave"
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"epG7m":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "isInBrandedSites", ()=>isInBrandedSites);
-parcelHelpers.export(exports, "getBaseSiteIdFn", ()=>getBaseSiteIdFn);
-parcelHelpers.export(exports, "getBaseSiteId", ()=>getBaseSiteId);
-var _siteIds = require("./siteIds");
-const isInBrandedSites = (siteIds, siteId)=>siteIds.includes(siteId);
-const getBaseSiteIdFn = (siteIds)=>(siteId)=>{
-        if (siteId?.toLowerCase().startsWith(siteIds.tripletex.toLowerCase())) return "tripletex";
-        if (siteId?.toLowerCase().startsWith(siteIds.powerofficego.toLowerCase())) return "poweroffice";
-        return "";
+parcelHelpers.export(exports, "getSite", ()=>getSite);
+parcelHelpers.export(exports, "getDefaultPageTitle", ()=>getDefaultPageTitle);
+var _sites = require("./sites");
+const getWixSiteFn = (wixSites)=>(siteId)=>{
+        const site = wixSites.find((site)=>site.baseId === siteId || site.id === siteId);
+        if (!site) return 0, _sites.SesamDefaultSite;
+        return site;
     };
-const getBaseSiteId = getBaseSiteIdFn((0, _siteIds.SiteIds));
+const getSite = getWixSiteFn((0, _sites.WixSites));
+const getDefaultPageTitle = (formType)=>formType === "login" ? (0, _sites.SesamDefaultSite).loginSubTitle : (0, _sites.SesamDefaultSite).signupSubTitle;
 
-},{"./siteIds":"g8ilt","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"g8ilt":[function(require,module,exports) {
+},{"./sites":"8ObUV","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"8ObUV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
-parcelHelpers.export(exports, "BrandedSiteIds", ()=>BrandedSiteIds);
-const SiteIds = {
-    hubspot: "HubSpot",
-    powerofficego: "PowerOfficeGo",
-    sesam: "Sesam",
-    superoffice: "SuperOffice",
-    "superoffice-test": "SuperOffice test",
-    tripletex: "Tripletex",
-    "tripletex-test": "Tripletex test",
-    wave: "Wave"
+parcelHelpers.export(exports, "SesamDefaultSite", ()=>SesamDefaultSite);
+parcelHelpers.export(exports, "Wave", ()=>Wave);
+parcelHelpers.export(exports, "WixSites", ()=>WixSites);
+var _constants = require("./constants");
+const SesamDefaultSite = {
+    id: "sesam",
+    name: "Sesam",
+    logoUrl: (0, _constants.DEFAULT_LOGO_URL),
+    loginSubTitle: "Log in to Sesam Talk.",
+    signupSubTitle: "Sign up to Sesam Talk to continue to Sesam Talk.",
+    displayPoweredBySesam: true
 };
-const BrandedSiteIds = [
-    "superoffice",
-    "superoffice-test",
-    "wave"
+const tripletexSite = {
+    id: "tripletex",
+    baseId: "tripletex",
+    name: "",
+    logoUrl: `${(0, _constants.CONNECTOR_LOGO_BASE_URL)}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
+    loginSubTitle: "Log in to Tripletex DataSync.",
+    signupSubTitle: "Sign up to Tripletex DataSync.",
+    html: "tripletex-logo.html",
+    displayPoweredBySesam: false
+};
+const superofficeSite = {
+    id: "superoffice",
+    baseId: "superoffice",
+    name: "",
+    logoUrl: `${(0, _constants.BASE_LOGO_URL)}/superoffice/superoffice-ulp-header-logo.svg`,
+    loginSubTitle: "Log in to SuperOffice DataSync.",
+    signupSubTitle: "Sign up to SuperOffice DataSync.",
+    titleClassName: "superofficeLogInTitle",
+    displayPoweredBySesam: true,
+    isBrandLogo: true
+};
+const powerofficego = {
+    id: "powerofficego",
+    baseId: "powerofficego",
+    name: "PowerOffice",
+    logoUrl: `${(0, _constants.BASE_LOGO_URL)}/poweroffice/poweroffice-new-logo.png`,
+    loginSubTitle: "Log in to PowerOffice DataSync.",
+    signupSubTitle: "Sign up to PowerOffice DataSync.",
+    html: "powerofficego-logo.html",
+    displayPoweredBySesam: false
+};
+const Wave = {
+    id: "wave",
+    name: "Wave",
+    logoUrl: `${(0, _constants.BASE_LOGO_URL)}/wave/making-wave-talk-logo-centered.svg`,
+    loginSubTitle: "Log in to Making Wave Talk.",
+    signupSubTitle: "Sign up to Making Wave Talk.",
+    displayPoweredBySesam: false,
+    isBrandLogo: true
+};
+const WixSites = [
+    {
+        id: "hubspot",
+        name: "Hubspot",
+        logoUrl: `${(0, _constants.BASE_LOGO_URL)}/hubspot/making-hubspot-talk-logo-centered.svg`,
+        loginSubTitle: "Log in to Making HubSpot Talk.",
+        signupSubTitle: "Sign up to Making HubSpot Talk.",
+        displayPoweredBySesam: true
+    },
+    {
+        ...powerofficego
+    },
+    {
+        ...powerofficego,
+        id: "powerofficego-test"
+    },
+    SesamDefaultSite,
+    superofficeSite,
+    {
+        ...superofficeSite,
+        id: "superoffice-test"
+    },
+    tripletexSite,
+    {
+        ...tripletexSite,
+        id: "tripletex-test"
+    },
+    Wave
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
+},{"./constants":"iRfSK","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}]},["5e26n"], "5e26n", "parcelRequire7e83")
 
