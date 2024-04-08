@@ -13,7 +13,7 @@ const getWixSiteFn = (wixSites: typeof WixSites) => (siteId: SiteId) => {
   return site;
 };
 
-export const getWixSite = getWixSiteFn(WixSites);
+export const getSite = getWixSiteFn(WixSites);
 
 export const getDefaultPageTitle = (formType: FormType) =>
   formType === "login"

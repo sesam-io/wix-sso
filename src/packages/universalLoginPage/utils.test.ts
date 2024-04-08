@@ -1,35 +1,35 @@
 // import { BrandedSiteIds, SiteIds } from "./siteIds";
 import { SiteId } from "./types";
-import { getWixSite } from "./utils";
+import { getSite } from "./utils";
 
 describe("utils test suite", () => {
-  describe("getWixSite test suite", () => {
+  describe("getSite test suite", () => {
     it("should return default site", () => {
-      expect(getWixSite("none-exist-site" as SiteId)).toMatchSnapshot();
+      expect(getSite("none-exist-site" as SiteId)).toMatchSnapshot();
     });
 
     it("should return sesam site", () => {
-      expect(getWixSite("sesam")).toMatchSnapshot();
+      expect(getSite("sesam")).toMatchSnapshot();
     });
 
     it("should return powerofficego site", () => {
-      expect(getWixSite("powerofficego")).toMatchSnapshot();
+      expect(getSite("powerofficego")).toMatchSnapshot();
     });
 
     it("should return powerofficego-test site", () => {
-      expect(getWixSite("powerofficego-test")).toMatchSnapshot();
+      expect(getSite("powerofficego-test")).toMatchSnapshot();
     });
 
     it("should return Wave site", () => {
-      expect(getWixSite("wave")).toMatchSnapshot();
+      expect(getSite("wave")).toMatchSnapshot();
     });
 
     it("should return SuperOffice site", () => {
-      expect(getWixSite("superoffice")).toMatchSnapshot();
+      expect(getSite("superoffice")).toMatchSnapshot();
     });
 
     it("should return SuperOffice-test site", () => {
-      expect(getWixSite("superoffice-test")).toMatchSnapshot();
+      expect(getSite("superoffice-test")).toMatchSnapshot();
     });
   });
 });

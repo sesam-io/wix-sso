@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`utils test suite getWixSite test suite should return SuperOffice site 1`] = `
+exports[`utils test suite getSite test suite should return SuperOffice site 1`] = `
 {
   "baseId": "superoffice",
   "displayPoweredBySesam": true,
@@ -14,7 +14,7 @@ exports[`utils test suite getWixSite test suite should return SuperOffice site 1
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return SuperOffice-test site 1`] = `
+exports[`utils test suite getSite test suite should return SuperOffice-test site 1`] = `
 {
   "baseId": "superoffice",
   "displayPoweredBySesam": true,
@@ -28,7 +28,7 @@ exports[`utils test suite getWixSite test suite should return SuperOffice-test s
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return Wave site 1`] = `
+exports[`utils test suite getSite test suite should return Wave site 1`] = `
 {
   "displayPoweredBySesam": false,
   "id": "wave",
@@ -40,7 +40,7 @@ exports[`utils test suite getWixSite test suite should return Wave site 1`] = `
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return default site 1`] = `
+exports[`utils test suite getSite test suite should return default site 1`] = `
 {
   "displayPoweredBySesam": true,
   "id": "sesam",
@@ -51,7 +51,7 @@ exports[`utils test suite getWixSite test suite should return default site 1`] =
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return powerofficego site 1`] = `
+exports[`utils test suite getSite test suite should return powerofficego site 1`] = `
 {
   "baseId": "powerofficego",
   "displayPoweredBySesam": false,
@@ -64,7 +64,7 @@ exports[`utils test suite getWixSite test suite should return powerofficego site
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return powerofficego-test site 1`] = `
+exports[`utils test suite getSite test suite should return powerofficego-test site 1`] = `
 {
   "baseId": "powerofficego",
   "displayPoweredBySesam": false,
@@ -77,7 +77,7 @@ exports[`utils test suite getWixSite test suite should return powerofficego-test
 }
 `;
 
-exports[`utils test suite getWixSite test suite should return sesam site 1`] = `
+exports[`utils test suite getSite test suite should return sesam site 1`] = `
 {
   "displayPoweredBySesam": true,
   "id": "sesam",

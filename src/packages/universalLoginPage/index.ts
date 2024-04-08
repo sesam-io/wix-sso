@@ -7,7 +7,7 @@ import {
   getBrandTitleFn,
 } from "./brandForm";
 import { LOGO_IMG_ID } from "./constants";
-import { getDefaultPageTitle, getWixSite } from "./utils";
+import { getDefaultPageTitle, getSite } from "./utils";
 
 const enabled = Boolean(localStorage.getItem("_log_"));
 export const log = getLoggerFn(enabled, "ULP Flow");
@@ -21,7 +21,7 @@ const run = () => {
   const { siteId, formType } = window.ulpState;
   log("ulpState", window.ulpState);
 
-  const site = getWixSite(siteId);
+  const site = getSite(siteId);
 
   const brandTitle = getBrandTitleFn(
     document.getElementsByTagName("p") ?? {},
