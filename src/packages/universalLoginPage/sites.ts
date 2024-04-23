@@ -17,7 +17,7 @@ export const SesamDefaultSite: Site = {
 const tripletexSite: Site = {
   id: "tripletex",
   baseId: "tripletex",
-  name: "",
+  name: "Tripletex",
   logoUrl: `${CONNECTOR_LOGO_BASE_URL}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
   loginSubTitle: "Log in to Tripletex DataSync.",
   signupSubTitle: "Sign up to Tripletex DataSync.",
@@ -28,7 +28,7 @@ const tripletexSite: Site = {
 const superofficeSite: Site = {
   id: "superoffice",
   baseId: "superoffice",
-  name: "",
+  name: "SuperOffice",
   logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
   loginSubTitle: "Log in to SuperOffice DataSync.",
   signupSubTitle: "Sign up to SuperOffice DataSync.",
