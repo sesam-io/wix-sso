@@ -41,7 +41,8 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
 
 export const buildBrandedHorizontalLogo = async (
   imgElement: HTMLImageElement,
-  htmlLogoUrl: string
+  htmlLogoUrl: string,
+  htmlFileName?: string
 ) => {
   const poweredBySesamWrapper = document.createElement("div");
 
@@ -52,7 +53,7 @@ export const buildBrandedHorizontalLogo = async (
       poweredBySesamWrapper.style.display = "flex";
       poweredBySesamWrapper.style.justifyContent = "center";
 
-      if (htmlLogoUrl === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
+      if (htmlFileName === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
         const span = document.querySelector(
           "#spanServiceName"
         ) as HTMLSpanElement;
