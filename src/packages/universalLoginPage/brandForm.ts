@@ -45,12 +45,19 @@ export const buildBrandedHorizontalLogo = async (
 ) => {
   const poweredBySesamWrapper = document.createElement("div");
 
-  fetch(htmlLogoUrl)
+  await fetch(htmlLogoUrl)
     .then((response) => response.text())
     .then((text) => {
       poweredBySesamWrapper.innerHTML = text;
       poweredBySesamWrapper.style.display = "flex";
       poweredBySesamWrapper.style.justifyContent = "center";
+
+      if (htmlLogoUrl === "making-service-talk-logo.html") {
+        const span = document.querySelector(
+          "#spanServiceName"
+        ) as HTMLSpanElement;
+        span ? (span.innerHTML = `Making ${text} `) : undefined;
+      }
     });
 
   insertElementAfter(imgElement, poweredBySesamWrapper);

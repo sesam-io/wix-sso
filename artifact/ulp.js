@@ -367,10 +367,14 @@ const addPoweredBySesamImg = (imgElement)=>{
 };
 const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl)=>{
     const poweredBySesamWrapper = document.createElement("div");
-    fetch(htmlLogoUrl).then((response)=>response.text()).then((text)=>{
+    await fetch(htmlLogoUrl).then((response)=>response.text()).then((text)=>{
         poweredBySesamWrapper.innerHTML = text;
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
+        if (htmlLogoUrl === "making-service-talk-logo.html") {
+            const span = document.querySelector("#spanServiceName");
+            span ? span.innerHTML = `Making ${text} ` : undefined;
+        }
     });
     insertElementAfter(imgElement, poweredBySesamWrapper);
     imgElement.remove();
