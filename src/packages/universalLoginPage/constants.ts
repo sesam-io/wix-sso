@@ -1,4 +1,6 @@
 export const LOGO_IMG_ID = "prompt-logo-center";
+export const MAKING_SERVICE_TALK_HTML_TEMPLATE =
+  "making-service-talk-logo.html";
 
 const STABLE_VERSION = "v1.0.127-site-logos";
 

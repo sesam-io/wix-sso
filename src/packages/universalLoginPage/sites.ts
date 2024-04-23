@@ -2,6 +2,7 @@ import {
   BASE_LOGO_URL,
   CONNECTOR_LOGO_BASE_URL,
   DEFAULT_LOGO_URL,
+  MAKING_SERVICE_TALK_HTML_TEMPLATE,
 } from "./constants";
 import { Site, Sites } from "./types";
 
@@ -34,7 +35,7 @@ const superofficeSite: Site = {
   signupSubTitle: "Sign up to SuperOffice DataSync.",
   titleClassName: "superofficeLogInTitle",
   displayPoweredBySesam: false,
-  html: "making-service-talk-logo.html",
+  html: MAKING_SERVICE_TALK_HTML_TEMPLATE,
   isBrandLogo: false,
 } as const;
 

@@ -371,7 +371,7 @@ const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl)=>{
         poweredBySesamWrapper.innerHTML = text;
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
-        if (htmlLogoUrl === "making-service-talk-logo.html") {
+        if (htmlLogoUrl === (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE)) {
             const span = document.querySelector("#spanServiceName");
             span ? span.innerHTML = `Making ${text} ` : undefined;
         }
@@ -384,11 +384,13 @@ const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl)=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_IMG_ID", ()=>LOGO_IMG_ID);
+parcelHelpers.export(exports, "MAKING_SERVICE_TALK_HTML_TEMPLATE", ()=>MAKING_SERVICE_TALK_HTML_TEMPLATE);
 parcelHelpers.export(exports, "CONNECTOR_LOGO_BASE_URL", ()=>CONNECTOR_LOGO_BASE_URL);
 parcelHelpers.export(exports, "BASE_LOGO_URL", ()=>BASE_LOGO_URL);
 parcelHelpers.export(exports, "DEFAULT_LOGO_URL", ()=>DEFAULT_LOGO_URL);
 parcelHelpers.export(exports, "SiteIds", ()=>SiteIds);
 const LOGO_IMG_ID = "prompt-logo-center";
+const MAKING_SERVICE_TALK_HTML_TEMPLATE = "making-service-talk-logo.html";
 const STABLE_VERSION = "v1.0.127-site-logos";
 const CONNECTOR_LOGO_BASE_URL = "https://raw.githubusercontent.com/sesam-io";
 const BASE_LOGO_URL = `https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@${STABLE_VERSION}/src/packages/siteLogos`;
@@ -453,7 +455,7 @@ const superofficeSite = {
     signupSubTitle: "Sign up to SuperOffice DataSync.",
     titleClassName: "superofficeLogInTitle",
     displayPoweredBySesam: false,
-    html: "making-service-talk-logo.html",
+    html: (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE),
     isBrandLogo: false
 };
 const powerofficego = {

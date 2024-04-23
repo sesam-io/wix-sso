@@ -1,4 +1,4 @@
-import { BASE_LOGO_URL } from "./constants";
+import { BASE_LOGO_URL, MAKING_SERVICE_TALK_HTML_TEMPLATE } from "./constants";
 
 export const brandLogo = (imgElement: HTMLImageElement, logoUrl?: string) => {
   if (logoUrl) {
@@ -52,7 +52,7 @@ export const buildBrandedHorizontalLogo = async (
       poweredBySesamWrapper.style.display = "flex";
       poweredBySesamWrapper.style.justifyContent = "center";
 
-      if (htmlLogoUrl === "making-service-talk-logo.html") {
+      if (htmlLogoUrl === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
         const span = document.querySelector(
           "#spanServiceName"
         ) as HTMLSpanElement;
