@@ -485,7 +485,9 @@ const WixSites = [
         logoUrl: `${(0, _constants.BASE_LOGO_URL)}/hubspot/making-hubspot-talk-logo-centered.svg`,
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk.",
-        displayPoweredBySesam: true
+        displayPoweredBySesam: false,
+        html: (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE),
+        isBrandLogo: false
     },
     {
         ...powerofficego
