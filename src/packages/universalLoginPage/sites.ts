@@ -34,7 +34,6 @@ const superofficeSite: Site = {
   logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
   loginSubTitle: "Log in to Making SuperOffice Talk.",
   signupSubTitle: "Sign up Making to SuperOffice Talk.",
-  titleClassName: "superofficeLogInTitle",
   displayPoweredBySesam: false,
   html: MAKING_SERVICE_TALK_HTML_TEMPLATE,
   isBrandLogo: false,
