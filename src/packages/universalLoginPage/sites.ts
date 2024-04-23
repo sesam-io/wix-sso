@@ -22,8 +22,9 @@ const tripletexSite: Site = {
   logoUrl: `${CONNECTOR_LOGO_BASE_URL}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
   loginSubTitle: "Log in to Tripletex DataSync.",
   signupSubTitle: "Sign up to Tripletex DataSync.",
-  html: "tripletex-logo.html",
   displayPoweredBySesam: false,
+  html: MAKING_SERVICE_TALK_HTML_TEMPLATE,
+  isBrandLogo: false,
 } as const;
 
 const superofficeSite: Site = {
