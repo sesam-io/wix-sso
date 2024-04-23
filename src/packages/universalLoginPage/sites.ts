@@ -33,8 +33,9 @@ const superofficeSite: Site = {
   loginSubTitle: "Log in to SuperOffice DataSync.",
   signupSubTitle: "Sign up to SuperOffice DataSync.",
   titleClassName: "superofficeLogInTitle",
-  displayPoweredBySesam: true,
-  isBrandLogo: true,
+  displayPoweredBySesam: false,
+  html: "making-service-talk-logo.html",
+  isBrandLogo: false,
 } as const;
 
 const powerofficego: Site = {
