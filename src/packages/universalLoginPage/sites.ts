@@ -57,7 +57,8 @@ export const Wave: Site = {
   loginSubTitle: "Log in to Making Wave Talk.",
   signupSubTitle: "Sign up to Making Wave Talk.",
   displayPoweredBySesam: false,
-  isBrandLogo: true,
+  html: MAKING_SERVICE_TALK_HTML_TEMPLATE,
+  isBrandLogo: false,
 } as const;
 
 export const WixSites: Sites = [
