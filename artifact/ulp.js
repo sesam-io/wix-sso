@@ -372,7 +372,7 @@ const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl, htmlFileName)
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
         if (htmlFileName === (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE)) {
-            const span = document.querySelector("#spanServiceName");
+            const span = document.getElementById("spanServiceName");
             span ? span.innerHTML = `Making ${text} ` : undefined;
         }
     });

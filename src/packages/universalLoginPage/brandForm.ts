@@ -54,8 +54,8 @@ export const buildBrandedHorizontalLogo = async (
       poweredBySesamWrapper.style.justifyContent = "center";
 
       if (htmlFileName === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
-        const span = document.querySelector(
-          "#spanServiceName"
+        const span = document.getElementById(
+          "spanServiceName"
         ) as HTMLSpanElement;
         span ? (span.innerHTML = `Making ${text} `) : undefined;
       }
