@@ -433,7 +433,7 @@ const SesamDefaultSite = {
 const tripletexSite = {
     id: "tripletex",
     baseId: "tripletex",
-    name: "",
+    name: "Tripletex",
     logoUrl: `${(0, _constants.CONNECTOR_LOGO_BASE_URL)}/tripletex-connector/main/assets/tripletex-logo-horizontal-complete.svg`,
     loginSubTitle: "Log in to Tripletex DataSync.",
     signupSubTitle: "Sign up to Tripletex DataSync.",
@@ -443,7 +443,7 @@ const tripletexSite = {
 const superofficeSite = {
     id: "superoffice",
     baseId: "superoffice",
-    name: "",
+    name: "SuperOffice",
     logoUrl: `${(0, _constants.BASE_LOGO_URL)}/superoffice/superoffice-ulp-header-logo.svg`,
     loginSubTitle: "Log in to SuperOffice DataSync.",
     signupSubTitle: "Sign up to SuperOffice DataSync.",
