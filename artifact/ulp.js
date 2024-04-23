@@ -481,7 +481,7 @@ const Wave = {
 const WixSites = [
     {
         id: "hubspot",
-        name: "Hubspot",
+        name: "HubSpot",
         logoUrl: `${(0, _constants.BASE_LOGO_URL)}/hubspot/making-hubspot-talk-logo-centered.svg`,
         loginSubTitle: "Log in to Making HubSpot Talk.",
         signupSubTitle: "Sign up to Making HubSpot Talk.",
