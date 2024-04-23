@@ -440,17 +440,6 @@ const tripletexSite = {
     html: "tripletex-logo.html",
     displayPoweredBySesam: false
 };
-const superofficeSite = {
-    id: "superoffice",
-    baseId: "superoffice",
-    name: "",
-    logoUrl: `${(0, _constants.BASE_LOGO_URL)}/superoffice/superoffice-ulp-header-logo.svg`,
-    loginSubTitle: "Log in to SuperOffice DataSync.",
-    signupSubTitle: "Sign up to SuperOffice DataSync.",
-    titleClassName: "superofficeLogInTitle",
-    displayPoweredBySesam: true,
-    isBrandLogo: true
-};
 const powerofficego = {
     id: "powerofficego",
     baseId: "powerofficego",
@@ -487,11 +476,6 @@ const WixSites = [
         id: "powerofficego-test"
     },
     SesamDefaultSite,
-    superofficeSite,
-    {
-        ...superofficeSite,
-        id: "superoffice-test"
-    },
     tripletexSite,
     {
         ...tripletexSite,
