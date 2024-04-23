@@ -163,7 +163,7 @@ const run = ()=>{
     const site = (0, _utils.getSite)(siteId);
     const brandTitle = (0, _brandForm.getBrandTitleFn)(document.getElementsByTagName("p") ?? {}, (0, _utils.getDefaultPageTitle)(formType));
     const promptLogoCenter = document.getElementById((0, _constants.LOGO_IMG_ID));
-    if (site.html) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/html/${site.html}?v=${(0, _uuid.v4)()}`, site.html);
+    if (site.html) (0, _brandForm.buildBrandedHorizontalLogo)(promptLogoCenter, `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/html/${site.html}?v=${(0, _uuid.v4)()}`, site);
     if (site.isBrandLogo) (0, _brandForm.brandLogo)(promptLogoCenter, site.logoUrl);
     if (site.displayPoweredBySesam) (0, _brandForm.addPoweredBySesamImg)(promptLogoCenter);
     brandTitle(formType === "login" ? site.loginSubTitle : site.signupSubTitle, site.titleClassName);
@@ -365,18 +365,18 @@ const addPoweredBySesamImg = (imgElement)=>{
     poweredBySesamWrapper.className = "poweredBySesamWrapper";
     insertElementAfter(imgElement, poweredBySesamWrapper);
 };
-const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl, htmlFileName)=>{
+const buildBrandedHorizontalLogo = async (imgElement, htmlLogoUrl, site)=>{
     const poweredBySesamWrapper = document.createElement("div");
     await fetch(htmlLogoUrl).then((response)=>response.text()).then((text)=>{
         poweredBySesamWrapper.innerHTML = text;
         poweredBySesamWrapper.style.display = "flex";
         poweredBySesamWrapper.style.justifyContent = "center";
-        if (htmlFileName === (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE)) {
-            const span = document.getElementById("spanServiceName");
-            span ? span.innerHTML = `Making ${text} ` : undefined;
-        }
     });
     insertElementAfter(imgElement, poweredBySesamWrapper);
+    if (site.html === (0, _constants.MAKING_SERVICE_TALK_HTML_TEMPLATE)) {
+        const span = document.getElementById("spanServiceName");
+        span ? span.innerHTML = `Making ${site.name} ` : undefined;
+    }
     imgElement.remove();
 };
 

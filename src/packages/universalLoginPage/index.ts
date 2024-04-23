@@ -38,7 +38,7 @@ const run = () => {
       `https://raw.githubusercontent.com/sesam-io/wix-sso/main/src/packages/universalLoginPage/html/${
         site.html
       }?v=${uuidv4()}`,
-      site.html
+      site
     );
   }
 

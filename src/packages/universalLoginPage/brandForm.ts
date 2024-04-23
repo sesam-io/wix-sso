@@ -1,4 +1,5 @@
 import { BASE_LOGO_URL, MAKING_SERVICE_TALK_HTML_TEMPLATE } from "./constants";
+import { Site } from "./types";
 
 export const brandLogo = (imgElement: HTMLImageElement, logoUrl?: string) => {
   if (logoUrl) {
@@ -42,7 +43,7 @@ export const addPoweredBySesamImg = (imgElement: HTMLImageElement) => {
 export const buildBrandedHorizontalLogo = async (
   imgElement: HTMLImageElement,
   htmlLogoUrl: string,
-  htmlFileName?: string
+  site: Site
 ) => {
   const poweredBySesamWrapper = document.createElement("div");
 
@@ -52,15 +53,14 @@ export const buildBrandedHorizontalLogo = async (
       poweredBySesamWrapper.innerHTML = text;
       poweredBySesamWrapper.style.display = "flex";
       poweredBySesamWrapper.style.justifyContent = "center";
-
-      if (htmlFileName === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
-        const span = document.getElementById(
-          "spanServiceName"
-        ) as HTMLSpanElement;
-        span ? (span.innerHTML = `Making ${text} `) : undefined;
-      }
     });
 
   insertElementAfter(imgElement, poweredBySesamWrapper);
+
+  if (site.html === MAKING_SERVICE_TALK_HTML_TEMPLATE) {
+    const span = document.getElementById("spanServiceName") as HTMLSpanElement;
+    span ? (span.innerHTML = `Making ${site.name} `) : undefined;
+  }
+
   imgElement.remove();
 };
