@@ -2,29 +2,23 @@
 
 exports[`utils test suite getSite test suite should return SuperOffice site 1`] = `
 {
-  "baseId": "superoffice",
   "displayPoweredBySesam": true,
-  "id": "superoffice",
-  "isBrandLogo": true,
-  "loginSubTitle": "Log in to SuperOffice DataSync.",
-  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
-  "name": "",
-  "signupSubTitle": "Sign up to SuperOffice DataSync.",
-  "titleClassName": "superofficeLogInTitle",
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
+  "name": "Sesam",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
 }
 `;
 
 exports[`utils test suite getSite test suite should return SuperOffice-test site 1`] = `
 {
-  "baseId": "superoffice",
   "displayPoweredBySesam": true,
-  "id": "superoffice-test",
-  "isBrandLogo": true,
-  "loginSubTitle": "Log in to SuperOffice DataSync.",
-  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
-  "name": "",
-  "signupSubTitle": "Sign up to SuperOffice DataSync.",
-  "titleClassName": "superofficeLogInTitle",
+  "id": "sesam",
+  "loginSubTitle": "Log in to Sesam Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
+  "name": "Sesam",
+  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
 }
 `;
 

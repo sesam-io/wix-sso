@@ -25,18 +25,6 @@ const tripletexSite: Site = {
   displayPoweredBySesam: false,
 } as const;
 
-const superofficeSite: Site = {
-  id: "superoffice",
-  baseId: "superoffice",
-  name: "",
-  logoUrl: `${BASE_LOGO_URL}/superoffice/superoffice-ulp-header-logo.svg`,
-  loginSubTitle: "Log in to SuperOffice DataSync.",
-  signupSubTitle: "Sign up to SuperOffice DataSync.",
-  titleClassName: "superofficeLogInTitle",
-  displayPoweredBySesam: true,
-  isBrandLogo: true,
-} as const;
-
 const powerofficego: Site = {
   id: "powerofficego",
   baseId: "powerofficego",
@@ -75,11 +63,6 @@ export const WixSites: Sites = [
     id: "powerofficego-test",
   },
   SesamDefaultSite,
-  superofficeSite,
-  {
-    ...superofficeSite,
-    id: "superoffice-test",
-  },
   tripletexSite,
   {
     ...tripletexSite,
