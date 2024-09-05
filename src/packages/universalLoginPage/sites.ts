@@ -13,7 +13,7 @@ export const SesamDefaultSite: Site = {
   loginSubTitle: "Log in to Talk.",
   signupSubTitle: "Sign up to Talk.",
   defaultLoginTitle: "Log in to Sesam Talk.",
-  defaultSignupTitle: "Sign up to Sesam Talk.",
+  defaultSignupTitle: "Sign Up to Sesam Talk to continue to Sesam Talk.",
   displayPoweredBySesam: true,
 } as const;
 
