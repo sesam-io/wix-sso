@@ -2,31 +2,38 @@
 
 exports[`utils test suite getSite test suite should return SuperOffice site 1`] = `
 {
-  "displayPoweredBySesam": true,
-  "id": "sesam",
-  "loginSubTitle": "Log in to Sesam Talk.",
-  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
-  "name": "Sesam",
-  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+  "baseId": "superoffice",
+  "displayPoweredBySesam": false,
+  "html": "making-service-talk-logo.html",
+  "id": "superoffice",
+  "isBrandLogo": false,
+  "loginSubTitle": "Log in to Making SuperOffice Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
+  "name": "SuperOffice",
+  "signupSubTitle": "Sign up Making to SuperOffice Talk.",
 }
 `;
 
 exports[`utils test suite getSite test suite should return SuperOffice-test site 1`] = `
 {
-  "displayPoweredBySesam": true,
-  "id": "sesam",
-  "loginSubTitle": "Log in to Sesam Talk.",
-  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
-  "name": "Sesam",
-  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+  "baseId": "superoffice",
+  "displayPoweredBySesam": false,
+  "html": "making-service-talk-logo.html",
+  "id": "superoffice-test",
+  "isBrandLogo": false,
+  "loginSubTitle": "Log in to Making SuperOffice Talk.",
+  "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/superoffice/superoffice-ulp-header-logo.svg",
+  "name": "SuperOffice",
+  "signupSubTitle": "Sign up Making to SuperOffice Talk.",
 }
 `;
 
 exports[`utils test suite getSite test suite should return Wave site 1`] = `
 {
   "displayPoweredBySesam": false,
+  "html": "making-service-talk-logo.html",
   "id": "wave",
-  "isBrandLogo": true,
+  "isBrandLogo": false,
   "loginSubTitle": "Log in to Making Wave Talk.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/wave/making-wave-talk-logo-centered.svg",
   "name": "Wave",
@@ -38,10 +45,10 @@ exports[`utils test suite getSite test suite should return default site 1`] = `
 {
   "displayPoweredBySesam": true,
   "id": "sesam",
-  "loginSubTitle": "Log in to Sesam Talk.",
+  "loginSubTitle": "Log in to Talk.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
   "name": "Sesam",
-  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+  "signupSubTitle": "Sign up to Talk to continue to Talk.",
 }
 `;
 
@@ -75,9 +82,9 @@ exports[`utils test suite getSite test suite should return sesam site 1`] = `
 {
   "displayPoweredBySesam": true,
   "id": "sesam",
-  "loginSubTitle": "Log in to Sesam Talk.",
+  "loginSubTitle": "Log in to Talk.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
   "name": "Sesam",
-  "signupSubTitle": "Sign up to Sesam Talk to continue to Sesam Talk.",
+  "signupSubTitle": "Sign up to Talk to continue to Talk.",
 }
 `;
