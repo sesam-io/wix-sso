@@ -419,7 +419,10 @@ const getWixSiteFn = (wixSites)=>(siteId)=>{
         return site;
     };
 const getSite = getWixSiteFn((0, _sites.WixSites));
-const getDefaultPageTitle = (formType)=>formType === "login" ? (0, _sites.SesamDefaultSite).loginSubTitle : (0, _sites.SesamDefaultSite).signupSubTitle;
+const getDefaultPageTitle = (formType)=>{
+    if (formType === "login") return (0, _sites.SesamDefaultSite).defaultLoginTitle ? (0, _sites.SesamDefaultSite).defaultLoginTitle : (0, _sites.SesamDefaultSite).loginSubTitle;
+    return (0, _sites.SesamDefaultSite).defaultSignupTitle ? (0, _sites.SesamDefaultSite).defaultSignupTitle : (0, _sites.SesamDefaultSite).signupSubTitle;
+};
 
 },{"./sites":"8ObUV","@parcel/transformer-js/src/esmodule-helpers.js":"3Jrbz"}],"8ObUV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -433,7 +436,9 @@ const SesamDefaultSite = {
     name: "Sesam",
     logoUrl: (0, _constants.DEFAULT_LOGO_URL),
     loginSubTitle: "Log in to Talk.",
-    signupSubTitle: "Sign up to Talk to continue to Talk.",
+    signupSubTitle: "Sign up to Talk.",
+    defaultLoginTitle: "Log in to Sesam Talk.",
+    defaultSignupTitle: "Sign up to Talk.",
     displayPoweredBySesam: true
 };
 const tripletexSite = {

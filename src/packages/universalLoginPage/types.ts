@@ -18,6 +18,8 @@ export type Site = {
   html?: string;
   isBrandLogo?: boolean;
   displayPoweredBySesam: boolean;
+  defaultLoginTitle?: string;
+  defaultSignupTitle?: string;
 };
 
 export type Sites = Site[];

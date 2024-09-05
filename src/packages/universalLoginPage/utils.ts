@@ -15,7 +15,14 @@ const getWixSiteFn = (wixSites: typeof WixSites) => (siteId: SiteId) => {
 
 export const getSite = getWixSiteFn(WixSites);
 
-export const getDefaultPageTitle = (formType: FormType) =>
-  formType === "login"
-    ? SesamDefaultSite.loginSubTitle
+export const getDefaultPageTitle = (formType: FormType) => {
+  if (formType === "login") {
+    return SesamDefaultSite.defaultLoginTitle
+      ? SesamDefaultSite.defaultLoginTitle
+      : SesamDefaultSite.loginSubTitle;
+  }
+
+  return SesamDefaultSite.defaultSignupTitle
+    ? SesamDefaultSite.defaultSignupTitle
     : SesamDefaultSite.signupSubTitle;
+};

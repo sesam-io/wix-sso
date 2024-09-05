@@ -43,12 +43,14 @@ exports[`utils test suite getSite test suite should return Wave site 1`] = `
 
 exports[`utils test suite getSite test suite should return default site 1`] = `
 {
+  "defaultLoginTitle": "Log in to Sesam Talk.",
+  "defaultSignupTitle": "Sign up to Talk.",
   "displayPoweredBySesam": true,
   "id": "sesam",
   "loginSubTitle": "Log in to Talk.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
   "name": "Sesam",
-  "signupSubTitle": "Sign up to Talk to continue to Talk.",
+  "signupSubTitle": "Sign up to Talk.",
 }
 `;
 
@@ -80,11 +82,13 @@ exports[`utils test suite getSite test suite should return powerofficego-test si
 
 exports[`utils test suite getSite test suite should return sesam site 1`] = `
 {
+  "defaultLoginTitle": "Log in to Sesam Talk.",
+  "defaultSignupTitle": "Sign up to Talk.",
   "displayPoweredBySesam": true,
   "id": "sesam",
   "loginSubTitle": "Log in to Talk.",
   "logoUrl": "https://cdn.jsdelivr.net/gh/sesam-io/wix-sso@v1.0.127-site-logos/src/packages/siteLogos/sesam/sesam-talk-rgb.png",
   "name": "Sesam",
-  "signupSubTitle": "Sign up to Talk to continue to Talk.",
+  "signupSubTitle": "Sign up to Talk.",
 }
 `;

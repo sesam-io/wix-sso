@@ -11,7 +11,9 @@ export const SesamDefaultSite: Site = {
   name: "Sesam",
   logoUrl: DEFAULT_LOGO_URL,
   loginSubTitle: "Log in to Talk.",
-  signupSubTitle: "Sign up to Talk to continue to Talk.",
+  signupSubTitle: "Sign up to Talk.",
+  defaultLoginTitle: "Log in to Sesam Talk.",
+  defaultSignupTitle: "Sign up to Talk.",
   displayPoweredBySesam: true,
 } as const;
 
