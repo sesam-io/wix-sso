@@ -14,7 +14,7 @@ export const SesamDefaultSite: Site = {
   signupSubTitle: "Sign up to Talk.",
   defaultLoginTitle: "Log in to Sesam Talk.",
   defaultSignupTitle: "Sign Up to Sesam Talk to continue to Sesam Talk.",
-  displayPoweredBySesam: true,
+  displayPoweredBySesam: false,
 } as const;
 
 const tripletexSite: Site = {
